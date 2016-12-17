@@ -1,1 +1,1 @@
-# YC's Blogger Place Here!
+blog
