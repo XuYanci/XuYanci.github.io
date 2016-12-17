@@ -11,8 +11,7 @@ comments: true
 
 
 ### 应用示例 ###
-<iframe height=270 width=500 src="/asset/banner.gif">
-</iframe>
+
 
 ### 思考 ###
 
