@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-17T18:04:56+08:00</updated><id>http://localhost:4000//</id><title type="html">一朵云风</title><subtitle>YC's Blogger</subtitle><entry><title type="html">Front-Learning-如何制作一个轮播图</title><link href="http://localhost:4000/Front-Learning-%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E8%BD%AE%E6%92%AD%E5%9B%BE/" rel="alternate" type="text/html" title="Front-Learning-如何制作一个轮播图" /><published>2016-10-25T00:00:00+08:00</published><updated>2016-10-25T00:00:00+08:00</updated><id>http://localhost:4000/Front-Learning-%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E8%BD%AE%E6%92%AD%E5%9B%BE</id><content type="html" xml:base="http://localhost:4000/Front-Learning-%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E8%BD%AE%E6%92%AD%E5%9B%BE/">&lt;h3 id=&quot;section&quot;&gt;应用示例&lt;/h3&gt;
+&lt;p&gt;&amp;lt;iframe height=270 width=500 src=”/asset/banner.gif”&amp;gt;
+&amp;lt;/iframe&amp;gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;思考&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;情景&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;五个图片(1,2,3,4,5) 轮播左翻页
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;问题&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;在翻页到5的时候,如何左翻页回到1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;解决&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;默认插入第一页到最后一页(1,2,3,4,5,1)，左翻页到最后一个1的时候,重置位置到第一个1。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;实践&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;成果&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/XuYanci/DemoCodes/tree/master/Front/如何制作一个轮播图&quot;&gt;https://github.com/XuYanci/DemoCodes/tree/master/Front/如何制作一个轮播图&lt;/a&gt;&lt;/p&gt;</content><category term="轮播图 html" /><summary type="html">Front-Learning-如何制作一个轮播图</summary></entry><entry><title type="html">Shell-Learning-iOS如何打渠道包</title><link href="http://localhost:4000/Shell-Learning-iOS%E5%A6%82%E4%BD%95%E6%89%93%E6%B8%A0%E9%81%93%E5%8C%85/" rel="alternate" type="text/html" title="Shell-Learning-iOS如何打渠道包" /><published>2016-10-24T00:00:00+08:00</published><updated>2016-10-24T00:00:00+08:00</updated><id>http://localhost:4000/Shell-Learning-iOS%E5%A6%82%E4%BD%95%E6%89%93%E6%B8%A0%E9%81%93%E5%8C%85</id><content type="html" xml:base="http://localhost:4000/Shell-Learning-iOS%E5%A6%82%E4%BD%95%E6%89%93%E6%B8%A0%E9%81%93%E5%8C%85/">&lt;hr /&gt;
+&lt;p&gt;title: Shell-Learning-iOS如何打渠道包
+date: 2016-10-24 10:42:05
+tags: shell iOS自动打包
+category: shell
+—&lt;/p&gt;
+
+&lt;h3 id=&quot;xcode-workspace-&quot;&gt;基于Xcode workSpace 生成渠道包&lt;/h3&gt;
+&lt;p&gt;… 待续
+### 基于Xcode 命令行工具 自动生成渠道包 ###&lt;/p&gt;
+
+&lt;p&gt;``使用说明:`&lt;/p&gt;
+
+  	sudo sh autop_xcodebuild.sh
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;应用示例:&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+/*! 读取渠道ID */
+- (NSString *)channel {
+    NSString *resourceDirectory = [[NSBundle mainBundle] resourcePath];
+    NSString *CodeSignaturePath = [resourceDirectory stringByAppendingPathComponent:@&quot;/_CodeSignature/AppInfo.plist&quot;];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc]initWithContentsOfFile:CodeSignaturePath];
+    return [data objectForKey:@&quot;channel&quot;];
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;附注说明 :&lt;/code&gt; &lt;/p&gt;
+
+&lt;p&gt;使用xcodebuild 自动化打包, 以及plistbuddy填充info.plist渠道键值对&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html&quot;&gt;xcodebuild doc in developer apple&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;plistbuddy command &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;示例工程&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/XuYanci/iOS-AutoPackage&quot;&gt;https://github.com/XuYanci/iOS-AutoPackage&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;ipa&quot;&gt;基于ipa母包自动生成渠道包&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;使用说明&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;./autop.sh 源包路径  目标包路径  目标包渠道id标识 目标包mask&lt;/p&gt;
+
+&lt;p&gt;示例:&lt;/p&gt;
+
+&lt;p&gt;./autop.sh  ./  ./Release/ channel001&lt;/p&gt;
+
+&lt;p&gt;过程:&lt;/p&gt;
+
+&lt;p&gt;1.解压AutoPackageDemo.ipa源文件&lt;/p&gt;
+
+&lt;p&gt;2.在Payload/_CodeSignature 里面新建 AppInfo.plist文件,
+并填充key为channelid,value为channel001的键值对&lt;/p&gt;
+
+&lt;p&gt;3.压缩生成目标文件&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;应用示例:&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+/*! 读取渠道ID */
+- (NSString *)channel {
+    NSString *resourceDirectory = [[NSBundle mainBundle] resourcePath];
+    NSString *CodeSignaturePath = [resourceDirectory stringByAppendingPathComponent:@&quot;/_CodeSignature/AppInfo.plist&quot;];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc]initWithContentsOfFile:CodeSignaturePath];
+    return [data objectForKey:@&quot;channel&quot;];
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;附注说明 :&lt;/code&gt; &lt;/p&gt;
+
+&lt;p&gt;经过试验,若将AppInfo.plist放到Payload目录下,会导致生成的包安装失败。
+若将AppInfo.plist放到Playload/_CodeSignature里面,则生成的包安装成功。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;示例工程&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/XuYanci/iOS-AutoPackage&quot;&gt;https://github.com/XuYanci/iOS-AutoPackage&lt;/a&gt;&lt;/p&gt;</content><category term="shell iOS自动打包" /><summary type="html">Shell-Learning-iOS如何打渠道包</summary></entry></feed>
