@@ -48,14 +48,6 @@ body {
 	}
 }
 
-.copyright {
-    padding: 20px 0;
-    text-align: center;
-    color: #f0f0f0;
-    background-color: #575757;
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
 .flex {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -228,4 +220,12 @@ header .entry-meta {
         background-blend-mode: multiply;
         background-position: center center;
     }
+}
+
+.copyright {
+    padding: 20px 0;
+    text-align: center;
+    color: #f0f0f0;
+    background-color: #575757;
+    background-color: rgba(0, 0, 0, 0.6);
 }
