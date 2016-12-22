@@ -1,4 +1,130 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-20T23:06:12+08:00</updated><id>http://localhost:4000//</id><title type="html">一朵云风</title><subtitle>An General iOS Developer</subtitle><author><name>一朵云风</name></author><entry><title type="html">Front-Learning-如何制作一个轮播图</title><link href="http://localhost:4000/Front-Learning-%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E8%BD%AE%E6%92%AD%E5%9B%BE/" rel="alternate" type="text/html" title="Front-Learning-如何制作一个轮播图" /><published>2016-10-25T00:00:00+08:00</published><updated>2016-10-25T00:00:00+08:00</updated><id>http://localhost:4000/Front-Learning-%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E8%BD%AE%E6%92%AD%E5%9B%BE</id><content type="html" xml:base="http://localhost:4000/Front-Learning-%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E8%BD%AE%E6%92%AD%E5%9B%BE/">&lt;h3 id=&quot;section&quot;&gt;应用示例&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-22T23:24:33+08:00</updated><id>http://localhost:4000//</id><title type="html">一朵云风</title><subtitle>An General iOS Developer</subtitle><author><name>一朵云风</name></author><entry><title type="html">CocoaPod-Learning-如何制作一个CocoaPod (1)</title><link href="http://localhost:4000/%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AACocoaPod-(1)/" rel="alternate" type="text/html" title="CocoaPod-Learning-如何制作一个CocoaPod (1)" /><published>2016-12-22T00:00:00+08:00</published><updated>2016-12-22T00:00:00+08:00</updated><id>http://localhost:4000/%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AACocoaPod%20(1)</id><content type="html" xml:base="http://localhost:4000/%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AACocoaPod-(1)/">&lt;h3 id=&quot;section&quot;&gt;创建一个仓库来存放库文件:&lt;/h3&gt;
+&lt;figure class=&quot;&quot;&gt;
+    &lt;img src=&quot;/assets/img/2016-12-21-how_to_make_an_cocoapod/1.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;建立目录结构:&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ 	git clone https://github.com/XuYanci/YCPodTestLibrary 
+
+$	cd YCPodTestLibrary
+
+$	mkdir PodTestLibrary
+
+$	cd PodTestLibrary
+
+$	mkdir Assets	(存放资源文件、例如图片)
+
+$	mkdir Classes  (存放库源文件,例如Helper.h,Helper.m)
+
+$	cd ../  		(返回YCPodTestLibrary 根目录)
+
+$	touch LICENSE 
+
+$	touch README	(自定义文字内容)
+
+$	touch YanciXuPodTestLibrary.podspec
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;figure class=&quot;&quot;&gt;
+	&lt;figcaption&gt;目录树结构&lt;/figcaption&gt;
+    &lt;img src=&quot;/assets/img/2016-12-21-how_to_make_an_cocoapod/3.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;h5 id=&quot;license&quot;&gt;LICENSE文件:&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Copyright (c) 2016 who &amp;lt;who@gmail.com&amp;gt;
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;podsepc&quot;&gt;PodSepc文件&lt;/h5&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#
+# Be sure to run `pod lib lint podTestLibrary.podspec' to ensure this is a
+# valid spec before submitting.
+#
+# Any lines starting with a # are optional, but their use is encouraged
+# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
+#
+Pod::Spec.new do |s|
+  s.name             = 'YanciXuPodTestLibrary' 
+  s.version          = '0.1.0'
+  s.summary          = 'A short description of YCPodTestLibrary.'
+# This description is used to generate tags and improve search results.
+#   * Think: What does it do? Why did you write it? What is the focus?
+#   * Try to keep it short, snappy and to the point.
+#   * Write the description between the DESC delimiters below.
+#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.description      = &amp;lt;&amp;lt;-DESC
+TODO: Add long description of the pod here.
+                       DESC
+  s.homepage         = 'https://github.com/XuYanci/YCPodTestLibrary.git' ()
+  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.license          = { :type =&amp;gt; 'MIT', :file =&amp;gt; 'LICENSE' }
+  s.author           = { 'XuYanci' =&amp;gt; 'grandy.wind@gmail.com' }
+  # @note 第一步生成gitrepo地址
+  s.source           = { :git =&amp;gt; 'https://github.com/XuYanci/YCPodTestLibrary.git', :tag =&amp;gt; s.version.to_s }
+  # s.social_media_url = 'https://twitter.com/&amp;lt;TWITTER_USERNAME&amp;gt;'
+  s.ios.deployment_target = '8.0'
+  # @note 第一步生成的目录,用于存放Lib源文件 (.h,.m)
+  s.source_files = 'podTestLibrary/Classes/**/*'
+  # @note 第一步生成的目录,用于存放Lib资源文件 (.png)
+  s.resource_bundles = {
+     'podTestLibrary' =&amp;gt; ['podTestLibrary/Assets/*.png']
+   }
+  # s.public_header_files = 'Pod/Classes/**/*.h'
+  # s.frameworks = 'UIKit', 'MapKit'
+  # s.dependency 'AFNetworking', '~&amp;gt; 2.3'
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;podsepc-1&quot;&gt;验证podsepc是否有效&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$	pod lib lint --allow-warnings  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;figure class=&quot;&quot;&gt;
+ 	&lt;figcaption&gt;验证通过&lt;/figcaption&gt;
+    &lt;img src=&quot;/assets/img/2016-12-21-how_to_make_an_cocoapod/4.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;cocoapod&quot;&gt;推送到cocoapod&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ 	pod trunk push [name].podspec 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;figure class=&quot;&quot;&gt;
+	&lt;figcaption&gt;🚀 祝贺你,你可以搜索和使用你的pod了&lt;/figcaption&gt;
+    &lt;img src=&quot;/assets/img/2016-12-21-how_to_make_an_cocoapod/2.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://guides.cocoapods.org&quot;&gt;https://guides.cocoapods.org&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://my.oschina.net/u/727843/blog/392784&quot;&gt;https://my.oschina.net/u/727843/blog/392784&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>一朵云风</name></author><category term="github cocoapod" /><summary type="html">CocoaPod-Learning-如何制作一个CocoaPod (1)</summary></entry><entry><title type="html">Front-Learning-如何制作一个轮播图</title><link href="http://localhost:4000/Front-Learning-%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E8%BD%AE%E6%92%AD%E5%9B%BE/" rel="alternate" type="text/html" title="Front-Learning-如何制作一个轮播图" /><published>2016-10-25T00:00:00+08:00</published><updated>2016-10-25T00:00:00+08:00</updated><id>http://localhost:4000/Front-Learning-%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E8%BD%AE%E6%92%AD%E5%9B%BE</id><content type="html" xml:base="http://localhost:4000/Front-Learning-%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E8%BD%AE%E6%92%AD%E5%9B%BE/">&lt;h3 id=&quot;section&quot;&gt;应用示例&lt;/h3&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;思考&lt;/h3&gt;
 
@@ -24,14 +150,7 @@
 
 &lt;h3 id=&quot;section-2&quot;&gt;成果&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/XuYanci/DemoCodes/tree/master/Front/如何制作一个轮播图&quot;&gt;https://github.com/XuYanci/DemoCodes/tree/master/Front/如何制作一个轮播图&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="轮播图 html" /><summary type="html">Front-Learning-如何制作一个轮播图</summary></entry><entry><title type="html">Shell-Learning-iOS如何打渠道包</title><link href="http://localhost:4000/Shell-Learning-iOS%E5%A6%82%E4%BD%95%E6%89%93%E6%B8%A0%E9%81%93%E5%8C%85/" rel="alternate" type="text/html" title="Shell-Learning-iOS如何打渠道包" /><published>2016-10-24T00:00:00+08:00</published><updated>2016-10-24T00:00:00+08:00</updated><id>http://localhost:4000/Shell-Learning-iOS%E5%A6%82%E4%BD%95%E6%89%93%E6%B8%A0%E9%81%93%E5%8C%85</id><content type="html" xml:base="http://localhost:4000/Shell-Learning-iOS%E5%A6%82%E4%BD%95%E6%89%93%E6%B8%A0%E9%81%93%E5%8C%85/">&lt;hr /&gt;
-&lt;p&gt;title: Shell-Learning-iOS如何打渠道包
-date: 2016-10-24 10:42:05
-tags: shell iOS自动打包
-category: shell
-—&lt;/p&gt;
-
-&lt;h3 id=&quot;xcode-workspace-&quot;&gt;基于Xcode workSpace 生成渠道包&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/XuYanci/DemoCodes/tree/master/Front/如何制作一个轮播图&quot;&gt;https://github.com/XuYanci/DemoCodes/tree/master/Front/如何制作一个轮播图&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="轮播图 html" /><summary type="html">Front-Learning-如何制作一个轮播图</summary></entry><entry><title type="html">Shell-Learning-iOS如何打渠道包</title><link href="http://localhost:4000/Shell-Learning-iOS%E5%A6%82%E4%BD%95%E6%89%93%E6%B8%A0%E9%81%93%E5%8C%85/" rel="alternate" type="text/html" title="Shell-Learning-iOS如何打渠道包" /><published>2016-10-24T00:00:00+08:00</published><updated>2016-10-24T00:00:00+08:00</updated><id>http://localhost:4000/Shell-Learning-iOS%E5%A6%82%E4%BD%95%E6%89%93%E6%B8%A0%E9%81%93%E5%8C%85</id><content type="html" xml:base="http://localhost:4000/Shell-Learning-iOS%E5%A6%82%E4%BD%95%E6%89%93%E6%B8%A0%E9%81%93%E5%8C%85/">&lt;h3 id=&quot;xcode-workspace-&quot;&gt;基于Xcode workSpace 生成渠道包&lt;/h3&gt;
 &lt;p&gt;… 待续
 ### 基于Xcode 命令行工具 自动生成渠道包 ###&lt;/p&gt;
 

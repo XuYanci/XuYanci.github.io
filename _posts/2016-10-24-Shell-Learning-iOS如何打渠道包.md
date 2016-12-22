@@ -7,12 +7,6 @@ tags: [shell iOS自动打包]
 comments: true
 ---
 
----
-title: Shell-Learning-iOS如何打渠道包
-date: 2016-10-24 10:42:05
-tags: shell iOS自动打包
-category: shell
----
 
 ### 基于Xcode workSpace 生成渠道包 ###
 ... 待续
