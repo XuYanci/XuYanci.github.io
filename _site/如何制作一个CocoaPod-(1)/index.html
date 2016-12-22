@@ -11,15 +11,15 @@ $	mkdir PodTestLibrary
 
 $	cd PodTestLibrary
 
-$	mkdir Assets	(存放资源文件、例如图片)
+$	mkdir Assets	(ps:存放资源文件、例如图片)
 
-$	mkdir Classes  (存放库源文件,例如Helper.h,Helper.m)
+$	mkdir Classes  (ps:存放库源文件,例如Helper.h,Helper.m)
 
-$	cd ../  		(返回YCPodTestLibrary 根目录)
+$	cd ../  		(ps:返回YCPodTestLibrary 根目录)
 
 $	touch LICENSE 
 
-$	touch README	(自定义文字内容)
+$	touch README	(ps:自定义文字内容)
 
 $	touch YanciXuPodTestLibrary.podspec
 </code></pre></div> <figure class=""> <figcaption>目录树结构</figcaption> <img src="/assets/img/2016-12-21-how_to_make_an_cocoapod/3.png"> </figure> <h5 id="license">LICENSE文件:</h5> <div class="highlighter-rouge"><pre class="highlight"><code>Copyright (c) 2016 who &lt;who@gmail.com&gt;
@@ -75,6 +75,12 @@ TODO: Add long description of the pod here.
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~&gt; 2.3'
 end
+</code></pre></div> <h3 id="libgithub-repo">上传Lib到Github Repo</h3> <div class="highlighter-rouge"><pre class="highlight"><code>$  cd	YCPodTestLibrary	
+$  git add . 
+$  git commit -m "release 0.1.0"
+$  git push origin master   (ps:https://github.com/XuYanci/YCPodTestLibrary.git)
+$  git tag -a 0.1.0 
+$  git push -tags
 </code></pre></div> <h3 id="podsepc-1">验证podsepc是否有效</h3> <div class="highlighter-rouge"><pre class="highlight"><code>$	pod lib lint --allow-warnings  
 </code></pre></div> <figure class=""> <figcaption>验证通过</figcaption> <img src="/assets/img/2016-12-21-how_to_make_an_cocoapod/4.png"> </figure> <h3 id="cocoapod">推送到cocoapod</h3> <div class="highlighter-rouge"><pre class="highlight"><code>$ 	pod trunk push [name].podspec 
 </code></pre></div> <figure class=""> <figcaption>🚀 祝贺你,你可以搜索和使用你的pod了</figcaption> <img src="/assets/img/2016-12-21-how_to_make_an_cocoapod/2.png"> </figure> <h3 id="reference">Reference</h3> <ul> <li> <p><a href="https://guides.cocoapods.org">https://guides.cocoapods.org</a></p> </li> <li> <p><a href="https://my.oschina.net/u/727843/blog/392784">https://my.oschina.net/u/727843/blog/392784</a></p> </li> </ul> <div class="entry-meta"> <br> <hr> <span class="entry-tags"><a href="http://localhost:4000/tags/#github%20cocoapod" title="Pages tagged github cocoapod" class="tag"><span class="term">github cocoapod</span></a></span> <span class="social-share"> <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AACocoaPod-(1)/" title="Share on Facebook" class="tag"> <span class="term"><i class="fa fa-facebook-square"></i> Like</span> </a> <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AACocoaPod-(1)/" title="Share on Twitter" class="tag"> <span class="term"><i class="fa fa-twitter-square"></i> Tweet</span> </a> <a href="https://plus.google.com/share?url=http://localhost:4000/%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AACocoaPod-(1)/" title="Share on Google+" class="tag"> <span class="term"><i class="fa fa-google-plus-square"></i> +1</span> </a> </span> <div style="clear:both"></div> </div> </div> </div> <section id="disqus_thread" class="animated fadeInUp"></section><!-- /#disqus_thread --> </header> <!-- JS --> <script src="http://localhost:4000/assets/js/jquery-1.12.0.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.dlmenu.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.goup.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.magnific-popup.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.fitvid.min.js"></script> <script src="http://localhost:4000/assets/js/scripts.js"></script> <script type="text/javascript"> var disqus_shortname = 'yanciomgblog'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); (function () { var s = document.createElement('script'); s.async = true; s.type = 'text/javascript'; s.src = '//' + disqus_shortname + '.disqus.com/count.js'; (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s); }()); </script> <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
