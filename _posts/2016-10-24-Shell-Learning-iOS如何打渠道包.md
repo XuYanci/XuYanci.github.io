@@ -5,6 +5,7 @@ date: 2016-10-24
 excerpt: "Shell-Learning-iOS如何打渠道包"
 tags: [shell iOS自动打包]
 comments: true
+redirect_from:  /2016/10/24/Shell-Learning-iOS如何打渠道包/
 ---
 
 

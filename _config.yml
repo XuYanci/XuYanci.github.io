@@ -64,10 +64,12 @@ weibo:             5316510203
 
 # Gems
 gems:
+  - jekyll-redirect-from
   - jekyll-mentions
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-gist
+
 
 jekyll-mentions:
     base_url: https://github.com

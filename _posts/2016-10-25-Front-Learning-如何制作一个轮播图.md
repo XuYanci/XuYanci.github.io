@@ -5,6 +5,7 @@ date: 2016-10-25
 excerpt: "Front-Learning-如何制作一个轮播图"
 tags: [轮播图 html]
 comments: true
+redirect_from:	/2016/10/25/Front-Learning-如何制作一个轮播图/
 ---
 
 
