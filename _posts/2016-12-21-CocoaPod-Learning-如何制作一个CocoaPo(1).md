@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "CocoaPod-Learning-如何制作一个CocoaPod (1)"
+title: "CocoaPod-Learning-如何制作一个CocoaPod(1)"
 date: 2016-12-22
-excerpt: "CocoaPod-Learning-如何制作一个CocoaPod (1)"
+excerpt: "CocoaPod-Learning-如何制作一个CocoaPod(1)"
 tags: [github cocoapod]
 comments: true
 ---
