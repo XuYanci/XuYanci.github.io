@@ -1,0 +1,143 @@
+
+
+/* Table of Content
+==================================================
+	#Reset & Basics
+	#Basic Styles
+	#Typography
+	#Links
+	#Browser Fix
+	#Misc
+
+
+/* #Reset & Basics (Inspired by E. Meyers)
+================================================== */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-decoration: none;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333333;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+/* #Basic Styles
+================================================== */
+body {
+		background: #ffffff;
+		font: 14px/22px "open_sans",Arial,sans-serif;
+		color: #999999;
+		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+		-webkit-text-size-adjust: 100%;
+		margin:0;		
+ }
+
+/* #Typography and #Common style
+================================================== */
+h1, h2, h3, h4, h5, h6 {color: #333333;font-weight: normal;text-transform:uppercase;margin-bottom:10px;}
+em { font-style: italic; }
+strong {color:#333333; }
+small { font-size: 80%; }
+
+
+/* main title */ 
+.main-title {
+	position: relative;
+	border-bottom: 2px solid #efefef;
+	padding: 30px 10px 2px 40px;
+}
+
+.main-title h1 {
+    font-family: 'open_sansextrabold',Arial,sans-serif;
+}
+
+.main-title h1{
+	font-size:15px;
+}
+
+.main-title h1 {
+    margin-bottom: 10px;
+}
+
+ 
+.main-title .divider {
+	position: absolute;
+	left: 30px;
+	top: 50px;
+}
+
+/* divider */
+.divider .zigzag.large {
+	stroke-width:4.3;
+}
+
+.divider .zigzag.large {
+	stroke: #cd5353
+}
+
+.zigzag.large {
+	padding: 0 10px;
+}
+
+.zigzag.large {
+	background: #ffffff;
+}
+
+.zigzag {
+	fill: none;
+	stroke-miterlimit:10;
+	stroke-width:3.7;
+}
+
+
+.skills-list h4, .skill .title {
+	font-family: 'open_sanssemibold',Arial,sans-serif;
+}
+
+.info ul.info-list li .inf {
+	font-family: 'open_sansbold',Arial,sans-serif;
+}
+
+
+/* #Links
+================================================== */
+
+
+/* #Browser Fix
+================================================== */
+
+
+
+/* #Misc
+================================================== */
+.margBSmall{margin-bottom:30px !important;}
+.margBMedium{margin-bottom:40px !important;}
+
+
+
