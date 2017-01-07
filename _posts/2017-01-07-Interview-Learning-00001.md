@@ -113,6 +113,29 @@ ADT:
 				total += 2;
 		}
 		
+
+PS : 若使用程序来解决,原来是这样。
+
+	int money = 20; // 金额
+	int emptyBottle = 0; // 空瓶 
+	int BottleCap = 0; // 瓶盖
+	int mineral = 0;  // 瓶数
+	for (int i = 0; i < money;i++) {
+		mineral ++；
+		emptyBottle++;
+		BottleCap++;
+		if(emptyBottle == 2) {
+			mineral ++;
+			emptyBottle = 0;
+		}
+		if(BottleCap == 3) {
+			mineral ++;
+			BottleCap = 0;
+		}
+	}
+	
+	System.out.println(mineral);
+
 		
 
 

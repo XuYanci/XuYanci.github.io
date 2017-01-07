@@ -1,4 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-04T22:58:14+08:00</updated><id>http://localhost:4000//</id><title type="html">一朵云风</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>一朵云风</name></author><entry><title type="html">UIKit-Learning-UIScrollView And AutoLayout</title><link href="http://localhost:4000/UIKit-Learning-UIScrollView-And-AutoLayout/" rel="alternate" type="text/html" title="UIKit-Learning-UIScrollView And AutoLayout" /><published>2017-01-01T00:00:00+08:00</published><updated>2017-01-01T00:00:00+08:00</updated><id>http://localhost:4000/UIKit-Learning-UIScrollView%20And%20AutoLayout</id><content type="html" xml:base="http://localhost:4000/UIKit-Learning-UIScrollView-And-AutoLayout/">&lt;p&gt;Ques: UIScrollView 是如何使得其内容视图滚动显示的。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-07T02:28:24+08:00</updated><id>http://localhost:4000//</id><title type="html">一朵云风</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>一朵云风</name></author><entry><title type="html">Union语法糖 Learning Js一个循环引起的闭包思考</title><link href="http://localhost:4000/Union%E8%AF%AD%E6%B3%95%E7%B3%96-Learning-js%E4%B8%80%E4%B8%AA%E5%BE%AA%E7%8E%AF%E5%BC%95%E8%B5%B7%E7%9A%84%E9%97%AD%E5%8C%85%E6%80%9D%E8%80%83/" rel="alternate" type="text/html" title="Union语法糖 Learning Js一个循环引起的闭包思考" /><published>2017-01-05T00:00:00+08:00</published><updated>2017-01-05T00:00:00+08:00</updated><id>http://localhost:4000/Union%E8%AF%AD%E6%B3%95%E7%B3%96-Learning-js%E4%B8%80%E4%B8%AA%E5%BE%AA%E7%8E%AF%E5%BC%95%E8%B5%B7%E7%9A%84%E9%97%AD%E5%8C%85%E6%80%9D%E8%80%83</id><content type="html" xml:base="http://localhost:4000/Union%E8%AF%AD%E6%B3%95%E7%B3%96-Learning-js%E4%B8%80%E4%B8%AA%E5%BE%AA%E7%8E%AF%E5%BC%95%E8%B5%B7%E7%9A%84%E9%97%AD%E5%8C%85%E6%80%9D%E8%80%83/">&lt;ul&gt;
+  &lt;li&gt;iOS Block &lt;/li&gt;
+  &lt;li&gt;Android Block&lt;/li&gt;
+  &lt;li&gt;JavaScript Block&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;js-block&quot;&gt;JS Block&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/*! 添加指示器事件 */
+	var indicators = document.getElementsByTagName(&quot;li&quot;);
+	for (var i = 0; i &amp;lt; indicators.length; i++) {
+		 var trigger = function(){
+			  var temp = i;
+			 indicators[i].onclick = function() {
+			 	alert(i);
+			 	alert(temp);
+			 }
+		}
+		trigger();
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;ios-block&quot;&gt;iOS Block&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;typedef void(^TriggerBlock)(void);
+
+for (NSUInteger i = 0; i &amp;lt; _buttons.count; i++) {
+    TriggerBlock trigger = ^(void) {
+        NSUInteger temp = i ;
+        [((UIButton *)_buttons[i]) bk_addEventHandler:^(id sender) {
+            NSLog(@&quot;i = %ld&quot;,i);
+            NSLog(@&quot;temp = %ld&quot;,temp);
+        } forControlEvents:UIControlEventTouchUpInside];
+    };
+    trigger();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;android-block&quot;&gt;Android Block&lt;/h3&gt;</content><author><name>一朵云风</name></author><summary type="html">iOS Block 
+  Android Block
+  JavaScript Block</summary></entry><entry><title type="html">UIKit-Learning-UIScrollView And AutoLayout</title><link href="http://localhost:4000/UIKit-Learning-UIScrollView-And-AutoLayout/" rel="alternate" type="text/html" title="UIKit-Learning-UIScrollView And AutoLayout" /><published>2017-01-01T00:00:00+08:00</published><updated>2017-01-01T00:00:00+08:00</updated><id>http://localhost:4000/UIKit-Learning-UIScrollView%20And%20AutoLayout</id><content type="html" xml:base="http://localhost:4000/UIKit-Learning-UIScrollView-And-AutoLayout/">&lt;p&gt;Ques: UIScrollView 是如何使得其内容视图滚动显示的。&lt;/p&gt;
 
 &lt;p&gt;Answser: 通过改变UIScrollView自身的Position,也就是bounds。&lt;/p&gt;
 
@@ -38,13 +78,120 @@
 
 &lt;p&gt;Reference: &lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/technotes/tn2154/_index.html&quot;&gt;UIScrollView With AutoLayout&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="iOS UIScrollView AutoLayout" /><summary type="html">UIKit-Learning-UIScrollView And AutoLayout</summary></entry><entry><title type="html">Summary - 2016 Year</title><link href="http://localhost:4000/Summary-2016Summary/" rel="alternate" type="text/html" title="Summary - 2016 Year" /><published>2016-12-22T00:00:00+08:00</published><updated>2016-12-22T00:00:00+08:00</updated><id>http://localhost:4000/Summary-2016Summary</id><content type="html" xml:base="http://localhost:4000/Summary-2016Summary/">&lt;p&gt;一下子就不知不觉步入了2017年，回首2016做个总结吧。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/technotes/tn2154/_index.html&quot;&gt;UIScrollView With AutoLayout&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="iOS UIScrollView AutoLayout" /><summary type="html">UIKit-Learning-UIScrollView And AutoLayout</summary></entry><entry><title type="html">Interview-Learning-00001</title><link href="http://localhost:4000/Interview-Learning-00001/" rel="alternate" type="text/html" title="Interview-Learning-00001" /><published>2016-12-22T00:00:00+08:00</published><updated>2016-12-22T00:00:00+08:00</updated><id>http://localhost:4000/Interview-Learning-00001</id><content type="html" xml:base="http://localhost:4000/Interview-Learning-00001/">&lt;p&gt;今天在群里看到有同学发了两道华为的面试题目，就看了一下如何解决。&lt;/p&gt;
 
-&lt;p&gt;2016 主要是带队做事情,在过程中学习了如何去引导他人，指导他人,并学会取舍，懂的公司的目标是最重要的。并且也确定了以后的职业方向。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;编写一个程序,要求计算从1+2+3+…100
+每加一次输出一次结果.
+程序不得超过20行
+在程序中不得出现for,while关键字。&lt;/p&gt;
 
-&lt;p&gt;技术方面， iOS还是以解决问题为主，毕竟经验都是实战中积累的,主要接触了腾讯云即时通讯以及最火的直播功能。简单学习了一下前端,主要是以html+css+div为主。&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; /*! 递归函数,用于计算1+2+3+... */
+ - (NSUInteger)dg:(NSUInteger)i {
+     if (i == 0) {
+         return 0;
+     }
+     i +=  [self dg:i - 1];
+     NSLog(@&quot;%ld&quot;,i);
+     return i;
+ }
+	
+ /*! 执行函数 */
+ [self dg:100]
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;一个人买汽水, 1块钱一瓶汽水,2个空瓶可以换一瓶汽水,3个瓶盖可以换一瓶汽水.这个人有20块钱,问:总共能喝多少汽水.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;思维方面，  学会了如何多方面考虑产品需求，提前做好规划等。而不是凭感觉去定义某些事情，要去实践认知的过程中取得有用的经验。做事情可以依靠许多工具来辅助解决，愿望清单，脑图，以及google keep等，一步一步规划清晰目标，并加强执行力，毕竟行动胜于一切。&lt;/p&gt;
+&lt;p&gt;#####按照题意 逐步推导一下:&lt;/p&gt;
+
+&lt;p&gt;定义 M = 一块钱， W = 一瓶水，PG = 一个瓶盖 ， KP = 一个空瓶。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;1M = 1W&lt;/p&gt;
+
+&lt;p&gt;Left:&lt;/p&gt;
+
+&lt;p&gt;1PG + 1KP&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;2M = 4W&lt;/p&gt;
+
+&lt;p&gt;LEFT&lt;/p&gt;
+
+&lt;p&gt;1KP&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;3M = 6W&lt;/p&gt;
+
+&lt;p&gt;LEFT&lt;/p&gt;
+
+&lt;p&gt;1KP + 2PG&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;4M = 11W&lt;/p&gt;
+
+&lt;p&gt;LEFT&lt;/p&gt;
+
+&lt;p&gt;1KP&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;5M = 13W&lt;/p&gt;
+
+&lt;p&gt;LEFT &lt;/p&gt;
+
+&lt;p&gt;1KP + 2PG&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2| 4 
+
+3| 4 + 2 
+
+4| 4 + 2 + 5
+
+5| 4 + 2 + 5 + 2
+
+6| 4 + 2 + 5 + 2 + 5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;推导一下,得出规律:&lt;/p&gt;
+
+&lt;p&gt;偶数 + 5&lt;/p&gt;
+
+&lt;p&gt;奇数 + 2&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;ADT:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	int total = 4; /*! 2元钱开始计算 */
+	for (int i = 3; i &amp;lt;= 20; i++) {
+		if (i % 2 == 0) 
+			total += 5;
+		else 
+			total += 2;
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>一朵云风</name></author><category term="Interview 2017" /><summary type="html">Interview-Learning-00001</summary></entry><entry><title type="html">Summary - 2016 Year</title><link href="http://localhost:4000/Summary-2016Summary/" rel="alternate" type="text/html" title="Summary - 2016 Year" /><published>2016-12-22T00:00:00+08:00</published><updated>2016-12-22T00:00:00+08:00</updated><id>http://localhost:4000/Summary-2016Summary</id><content type="html" xml:base="http://localhost:4000/Summary-2016Summary/">&lt;p&gt;一下子就不知不觉步入了2017年，回首2016做个总结吧。&lt;/p&gt;
+
+&lt;p&gt;2016 主要是带队做事情,在过程中学习了如何去引导他人，指导他人，并学会取舍，懂的公司的目标是最重要的，并且也确定了以后的职业方向。&lt;/p&gt;
+
+&lt;p&gt;技术方面，iOS还是以解决问题为主，毕竟经验都是实战中积累的，主要接触了腾讯云即时通讯以及最火的直播功能。简单学习了一下前端，主要是以html+css+div为主。&lt;/p&gt;
+
+&lt;p&gt;思维方面，学会了如何多方面考虑产品需求，提前做好规划等。而不是凭感觉去定义某些事情，要去实践认知的过程中取得有用的经验。做事情可以依靠许多工具来辅助解决，愿望清单，脑图，以及google keep等，一步一步规划清晰目标，并加强执行力，毕竟行动胜于一切。&lt;/p&gt;
 
 &lt;p&gt;玩方面，今年去一趟海南岛，爸妈以及哥哥的第二故乡，领悟挺多。还去一趟龙门铁泉，泡泡温泉，舒服一下。有什么好玩的地方，记得告诉我哦！&lt;/p&gt;
 
