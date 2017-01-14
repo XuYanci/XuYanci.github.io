@@ -20,6 +20,8 @@ comments: true
 
 ###  块级作用域与函数级作用域
 
+   (待续)  
+   
 
 ### 闭包基本知识
  * 闭包的解释
@@ -150,7 +152,6 @@ for (var i = 0; i < indicators.length; i++) {
 		 	alert(temp);
 		 }
 	})(i); /*! 通过IIFE来锁定值i并且有效的保存当时的状态 */
-	trigger();
 }
 {% endhighlight %}
 
