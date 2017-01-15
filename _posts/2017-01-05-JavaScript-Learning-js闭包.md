@@ -14,14 +14,33 @@ comments: true
 3. 作用域基本知识
 4. IIFE 立即执行的函数表达式  
 5. let 关键字
-6. that or this 
-7. 参考
 
 
 ###  块级作用域与函数级作用域
+> 任何一对花括号（｛和｝）中的语句集都属于一个块，在这之中定义的所有变量在代码块外都是不可见的，我们称之为块级作用域。
+函数作用域就好理解了，定义在函数中的参数和变量在函数外部是不可见的。
 
-   (待续)  
-   
+
+{% highlight objc %}
+ for (int i = 0; i < 5; i++) 
+ {
+   	 /* 这里的i可见  */	  
+ }
+ NSLog(@"%d",i); /* 这里的i未定义 */
+{% endhighlight %}
+
+
+{% highlight js %}
+ for (var i = 0; i < 5; i++) 
+ {	
+ 	/* 这里的i可见*/	
+ }
+alert(i);	/* 这里的i可见 */    
+{% endhighlight %}
+
+得出结论:
+ 
+  js是函数级别作用域。
 
 ### 闭包基本知识
  * 闭包的解释
@@ -158,25 +177,29 @@ for (var i = 0; i < indicators.length; i++) {
 当你点击指示器的时候,执行结果就是你点击对应的指示器index。
 
 ### let关键字
+   * let解释
    
-   (待续)  
-   
-### that or this
-   
-   (待续)  
+	   > let 允许把变量的作用域限制在块级域中。与 var 不同处是：var 声明变量要么是全局的，要么是函数级的，而无法是块级的。      
+	   > let声明的变量作用域包含定义它的块以及任何包含的子块中。在这方面，let与var非常像。它们之间主要的区别在于一个var变量的作用域是整个封闭函数。
    
    
-### Reference
-[https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)
+   在上个例子,我们通过IIFE来锁定值i并且有效的保存当时的状态,主要是因为var是函数级作用域的原因。接着我们看看let关键字(块作用域)如何来实现锁定值i并且有效的保存当时的状态。
 
-[http://qun.jikexueyuan.com/web/topic/280](http://qun.jikexueyuan.com/web/topic/280)
+{% highlight js %}
+var indicators = document.getElementsByTagName("li");
+/* 替换var */
+for (let i = 0; i < indicators.length; i++) { 
+	 var trigger = function(){
+		 indicators[i].onclick = function() {
+		 	alert(i);
+		 }
+	}
+	trigger();
+}
 
-[https://app.box.com/shared/elkumrpfng](https://app.box.com/shared/elkumrpfng)
+{% endhighlight %}
+  
+😁 是不是超级熟悉,这不就是我们很常用的语法么!
 
-[http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html](http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)
-
-[http://stackoverflow.com/questions/111102/how-do-javascript-closures-work](http://stackoverflow.com/questions/111102/how-do-javascript-closures-work)
-
-[http://dmitrysoshnikov.com/ecmascript/chapter-4-scope-chain/](http://dmitrysoshnikov.com/ecmascript/chapter-4-scope-chain/)
-
-[https://segmentfault.com/a/1190000003985390](https://segmentfault.com/a/1190000003985390)
+   
+### End

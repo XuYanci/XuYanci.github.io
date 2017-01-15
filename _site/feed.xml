@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-14T17:36:28+08:00</updated><id>http://localhost:4000//</id><title type="html">一朵云风</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>一朵云风</name></author><entry><title type="html">JavaScript-Learning-js闭包</title><link href="http://localhost:4000/JavaScript-Learning-js%E9%97%AD%E5%8C%85/" rel="alternate" type="text/html" title="JavaScript-Learning-js闭包" /><published>2017-01-12T00:00:00+08:00</published><updated>2017-01-12T00:00:00+08:00</updated><id>http://localhost:4000/JavaScript-Learning-js%E9%97%AD%E5%8C%85</id><content type="html" xml:base="http://localhost:4000/JavaScript-Learning-js%E9%97%AD%E5%8C%85/">&lt;p&gt;目录&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-15T12:14:25+08:00</updated><id>http://localhost:4000//</id><title type="html">一朵云风</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>一朵云风</name></author><entry><title type="html">JavaScript-Learning-js闭包</title><link href="http://localhost:4000/JavaScript-Learning-js%E9%97%AD%E5%8C%85/" rel="alternate" type="text/html" title="JavaScript-Learning-js闭包" /><published>2017-01-12T00:00:00+08:00</published><updated>2017-01-12T00:00:00+08:00</updated><id>http://localhost:4000/JavaScript-Learning-js%E9%97%AD%E5%8C%85</id><content type="html" xml:base="http://localhost:4000/JavaScript-Learning-js%E9%97%AD%E5%8C%85/">&lt;p&gt;目录&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;块级作用域与函数级作用域 &lt;/li&gt;
@@ -6,11 +6,29 @@
   &lt;li&gt;作用域基本知识&lt;/li&gt;
   &lt;li&gt;IIFE 立即执行的函数表达式  &lt;/li&gt;
   &lt;li&gt;let 关键字&lt;/li&gt;
-  &lt;li&gt;that or this &lt;/li&gt;
-  &lt;li&gt;参考&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;section&quot;&gt;块级作用域与函数级作用域&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;任何一对花括号（｛和｝）中的语句集都属于一个块，在这之中定义的所有变量在代码块外都是不可见的，我们称之为块级作用域。
+函数作用域就好理解了，定义在函数中的参数和变量在函数外部是不可见的。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-objc&quot; data-lang=&quot;objc&quot;&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+ &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   	 &lt;span class=&quot;cm&quot;&gt;/* 这里的i可见  */&lt;/span&gt;	  
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;NSLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@&quot;%d&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* 这里的i未定义 */&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+ &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;	
+ 	&lt;span class=&quot;cm&quot;&gt;/* 这里的i可见*/&lt;/span&gt;	
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;	&lt;span class=&quot;cm&quot;&gt;/* 这里的i可见 */&lt;/span&gt;    &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;得出结论:&lt;/p&gt;
+
+&lt;p&gt;js是函数级别作用域。&lt;/p&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;闭包基本知识&lt;/h3&gt;
 &lt;ul&gt;
@@ -150,33 +168,38 @@ IIFE的引用主要是限制变量的生命周期,以及可以用来锁定值并
 		 	&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 		 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 	&lt;span class=&quot;p&quot;&gt;})(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/*! 通过IIFE来锁定值i并且有效的保存当时的状态 */&lt;/span&gt;
-	&lt;span class=&quot;nx&quot;&gt;trigger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;当你点击指示器的时候,执行结果就是你点击对应的指示器index。&lt;/p&gt;
 
 &lt;h3 id=&quot;let&quot;&gt;let关键字&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;let解释&lt;/p&gt;
 
-&lt;p&gt;(待续)  &lt;/p&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;let 允许把变量的作用域限制在块级域中。与 var 不同处是：var 声明变量要么是全局的，要么是函数级的，而无法是块级的。    &lt;br /&gt;
+let声明的变量作用域包含定义它的块以及任何包含的子块中。在这方面，let与var非常像。它们之间主要的区别在于一个var变量的作用域是整个封闭函数。&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h3 id=&quot;that-or-this&quot;&gt;that or this&lt;/h3&gt;
+&lt;p&gt;在上个例子,我们通过IIFE来锁定值i并且有效的保存当时的状态,主要是因为var是函数级作用域的原因。接着我们看看let关键字(块作用域)如何来实现锁定值i并且有效的保存当时的状态。&lt;/p&gt;
 
-&lt;p&gt;(待续)  &lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;indicators&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementsByTagName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;li&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;/* 替换var */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;indicators&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+	 &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trigger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+		 &lt;span class=&quot;nx&quot;&gt;indicators&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onclick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		 	&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;trigger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures&quot;&gt;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;😁 是不是超级熟悉,这不就是我们很常用的语法么!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://qun.jikexueyuan.com/web/topic/280&quot;&gt;http://qun.jikexueyuan.com/web/topic/280&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://app.box.com/shared/elkumrpfng&quot;&gt;https://app.box.com/shared/elkumrpfng&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html&quot;&gt;http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/111102/how-do-javascript-closures-work&quot;&gt;http://stackoverflow.com/questions/111102/how-do-javascript-closures-work&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://dmitrysoshnikov.com/ecmascript/chapter-4-scope-chain/&quot;&gt;http://dmitrysoshnikov.com/ecmascript/chapter-4-scope-chain/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000003985390&quot;&gt;https://segmentfault.com/a/1190000003985390&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="js closure" /><summary type="html">JavaScript-Learning-js闭包</summary></entry><entry><title type="html">UIKit-Learning-UIScrollView And AutoLayout</title><link href="http://localhost:4000/UIKit-Learning-UIScrollView-And-AutoLayout/" rel="alternate" type="text/html" title="UIKit-Learning-UIScrollView And AutoLayout" /><published>2017-01-01T00:00:00+08:00</published><updated>2017-01-01T00:00:00+08:00</updated><id>http://localhost:4000/UIKit-Learning-UIScrollView%20And%20AutoLayout</id><content type="html" xml:base="http://localhost:4000/UIKit-Learning-UIScrollView-And-AutoLayout/">&lt;p&gt;Ques: UIScrollView 是如何使得其内容视图滚动显示的。&lt;/p&gt;
+&lt;h3 id=&quot;end&quot;&gt;End&lt;/h3&gt;</content><author><name>一朵云风</name></author><category term="js closure" /><summary type="html">JavaScript-Learning-js闭包</summary></entry><entry><title type="html">UIKit-Learning-UIScrollView And AutoLayout</title><link href="http://localhost:4000/UIKit-Learning-UIScrollView-And-AutoLayout/" rel="alternate" type="text/html" title="UIKit-Learning-UIScrollView And AutoLayout" /><published>2017-01-01T00:00:00+08:00</published><updated>2017-01-01T00:00:00+08:00</updated><id>http://localhost:4000/UIKit-Learning-UIScrollView%20And%20AutoLayout</id><content type="html" xml:base="http://localhost:4000/UIKit-Learning-UIScrollView-And-AutoLayout/">&lt;p&gt;Ques: UIScrollView 是如何使得其内容视图滚动显示的。&lt;/p&gt;
 
 &lt;p&gt;Answser: 通过改变UIScrollView自身的Position,也就是bounds。&lt;/p&gt;
 
