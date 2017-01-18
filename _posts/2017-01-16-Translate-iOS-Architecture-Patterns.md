@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Translate-iOS-Architecture-Patterns"
-date: 2016-12-22
+date: 2017-01-16
 excerpt: "Translate-iOS-Architecture-Patterns"
 tags: [ios architecture]
 comments: true
