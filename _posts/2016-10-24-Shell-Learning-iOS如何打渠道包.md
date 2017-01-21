@@ -10,7 +10,9 @@ redirect_from:  /2016/10/24/Shell-Learning-iOS如何打渠道包/
 
 
 ### 基于Xcode workSpace 生成渠道包 ###
+
 ... 待续
+
 ### 基于Xcode 命令行工具 自动生成渠道包 ###
 
 ``使用说明:`
