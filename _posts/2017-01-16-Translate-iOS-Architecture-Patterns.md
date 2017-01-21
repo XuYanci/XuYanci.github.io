@@ -18,7 +18,7 @@ comments: true
   
   你将会重新构建你的iOS环境中知识架构。 我们将会简单的介绍一些通用架构，通过几个例子从理论，以及实践来比较他们。如果你需要了解更多有关他们的详情，请关注链接。
   
-  掌握好设计模式或许很让人沉迷其中，注意： 你阅读完本文后，或许自己的疑问就缝纫而解，例如这些疑问：
+  掌握好设计模式或许很让人沉迷其中，注意： 你阅读完本文后，或许自己的疑问就迎刃而解，例如这些疑问：
   
   **网络请求应该放在哪里 ： 模型 或者 控制器？**
  
@@ -387,13 +387,144 @@ view.viewModel = viewModel
  
 ### VIPER 
 
-(待续)
+#### 将乐高的建造经验转化成iOS应用设计 ####
 
-
-
-
-### END
+ [VIPER](https://www.objc.io/issues/13-architecture/viper/)是我们最后要讲的东西，它非常有趣，因为它不是来自任何MV(X)类型。
  
+ 现在，你必定认为职责中的的粒度是非常棒的。VIPER创建了另外一种职责分离的重述。此时此刻我们有**五**层。
+  
+   ![Mou icon](https://cdn-images-1.medium.com/max/800/1*0pN3BNTXfwKbf08lhwutag.png)
+
+ * **Interactor** -- 包含关于数据(**实体**)或者网络的业务逻辑，就像创建新的实体示例和通过服务器获取它们。或许你会因为其他目的使用类似*Services*和*Managers*，这些并不属于VIPER部分的额外依赖。	
+ 
+ * **Presenter** -- 包含UI相关(但是UIKit独立)业务逻辑，触发**Interactor**方法。
+ 
+ * **Entities** -- 简单的数据对象，并不是数据存取层，因为这是**Interactor**的职责。
+ 
+ * **Router** --  负责VIPER的**modules**后续处理。
+ 
+ 基本上来说，VIPER模块可以是**一屏**或者是我们应用程序的整个用户**故事板** -- 就认证来说，它可能是**一屏**或者是几个相关的组成。你想你的LEGO块多小呢？-- 取决于你自己。
+ 
+ 如果我们拿它和MV(x)比较，我们能够看到某些责任分布上的区别：
+ 
+ * **Model**（数据交互）逻辑迁移到**Interactor**以及**Entities**作为哑数据结构。
+ * 只是**Controller/Presenter/ViewModel**的UI展示逻辑放到了**Presenter**，并不是其数据改变能力。
+ * **VIPER** 是第一个显式使用**Router**来处理导航的模式。
+ 
+ > 使用正确的方式来处理路由是iOS应用程序的难点，MV(x)并不能解决这问题。
+ 
+ 这个例子并不能覆盖**路由**或者**模块之间的交互**，就像这些主题并没有完全覆盖MV(X)一样。
+ 
+ {% highlight swift %}
+ import UIKit
+
+struct Person { // Entity (usually more complex e.g. NSManagedObject)
+    let firstName: String
+    let lastName: String
+}
+
+struct GreetingData { // Transport data structure (not Entity)
+    let greeting: String
+    let subject: String
+}
+
+protocol GreetingProvider {
+    func provideGreetingData()
+}
+
+protocol GreetingOutput: class {
+    func receiveGreetingData(greetingData: GreetingData)
+}
+
+class GreetingInteractor : GreetingProvider {
+    weak var output: GreetingOutput!
+    
+    func provideGreetingData() {
+        let person = Person(firstName: "David", lastName: "Blaine") // usually comes from data access layer
+        let subject = person.firstName + " " + person.lastName
+        let greeting = GreetingData(greeting: "Hello", subject: subject)
+        self.output.receiveGreetingData(greeting)
+    }
+}
+
+protocol GreetingViewEventHandler {
+    func didTapShowGreetingButton()
+}
+
+protocol GreetingView: class {
+    func setGreeting(greeting: String)
+}
+
+class GreetingPresenter : GreetingOutput, GreetingViewEventHandler {
+    weak var view: GreetingView!
+    var greetingProvider: GreetingProvider!
+    
+    func didTapShowGreetingButton() {
+        self.greetingProvider.provideGreetingData()
+    }
+    
+    func receiveGreetingData(greetingData: GreetingData) {
+        let greeting = greetingData.greeting + " " + greetingData.subject
+        self.view.setGreeting(greeting)
+    }
+}
+
+class GreetingViewController : UIViewController, GreetingView {
+    var eventHandler: GreetingViewEventHandler!
+    let showGreetingButton = UIButton()
+    let greetingLabel = UILabel()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.showGreetingButton.addTarget(self, action: "didTapButton:", forControlEvents: .TouchUpInside)
+    }
+    
+    func didTapButton(button: UIButton) {
+        self.eventHandler.didTapShowGreetingButton()
+    }
+    
+    func setGreeting(greeting: String) {
+        self.greetingLabel.text = greeting
+    }
+    
+    // layout code goes here
+}
+// Assembling of VIPER module, without Router
+let view = GreetingViewController()
+let presenter = GreetingPresenter()
+let interactor = GreetingInteractor()
+view.eventHandler = presenter
+presenter.view = view
+presenter.greetingProvider = interactor
+interactor.output = presenter
+ {% endhighlight %}
+ 
+ 同样的，我们看看它的特点：
+ 
+ * 分布 -- 毫无疑问，VIPER是职责分类中最好的。
+ 
+ * 可测试性 -- 毫无疑问，职责分布越好，可测试越好。
+ 
+ * 使用性 -- 最后，就如同你猜的，前两者将会占用你大量时间来维护。你不得不为职责不大的类写大量界面。
+ 
+#### 因此，乐高呢 ?
+ 当使用VIPER，你就如同使用乐高块建造一个庞大帝国一样，同时这也会导致你遇到[问题](https://inessential.com/2014/03/16/smaller_please) 。或许，使用VIPER为时过早，你应该简单的看待事情。某些人忽略了这些东西而继续大材小用。我设想他们认为他们的应用能够在将来获得许多有益的东西，即使现在维护成本有点不可思议的高。如果你也是这么认为的话，我建议你去尝试一下[Generamba](https://github.com/rambler-ios/Generamba) -- 一个能够建立VIPER框架的工具。尽管我认为，它有点像对麻雀使用**自动瞄准系统**而不是弹弓。
+ 
+### 总结
+  我们对几个框架模式进行了梳理，我希望你能够从中解决你所遇到的疑惑，毫无疑问你认识到，没有任何模式是万能的，在特定的场合，通过掂量和权衡来选择架构模式。
+  
+  因此，在同一个app中可能有几种架构的混合搭配。 例如，你可能一开始使用MVC，但是你遇到一个难以使用MVC来有效的解决场景，你可能会迁移到MVVM，但只是因为某个场景使用，完全没必要重构其他场景，因为在其他场景中，MVC能够工作的很好，因为这些架构都能很容易兼容。
+ 
+ > Make everything as simple as possible, but not simpler — Albert Einstein
+  
+### END
+
+| 日期| 作者 | 说明 |
+| ------------ | ------------- | ------------ |
+| 2017-01-21 | YC | 初步翻译完成 |
+
+ 
+
  
  **本文翻译自** [iOSArchitecturePatterns](https://medium.com/ios-os-x-development/ios-architecture- patterns-ecba4c38de52#.67bu0gn15)
 
