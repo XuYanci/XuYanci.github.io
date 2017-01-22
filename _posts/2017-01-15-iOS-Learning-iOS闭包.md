@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "iOS-Learning-iOS闭包"
-date: 2017-01-01
+date: 2017-01-22
 excerpt: "iOS-Learning-iOS闭包"
 tags: [iOS Block]
 comments: true
@@ -119,11 +119,7 @@ Answser:
   任何一对花括号（｛和｝）中的语句集都属于一个块，在这之中定义的所有变量在代码块外都是不可见的，我们称之为块级作用域。 函数作用域就好理解了，定义在函数中的参数和变量在函数外部是不可见的。
   所以iOS是块作用域，而javascript则是[函数作用域](https://yanci.me/JavaScript-Learning-js%E9%97%AD%E5%8C%85/)。
  
- 
 ### End 
-
-	
-
 
  
 
