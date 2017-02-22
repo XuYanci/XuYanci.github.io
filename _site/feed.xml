@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-02-16T22:34:51+08:00</updated><id>http://localhost:4000//</id><title type="html">一朵云风</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>一朵云风</name></author><entry><title type="html">Translate-LifeStyle-这11条原则将会永远的改变你的生活</title><link href="http://localhost:4000/Translate-LifeStyle-These11RulesWillChangeYourLifeForever/" rel="alternate" type="text/html" title="Translate-LifeStyle-这11条原则将会永远的改变你的生活" /><published>2017-01-23T00:00:00+08:00</published><updated>2017-01-23T00:00:00+08:00</updated><id>http://localhost:4000/Translate-LifeStyle-These11RulesWillChangeYourLifeForever</id><content type="html" xml:base="http://localhost:4000/Translate-LifeStyle-These11RulesWillChangeYourLifeForever/">&lt;h1 id=&quot;section&quot;&gt;这11条原则将会永远的改变你的生活&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-02-22T15:50:39+08:00</updated><id>http://localhost:4000//</id><title type="html">一朵云风</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>一朵云风</name></author><entry><title type="html">Translate-LifeStyle-这11条原则将会永远的改变你的生活</title><link href="http://localhost:4000/Translate-LifeStyle-These11RulesWillChangeYourLifeForever/" rel="alternate" type="text/html" title="Translate-LifeStyle-这11条原则将会永远的改变你的生活" /><published>2017-01-23T00:00:00+08:00</published><updated>2017-01-23T00:00:00+08:00</updated><id>http://localhost:4000/Translate-LifeStyle-These11RulesWillChangeYourLifeForever</id><content type="html" xml:base="http://localhost:4000/Translate-LifeStyle-These11RulesWillChangeYourLifeForever/">&lt;h1 id=&quot;section&quot;&gt;这11条原则将会永远的改变你的生活&lt;/h1&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;人活在这个世界上，但不知道为了什么&lt;/h3&gt;
 
@@ -281,25 +281,11 @@
       &lt;td&gt;初步翻译完成&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>一朵云风</name></author><category term="lifeStyle translate" /><summary type="html">Translate-LifeStyle-这11条原则将会永远的改变你的生活</summary></entry><entry><title type="html">OpenSource ReactiveCocoa</title><link href="http://localhost:4000/iOS-OpenSource-Learning-ReactiveCocoa/" rel="alternate" type="text/html" title="OpenSource ReactiveCocoa" /><published>2017-01-22T00:00:00+08:00</published><updated>2017-01-22T00:00:00+08:00</updated><id>http://localhost:4000/iOS-OpenSource-Learning-ReactiveCocoa</id><content type="html" xml:base="http://localhost:4000/iOS-OpenSource-Learning-ReactiveCocoa/">&lt;h3 id=&quot;section&quot;&gt;目录&lt;/h3&gt;
+&lt;/table&gt;</content><author><name>一朵云风</name></author><category term="lifeStyle translate" /><summary type="html">Translate-LifeStyle-这11条原则将会永远的改变你的生活</summary></entry><entry><title type="html">iOS-OpenSource-ReactiveCocoa</title><link href="http://localhost:4000/iOS-OpenSource-Learning-ReactiveCocoa/" rel="alternate" type="text/html" title="iOS-OpenSource-ReactiveCocoa" /><published>2017-01-22T00:00:00+08:00</published><updated>2017-01-22T00:00:00+08:00</updated><id>http://localhost:4000/iOS-OpenSource-Learning-ReactiveCocoa</id><content type="html" xml:base="http://localhost:4000/iOS-OpenSource-Learning-ReactiveCocoa/">&lt;h3 id=&quot;section&quot;&gt;目录&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;函数响应式编程(FRP)&lt;/li&gt;
-  &lt;li&gt;控制流和数据流&lt;/li&gt;
+  &lt;li&gt;热信号和冷信号&lt;/li&gt;
   &lt;li&gt;Pull-Driven 和 Push-Driven&lt;/li&gt;
-  &lt;li&gt;ReactiveObjc
-    &lt;ul&gt;
-      &lt;li&gt;Streams&lt;/li&gt;
-      &lt;li&gt;Signals&lt;/li&gt;
-      &lt;li&gt;Subscription&lt;/li&gt;
-      &lt;li&gt;Subjects&lt;/li&gt;
-      &lt;li&gt;Commands&lt;/li&gt;
-      &lt;li&gt;Connections&lt;/li&gt;
-      &lt;li&gt;Sequences&lt;/li&gt;
-      &lt;li&gt;Disposables&lt;/li&gt;
-      &lt;li&gt;Shedulers&lt;/li&gt;
-      &lt;li&gt;ValueType &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
   &lt;li&gt;Use ReactiveObjc in MVVM&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -311,36 +297,50 @@
   &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Functional_reactive_programming&quot;&gt;函数响应式编程&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;热信号和冷信号&lt;/h3&gt;
-&lt;p&gt;冷信号：除非有人订阅他们，他们是不会启动并发送的。每增加一个订阅，他们都会重复地多发送一个信号。&lt;/p&gt;
-
-&lt;p&gt;热信号： 立即工作的信号。&lt;/p&gt;
+&lt;h3 id=&quot;section-2&quot;&gt;流&lt;/h3&gt;
+&lt;p&gt;流是值的序列化的抽象，你可以认为一个流就像一条水管，而值就是流淌在水管中的水，值从管道的一端流入从另一端流出。当值从管道的另一端流出的时候，我们可以读取过去所有的值，甚至是刚刚进入管道的值（即当前值）。 
+流分为信号流和序列流。&lt;/p&gt;
 
 &lt;h3 id=&quot;pull-driven--push-driven&quot;&gt;pull-driven 和 push-driven&lt;/h3&gt;
 &lt;p&gt;push-driven: 在创建信号的时候，信号不会被立即赋值，之后才会赋值(举个例子:网络请求回来的结果或者是任意的用户输入的结果)。&lt;/p&gt;
 
 &lt;p&gt;pull-driven: 在创建信号的同事序列中的值就会被确定下来，我们可以从流中一个个地查询值。&lt;/p&gt;
 
-&lt;h3 id=&quot;reactiveobjc&quot;&gt;ReactiveObjc&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Streams  &lt;/li&gt;
-  &lt;li&gt;Signals&lt;/li&gt;
-  &lt;li&gt;Subscription&lt;/li&gt;
-  &lt;li&gt;Subjects&lt;/li&gt;
-  &lt;li&gt;Commands&lt;/li&gt;
-  &lt;li&gt;Connections&lt;/li&gt;
-  &lt;li&gt;Sequences&lt;/li&gt;
-  &lt;li&gt;Disposables&lt;/li&gt;
-  &lt;li&gt;Shedulers&lt;/li&gt;
-  &lt;li&gt;ValueType &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&quot;section-3&quot;&gt;序列流&lt;/h4&gt;
+&lt;p&gt;序列，默认情况下是延迟加载的（也称：懒加载或被动加载），是pull-driven的，在他们被生成的时候就会提供确切的值，而数组方法会强制给序列的每一个成员赋值。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;信号流&lt;/h4&gt;
+
+&lt;p&gt;信号是另一种类型的流，和序列流相反，信号是push-driven的。新的值能够通过管道发布但不能像pull-driven一样在管道中获取，他们所抽象出来的数据会在未来的某个时间传送过来。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;热信号和冷信号&lt;/h3&gt;
+
+&lt;p&gt;冷信号：除非有人订阅他们，他们是不会启动并发送的。每增加一个订阅，他们都会重复地多发送一个信号。&lt;/p&gt;
+
+&lt;p&gt;热信号： 立即工作的信号。&lt;/p&gt;
 
 &lt;h3 id=&quot;use-reactiveobjc-in-mvvm&quot;&gt;Use ReactiveObjc in MVVM&lt;/h3&gt;
+&lt;p&gt;接下来我们来剖析FRP这几个模块在MVVM的实现：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;登录模块&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;瀑布流模块&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;图片浏览模块&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;图片详情模块&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://www.infoq.com/cn/articles/functional-reactive-programming&quot;&gt;http://www.infoq.com/cn/articles/functional-reactive-programming&lt;/a&gt;
-&lt;a href=&quot;https://github.com/ReactiveCocoa/ReactiveCocoa&quot;&gt;https://github.com/ReactiveCocoa/ReactiveCocoa&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="iOS opensource reactivecocoa FRP" /><summary type="html">OpenSource ReactiveCocoa</summary></entry><entry><title type="html">Book-Learning-iOS核心动画高级技巧</title><link href="http://localhost:4000/Book-Learning-iOS%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" rel="alternate" type="text/html" title="Book-Learning-iOS核心动画高级技巧" /><published>2017-01-22T00:00:00+08:00</published><updated>2017-01-22T00:00:00+08:00</updated><id>http://localhost:4000/Book-Learning-iOS%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7</id><content type="html" xml:base="http://localhost:4000/Book-Learning-iOS%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/">&lt;p&gt;&lt;strong&gt;阅读iOS核心动画高级技巧读书笔记&lt;/strong&gt;&lt;/p&gt;
+&lt;a href=&quot;https://github.com/ReactiveCocoa/ReactiveCocoa&quot;&gt;https://github.com/ReactiveCocoa/ReactiveCocoa&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="reactivecocoa ios" /><summary type="html">iOS-OpenSource-ReactiveCocoa</summary></entry><entry><title type="html">Book-Learning-iOS核心动画高级技巧</title><link href="http://localhost:4000/Book-Learning-iOS%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" rel="alternate" type="text/html" title="Book-Learning-iOS核心动画高级技巧" /><published>2017-01-22T00:00:00+08:00</published><updated>2017-01-22T00:00:00+08:00</updated><id>http://localhost:4000/Book-Learning-iOS%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7</id><content type="html" xml:base="http://localhost:4000/Book-Learning-iOS%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/">&lt;p&gt;&lt;strong&gt;阅读iOS核心动画高级技巧读书笔记&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section&quot;&gt;图层树&lt;/h3&gt;
 
