@@ -48,10 +48,10 @@ pull-driven: 在创建信号的同事序列中的值就会被确定下来，我�
 
 接下来我们来剖析FRP这几个模块在MVVM的实现：
 
-* 登录模块
-* 瀑布流模块
-* 图片浏览模块
-* 图片详情模块
+* 登录模块 
+* 瀑布流模块 (talk is cheap)
+* 图片浏览模块 (talk is cheap) 
+* 图片详情模块 (talk is cheap)
 
 #### 登录模块 ####
 
@@ -77,21 +77,142 @@ pull-driven: 在创建信号的同事序列中的值就会被确定下来，我�
 2.登录按钮在用户名以及密码输入不为空显示可操作状态。
 
 
+**Model**
+
+(木有)
+
+**View Model**
+
+{% highlight objc %}
+@interface FRPLoginViewModel : RVMViewModel
+@property (nonatomic, readonly) RACCommand *loginCommand;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *password;
+@end
+{% endhighlight %}
+
+ 主要声明了 *username* 和 *password* 两个属性以及*loginCommand* (RACCommand这个下面说)用来处理登录业务逻辑相关。
+
+*View (ViewController)*
+ 
+ 
+ {% highlight objc %}
+@interface FRPLoginViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (nonatomic, strong) FRPLoginViewModel *viewModel;
+@end
+ {% endhighlight %}
+ 
+ 主要声明了 *usernameTextField* 和 *passwordTextField*两个属性以及视图模型 *FRPLoginViewModel*属性。
+ 
+ 
+**我们看看如何绑定**
+
+用户名输入框和密码输入框的视图模型绑定:
+{% highlight objc %}
+    RAC(self.viewModel, username) = self.usernameTextField.rac_textSignal;
+    RAC(self.viewModel, password) = self.passwordTextField.rac_textSignal;
+{% endhighlight %}
+
+这里主要是将视图模型的*用户名*和*密码*跟控件绑定起来,和MVVM中视图和视图模型的绑定是一致的(单向绑定)。
 
 
+取消按钮和登陆按钮的用户事件处理绑定,这里主要使用了RACCommand这个类。
+
+我们先看看这个类是拿来干什么的。
+
+{% highlight objc %}
+/// A command is a signal triggered in response to some action, typically
+/// UI-related.
+@interface RACCommand : NSObject
+...
+@end
+{% endhighlight objc %}
+
+这里说明了RACCommand是一个UI相关的,响应某些用户操作(点击事件等)而触发的信号。OK,我们知道它的使用,继续分析取消按钮和登陆按钮的事件处理绑定。
+
+取消按钮,就是当用户点击取消的时候,应该dismiss or pop 当前视图控制器。 一下是RACCommand的实现:
+
+{% highlight objc %}
+ self.navigationItem.leftBarButtonItem.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self);
+            
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+                [subscriber sendCompleted];
+            }];
+            
+            return nil;
+        }];
+    }];
+{% endhighlight objc %}
+
+我们可以看到,它通过实例化一个RACCommand通过闭包返回一个RACSignal实例化(RACCommand is an signal),用来响应处理事件 (dissmiss当前控制器)。
+
+登录按钮,业务逻辑主要有:
+
+ * 实现用户登录(登录成功、登录失败后面操作)。
+
+ * 登录按钮在用户名以及密码输入不为空显示可操作状态。
+
+ 我们看看它们是怎么使用RACCommand来实现的。
+ 
+ 首先 *登录按钮在用户名以及密码输入不为空显示可操作状态*
+ 
+ (1) 定义使能信号 validateLoginInputs
+ 
+ {% highlight objc %}
+ - (RACSignal *)validateLoginInputs
+{
+    return [RACSignal combineLatest:@[RACObserve(self, username), RACObserve(self, password)] reduce:^id(NSString *username, NSString *password){
+        return @(username.length > 0 && password.length > 0);
+    }];
+}
+
+ {% endhighlight objc %}
+ 
+ （2） 定义登录命令,enable属性由使能信号状态推导,触发事件为logInWithUsername:password
+ 
+ {% highlight objc %} 
+   self.loginCommand = [[RACCommand alloc] initWithEnabled:[self validateLoginInputs]
+                                                signalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        return [FRPPhotoImporter logInWithUsername:self.username password:self.password];
+    }]; 
+ {% endhighlight %}
+ 
+ (3) 绑定RACCommand到UI
+ {% highlight objc %} 
+  self.navigationItem.rightBarButtonItem.rac_command = self.viewModel.loginCommand;
+ {% endhighlight %}
+
+ 接着 *实现用户登录(登录成功、登录失败后面操作)*
+ 
+ {% highlight objc %} 
+  [[self.viewModel.loginCommand.executionSignals flattenMap:^(RACSignal *execution) {
+        // Sends RACUnit after the execution completes.
+        return [[execution ignoreValues] concat:[RACSignal return:RACUnit.defaultUnit]];
+    }] subscribeNext:^(id _) {
+        @strongify(self);
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [self.viewModel.loginCommand.errors subscribeNext:^(id x) {
+        NSLog(@"Login error: %@", x);
+    }];
+ {% endhighlight %}
+ 
+主要是登录操作信号执行处理。
 
 
-
-
-
-
-
+### End ###
 
 
 ### Reference ###
 
 [http://www.infoq.com/cn/articles/functional-reactive-programming](http://www.infoq.com/cn/articles/functional-reactive-programming)
 [https://github.com/ReactiveCocoa/ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa)
+
 
 
  
