@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Translate-iOS-DesignPatterns(2)"
-date: 2017-03-08
-excerpt: "Translate-iOS-DesignPatterns"
+date: 2017-03-19
+excerpt: "Translate-iOS-DesignPatterns(2)"
 tags: [designpatterns]
 comments: true
 ---
