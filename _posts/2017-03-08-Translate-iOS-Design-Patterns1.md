@@ -606,6 +606,12 @@ var_dump($president1 === $president2); // true
 
 ### End 创建型 ###
 
+
+| 日期| 作者 | 说明 |
+| ------------ | ------------- | ------------ |
+| 2017-03-08 | YC | 初步翻译完成 |
+
+
 ## Reference
 [https://github.com/kamranahmedse/design-patterns-for-humans](https://github.com/kamranahmedse/design-patterns-for-humans)
 
