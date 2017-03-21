@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8"><![endif]--><!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9"><![endif]--><!--[if gt IE 8]><!--><html class="no-js">
+<!--<![endif]--> <head> <meta charset="UTF-8"> <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <title>Translate-iOS-DesignPatterns(2) – 一朵云风</title> <meta name="description" content="Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform."> <meta name="keywords" content="designpatterns"> <!-- Twitter Cards --> <meta name="twitter:card" content="summary"> <meta name="twitter:image" content="http://localhost:4000/assets/img/logo.jpg"> <meta name="twitter:title" content="Translate-iOS-DesignPatterns(2)"> <meta name="twitter:description" content="Translate-iOS-DesignPatterns(2)"> <meta name="twitter:site" content="@TWWind"> <meta name="twitter:creator" content="@TWWind"> <!-- Open Graph --> <meta property="og:locale" content="en_US"> <meta property="og:type" content="article"> <meta property="og:title" content="Translate-iOS-DesignPatterns(2)"> <meta property="og:description" content="Translate-iOS-DesignPatterns(2)"> <meta property="og:url" content="http://localhost:4000/Translate-iOS-Design-Patterns2/"> <meta property="og:site_name" content="一朵云风"> <meta property="og:image" content="http://localhost:4000/assets/img/logo.jpg"> <link rel="canonical" href="http://localhost:4000/Translate-iOS-Design-Patterns2/"> <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="一朵云风 Feed"> <!-- Handheld --> <meta name="HandheldFriendly" content="True"> <meta name="MobileOptimized" content="320"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- CSS --> <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css"> <!-- JS --> <script src="http://localhost:4000/assets/js/modernizr-3.3.1.custom.min.js"></script> <!-- 百度统计 --> <script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?c86955c3d2189170232d1f59c6e368d0"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script> <!-- google analytics --> <script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-60787758-1', 'auto'); ga('send', 'pageview'); </script> <!-- Favicons --> <link rel="apple-touch-icon" href="http://localhost:4000/assets/img/favicons/apple-icon-precomposed.png"> <link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/assets/img/favicons/apple-icon-72x72.png"> <link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/assets/img/favicons/apple-icon-114x114.png"> <link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/assets/img/favicons/apple-icon-144x144.png"> <link rel="shortcut icon" type="image/png" href="http://localhost:4000/favicon.png"> <link rel="shortcut icon" href="http://localhost:4000/favicon.ico"> <!-- Background Image --> <style type="text/css">body {background-image:url(http://localhost:4000/assets/img/placeholder-big.jpg); background-repeat: no-repeat; background-size: cover; }</style> <!-- Post Feature Image --> </head> <body> <nav id="dl-menu" class="dl-menuwrapper" role="navigation"> <button class="dl-trigger">Open Menu</button> <ul class="dl-menu"> <li><a href="http://localhost:4000/">Home</a></li> <li> <a href="#">About</a> <ul class="dl-submenu"> <li> <img src="http://localhost:4000/assets/img/logo.jpg" alt="一朵云风 photo" class="author-photo"> <h4>一朵云风</h4> <p>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</p> </li> <li><a href="http://localhost:4000/about/"><span class="btn btn-inverse">Learn More</span></a></li> <li> <a href="http://twitter.com/TWWind" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a> </li> <li> <a href="http://github.com/XuYanci" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-github"></i> Github</a> </li> <li> <a href="http://www.weibo.com/5316510203" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-weibo"></i> Weibo</a> </li> </ul>
+<!-- /.dl-submenu --> </li> <li> <a href="#">Posts</a> <ul class="dl-submenu"> <li><a href="http://localhost:4000/posts/">All Posts</a></li> <li><a href="http://localhost:4000/tags/">All Tags</a></li> </ul> </li> <li><a href="http://localhost:4000/projects/">Projects</a></li> </ul>
+<!-- /.dl-menu --> </nav><!-- /.dl-menuwrapper --> <!-- Header --> <header class="header" role="banner"> <div class="wrapper animated fadeIn"> <div class="content"> <div class="post-title "> <h1>Translate-iOS-DesignPatterns(2)</h1> <h4>19 Mar 2017</h4> <p class="reading-time"> <i class="fa fa-clock-o"></i> Reading time ~1 minute </p>
+<!-- /.entry-reading-time --> <a class="btn zoombtn" href="http://localhost:4000/posts/"> <i class="fa fa-chevron-left"></i> </a> </div> <h3 id="section">结构型设计模式</h3> <p>简单的说 &gt; 结构型模式主要是关注对象组合，换句话说实体之间如何互相使用。另外一个解释是，它能够帮助回答 “怎样建立一个软件零件”</p> <p>维基百科说</p> <blockquote> <p>在软件工程中，结构型设计模式是通过识别一个简单的方式来实现实体之间的联系。</p> </blockquote> <ul> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-adapter">适配</a></li> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-bridge">桥接</a></li> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-composite">组合</a></li> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-decorator">装饰者</a></li> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-facade">外观</a></li> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-flyweight">享元</a></li> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-proxy">代理</a></li> </ul> <h4 id="section-1">适配器</h4> <p>应用例子</p> <blockquote> <p>考虑一下你的内存卡里面有一些图片，你需要将它们传送到你的电脑中。要传输它们的话，你需要某种类型的适配器兼容你电脑端口，这样你可以连接你的内存卡到你的电脑。在这个例子中读卡器就是适配器。另外一个例子就是那个有名的电源适配器；三脚插头没法连接到两孔的插座。它需要使用电源适配器来让它兼容两孔的插座。还有另外一个例子是翻译一个人说的话给另外一个人。</p> </blockquote> <p>简单的说</p> <blockquote> <p>适配者模式让你包装一个不兼容的对象在适配器中，让它与其他类兼容。</p> </blockquote> <p>维基百科说</p> <blockquote> <p>在软件工程中，适配器模式是软件设计模式，允许一个已经存在类的接口能够以另外一个接口来使用。它经常用来使用存在的类来与其他类工作而不用修改他们的源代码。</p> </blockquote> <h4 id="programmatic-example">Programmatic Example</h4> <p>考虑一下有猎人角色以及被捕猎的狮子角色的游戏。 首先我们有一个<strong>狮子</strong>接口由其他狮子类型的接口来实现。</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"> 
+<span class="kd">interface</span> <span class="nc">Lion</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">roar</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">AfricanLion</span> <span class="kd">implements</span> <span class="n">Lion</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">roar</span><span class="o">()</span>
+    <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">AsianLion</span> <span class="kd">implements</span> <span class="n">Lion</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">roar</span><span class="o">()</span>
+    <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>猎人hunt函数需引用狮子实现接口。</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Hunter</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">hunt</span><span class="o">(</span><span class="n">Lion</span> <span class="n">$lion</span><span class="o">)</span>
+    <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>现在我们不打不添加一个<strong>WildDog</strong>在我们的游戏中，这样猎人也就可以捕猎它。但是我们不能直接处理，因为狗狗有着另外一个不同接口。让它兼容我们的猎人的话，我们要创建一个适配器来兼容。</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// This needs to be added to the game</span>
+<span class="kd">class</span> <span class="nc">WildDog</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">bark</span><span class="o">()</span>
+    <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// Adapter around wild dog to make it compatible with our game</span>
+<span class="kd">class</span> <span class="nc">WildDogAdapter</span> <span class="kd">implements</span> <span class="n">Lion</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$dog</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">WildDog</span> <span class="n">$dog</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">dog</span> <span class="o">=</span> <span class="n">$dog</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">roar</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">dog</span><span class="o">-&gt;</span><span class="n">bark</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>现在<strong>WildDog</strong>可以在在我们的游戏中使用<strong>WildDogAdapter</strong>。</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$wildDog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WildDog</span><span class="o">();</span>
+<span class="n">$wildDogAdapter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WildDogAdapter</span><span class="o">(</span><span class="n">$wildDog</span><span class="o">);</span>
+
+<span class="n">$hunter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Hunter</span><span class="o">();</span>
+<span class="n">$hunter</span><span class="o">-&gt;</span><span class="n">hunt</span><span class="o">(</span><span class="n">$wildDogAdapter</span><span class="o">);</span></code></pre></figure> <h3 id="section-2">桥接</h3> <p>应用例子</p> <blockquote> <p>考虑一下你有一个不同页面的网站，你能够允许用户修改主题。你应该做些什么？ 为每一个主题创建多个页面的拷贝或者是创建单独的主题以及根据用户配置加载他们？ 桥接模式允许你做第二种模式。</p> </blockquote> <p><img src="https://cloud.githubusercontent.com/assets/11269635/23065293/33b7aea0-f515-11e6-983f-98823c9845ee.png" alt="Mou icon"></p> <p>简单的说</p> <blockquote> <p>桥接模式主要倾向于组合而不是继承。细节完成部分由一个层次推向到另外一个单独层次的目标。</p> </blockquote> <p>维基百科说</p> <blockquote> <p>桥接模式是设计模式用在软件工程中，从他的实现解耦出抽象部分实现单独变化。</p> </blockquote> <p>程序例子</p> <p>我们将上面那个网页例子转换一下。我们现在有<strong>WebPage</strong>层次</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">WebPage</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">Theme</span> <span class="n">$theme</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getContent</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">About</span> <span class="kd">implements</span> <span class="n">WebPage</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$theme</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">Theme</span> <span class="n">$theme</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">theme</span> <span class="o">=</span> <span class="n">$theme</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getContent</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"About page in "</span> <span class="o">.</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">theme</span><span class="o">-&gt;</span><span class="n">getColor</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Careers</span> <span class="kd">implements</span> <span class="n">WebPage</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$theme</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">Theme</span> <span class="n">$theme</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">theme</span> <span class="o">=</span> <span class="n">$theme</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getContent</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Careers page in "</span> <span class="o">.</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">theme</span><span class="o">-&gt;</span><span class="n">getColor</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>分离主题层次</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">Theme</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getColor</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">DarkTheme</span> <span class="kd">implements</span> <span class="n">Theme</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getColor</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="err">'</span><span class="n">Dark</span> <span class="n">Black</span><span class="err">'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">LightTheme</span> <span class="kd">implements</span> <span class="n">Theme</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getColor</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="err">'</span><span class="n">Off</span> <span class="n">white</span><span class="err">'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">AquaTheme</span> <span class="kd">implements</span> <span class="n">Theme</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getColor</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="err">'</span><span class="n">Light</span> <span class="n">blue</span><span class="err">'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>所有的层次</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$darkTheme</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DarkTheme</span><span class="o">();</span>
+
+<span class="n">$about</span> <span class="o">=</span> <span class="k">new</span> <span class="n">About</span><span class="o">(</span><span class="n">$darkTheme</span><span class="o">);</span>
+<span class="n">$careers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Careers</span><span class="o">(</span><span class="n">$darkTheme</span><span class="o">);</span>
+
+<span class="n">echo</span> <span class="n">$about</span><span class="o">-&gt;</span><span class="n">getContent</span><span class="o">();</span> <span class="c1">// "About page in Dark Black";</span>
+<span class="n">echo</span> <span class="n">$careers</span><span class="o">-&gt;</span><span class="n">getContent</span><span class="o">();</span> <span class="c1">// "Careers page in Dark Black";</span></code></pre></figure> <h3 id="section-3">组合模式</h3> <p>待续</p> <div class="entry-meta"> <br> <hr> <span class="entry-tags"><a href="http://localhost:4000/tags/#designpatterns" title="Pages tagged designpatterns" class="tag"><span class="term">designpatterns</span></a></span> <span class="social-share"> <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/Translate-iOS-Design-Patterns2/" title="Share on Facebook" class="tag"> <span class="term"><i class="fa fa-facebook-square"></i> Like</span> </a> <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/Translate-iOS-Design-Patterns2/" title="Share on Twitter" class="tag"> <span class="term"><i class="fa fa-twitter-square"></i> Tweet</span> </a> <a href="https://plus.google.com/share?url=http://localhost:4000/Translate-iOS-Design-Patterns2/" title="Share on Google+" class="tag"> <span class="term"><i class="fa fa-google-plus-square"></i> +1</span> </a> </span> <div style="clear:both"></div> </div> </div> </div> <section id="disqus_thread" class="animated fadeInUp"></section><!-- /#disqus_thread --> </header> <!-- JS --> <script src="http://localhost:4000/assets/js/jquery-1.12.0.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.dlmenu.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.goup.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.magnific-popup.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.fitvid.min.js"></script> <script src="http://localhost:4000/assets/js/scripts.js"></script> <script type="text/javascript"> var disqus_shortname = 'yanciomgblog'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); (function () { var s = document.createElement('script'); s.async = true; s.type = 'text/javascript'; s.src = '//' + disqus_shortname + '.disqus.com/count.js'; (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s); }()); </script> <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript> <!-- MathJax --> <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> </body> </html>

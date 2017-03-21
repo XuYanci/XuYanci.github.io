@@ -118,10 +118,109 @@ $hunter->hunt($wildDogAdapter);
 
 ### 桥接 ###
 
-待续 ...
+应用例子
 
+> 考虑一下你有一个不同页面的网站，你能够允许用户修改主题。你应该做些什么？ 为每一个主题创建多个页面的拷贝或者是创建单独的主题以及根据用户配置加载他们？ 桥接模式允许你做第二种模式。
 
+![Mou icon](https://cloud.githubusercontent.com/assets/11269635/23065293/33b7aea0-f515-11e6-983f-98823c9845ee.png)
 
+简单的说
 
+>  桥接模式主要倾向于组合而不是继承。细节完成部分由一个层次推向到另外一个单独层次的目标。
+
+维基百科说
+
+> 桥接模式是设计模式用在软件工程中，从他的实现解耦出抽象部分实现单独变化。
+
+程序例子
+
+我们将上面那个网页例子转换一下。我们现在有**WebPage**层次
+
+{% highlight java %}
+interface WebPage
+{
+    public function __construct(Theme $theme);
+    public function getContent();
+}
+
+class About implements WebPage
+{
+    protected $theme;
+
+    public function __construct(Theme $theme)
+    {
+        $this->theme = $theme;
+    }
+
+    public function getContent()
+    {
+        return "About page in " . $this->theme->getColor();
+    }
+}
+
+class Careers implements WebPage
+{
+    protected $theme;
+
+    public function __construct(Theme $theme)
+    {
+        $this->theme = $theme;
+    }
+
+    public function getContent()
+    {
+        return "Careers page in " . $this->theme->getColor();
+    }
+}
+{% endhighlight %}
+
+分离主题层次
+
+{% highlight java %}
+
+interface Theme
+{
+    public function getColor();
+}
+
+class DarkTheme implements Theme
+{
+    public function getColor()
+    {
+        return 'Dark Black';
+    }
+}
+class LightTheme implements Theme
+{
+    public function getColor()
+    {
+        return 'Off white';
+    }
+}
+class AquaTheme implements Theme
+{
+    public function getColor()
+    {
+        return 'Light blue';
+    }
+}
+{% endhighlight %}
+
+所有的层次
+
+{% highlight java %}
+$darkTheme = new DarkTheme();
+
+$about = new About($darkTheme);
+$careers = new Careers($darkTheme);
+
+echo $about->getContent(); // "About page in Dark Black";
+echo $careers->getContent(); // "Careers page in Dark Black";
+
+{% endhighlight %}
+
+### 组合模式 
+
+待续
 
 
