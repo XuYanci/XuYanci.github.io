@@ -221,6 +221,138 @@ echo $careers->getContent(); // "Careers page in Dark Black";
 
 ### 组合模式 
 
-待续
+应用例子
+
+> 每一个公司都由员工组成。 每一个员工都有着同样的特性,例如 有工资，有责任，或许需要向某人报告，或许有下属等。 
+
+简单的说
+
+> 组合模式让你用同一种方式对待不同的对象。
+
+维基百科说
+
+> 在软件工程中，组合模式是的分隔的设计模式。组合模式描述一组对象可以作为单一对象来相同对待。组合的目的是组合对象到树结构中来代表部分-全部分类。完成组合模式让你同样的方式对待不同的目标以及组合。
+
+程序例子
+
+我们看看上面的雇员例子. 我们有着不同的雇员类型
+
+{% highlight java  %}
+interface Employee
+{
+    public function __construct(string $name, float $salary);
+    public function getName(): string;
+    public function setSalary(float $salary);
+    public function getSalary(): float;
+    public function getRoles(): array;
+}
+
+class Developer implements Employee
+{
+    protected $salary;
+    protected $name;
+
+    public function __construct(string $name, float $salary)
+    {
+        $this->name = $name;
+        $this->salary = $salary;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setSalary(float $salary)
+    {
+        $this->salary = $salary;
+    }
+
+    public function getSalary(): float
+    {
+        return $this->salary;
+    }
+
+    public function getRoles(): array
+    {
+        return $this->roles;
+    }
+}
+
+class Designer implements Employee
+{
+    protected $salary;
+    protected $name;
+
+    public function __construct(string $name, float $salary)
+    {
+        $this->name = $name;
+        $this->salary = $salary;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setSalary(float $salary)
+    {
+        $this->salary = $salary;
+    }
+
+    public function getSalary(): float
+    {
+        return $this->salary;
+    }
+
+    public function getRoles(): array
+    {
+        return $this->roles;
+    }
+}
+{% endhighlight %}
+
+我们有个组织包含不同类型的雇员
+
+{% highlight java %}
+
+class Organization
+{
+    protected $employees;
+
+    public function addEmployee(Employee $employee)
+    {
+        $this->employees[] = $employee;
+    }
+
+    public function getNetSalaries(): float
+    {
+        $netSalary = 0;
+
+        foreach ($this->employees as $employee) {
+            $netSalary += $employee->getSalary();
+        }
+
+        return $netSalary;
+    }
+}
+And then it can be used as
+
+// Prepare the employees
+$john = new Developer('John Doe', 12000);
+$jane = new Designer('Jane', 10000);
+
+// Add them to organization
+$organization = new Organization();
+$organization->addEmployee($john);
+$organization->addEmployee($jane);
+
+echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 22000
+
+{% endhighlight java %}  
+
+### 装饰者
+
+待续...
 
 
