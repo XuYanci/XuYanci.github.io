@@ -353,6 +353,412 @@ echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 22000
 
 ### 装饰者
 
-待续...
+应用例子
+
+> 想象你运营一个提供多种服务的汽车服务商店。现在你怎样计算账单？ 你挑选一个服务以及动态添加到提供服务的价格中直到你获取到最终花费。这里每种类型的服务器都是装饰者。
+
+简单的说
+
+>  装饰者模式让你运行中动态修改对象的行为，通过封装成一个装饰者类。
+
+维基百科说 
+
+> 在面向对象编程中,装饰者模式是一种设计模式,允许行为动态添加到单独的目标中,要么静态或者动态的,在同一个类中不需要影响其他目标的行为。装饰者模式由于遵循着单一职责原则所以非常有用的,它允许功能根据不同关注领域分类。
+
+程序例子 
+
+让我们以咖啡这个为例子。 首先我们有个实现咖啡接口的简单咖啡
+
+{% highlight java %}
+interface Coffee
+{
+    public function getCost();
+    public function getDescription();
+}
+
+class SimpleCoffee implements Coffee
+{
+    public function getCost()
+    {
+        return 10;
+    }
+
+    public function getDescription()
+    {
+        return 'Simple coffee';
+    }
+}
+{% endhighlight java %}
+
+我们想要使得代码可扩展从而允许选项可变更。 让我们做些扩展 (装饰者)
+
+
+{% highlight java %}
+class MilkCoffee implements Coffee
+{
+    protected $coffee;
+
+    public function __construct(Coffee $coffee)
+    {
+        $this->coffee = $coffee;
+    }
+
+    public function getCost()
+    {
+        return $this->coffee->getCost() + 2;
+    }
+
+    public function getDescription()
+    {
+        return $this->coffee->getDescription() . ', milk';
+    }
+}
+
+class WhipCoffee implements Coffee
+{
+    protected $coffee;
+
+    public function __construct(Coffee $coffee)
+    {
+        $this->coffee = $coffee;
+    }
+
+    public function getCost()
+    {
+        return $this->coffee->getCost() + 5;
+    }
+
+    public function getDescription()
+    {
+        return $this->coffee->getDescription() . ', whip';
+    }
+}
+
+class VanillaCoffee implements Coffee
+{
+    protected $coffee;
+
+    public function __construct(Coffee $coffee)
+    {
+        $this->coffee = $coffee;
+    }
+
+    public function getCost()
+    {
+        return $this->coffee->getCost() + 3;
+    }
+
+    public function getDescription()
+    {
+        return $this->coffee->getDescription() . ', vanilla';
+    }
+}
+{% endhighlight java  %}
+
+让我们现在制作一杯咖啡
+
+{% highlight java  %}
+$someCoffee = new SimpleCoffee();
+echo $someCoffee->getCost(); // 10
+echo $someCoffee->getDescription(); // Simple Coffee
+
+$someCoffee = new MilkCoffee($someCoffee);
+echo $someCoffee->getCost(); // 12
+echo $someCoffee->getDescription(); // Simple Coffee, milk
+
+$someCoffee = new WhipCoffee($someCoffee);
+echo $someCoffee->getCost(); // 17
+echo $someCoffee->getDescription(); // Simple Coffee, milk, whip
+
+$someCoffee = new VanillaCoffee($someCoffee);
+echo $someCoffee->getCost(); // 20
+echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
+{% endhighlight java  %}
+
+
+### 外观模式
+
+应用例子
+
+> 你怎么打开电脑? "按下电源按钮" 你这么说！ 这是因为你相信因为你在使用一个电脑暴露在外面的接口，内部它不得不做大量东西。这个简单接口对于复杂子系统来说就是外观。
+
+简单的说 
+
+> 外观模式给复杂子系统提供一个简化的接口。
+
+维基百科说
+
+> 外观是一个给大量代码实体提供一个简单接口，例如类库。
+
+程序里子
+
+让我们看看上面的电脑例子. 这里我们有电脑类
+
+{% highlight java %}
+
+class Computer
+{
+    public function getElectricShock()
+    {
+        echo "Ouch!";
+    }
+
+    public function makeSound()
+    {
+        echo "Beep beep!";
+    }
+
+    public function showLoadingScreen()
+    {
+        echo "Loading..";
+    }
+
+    public function bam()
+    {
+        echo "Ready to be used!";
+    }
+
+    public function closeEverything()
+    {
+        echo "Bup bup bup buzzzz!";
+    }
+
+    public function sooth()
+    {
+        echo "Zzzzz";
+    }
+
+    public function pullCurrent()
+    {
+        echo "Haaah!";
+    }
+}
+{% endhighlight %}
+
+现在我们有一个外观
+
+
+{% highlight java  %}
+class ComputerFacade
+{
+    protected $computer;
+
+    public function __construct(Computer $computer)
+    {
+        $this->computer = $computer;
+    }
+
+    public function turnOn()
+    {
+        $this->computer->getElectricShock();
+        $this->computer->makeSound();
+        $this->computer->showLoadingScreen();
+        $this->computer->bam();
+    }
+
+    public function turnOff()
+    {
+        $this->computer->closeEverything();
+        $this->computer->pullCurrent();
+        $this->computer->sooth();
+    }
+}
+{% endhighlight   %}
+
+
+让我们使用这个外观
+
+{% highlight java  %}
+$computer = new ComputerFacade(new Computer());
+$computer->turnOn(); // Ouch! Beep beep! Loading.. Ready to be used!
+$computer->turnOff(); // Bup bup buzzz! Haah! Zzzzz
+{% endhighlight   %}
+
+
+### 享元模式
+
+应用例子
+
+> 你是不是从小摊买过新鲜茶叶? 他们经常售卖几杯你所需要的，剩下的就保留起来给其他客人用。 享元模式就是有关这些.分享。
+
+简单的说
+
+> 他是用来最小化内存使用或者是计算花费通过最大化的共享类似的目标。
+
+维基百科说
+
+> 在电脑编程中，享元模式是一个软件设计模式。享元模式是能够用来最小化内存使用或者是计算花费通过最大化的共享类似的目标。它是如何正确大量对象的一种方式，当简单重复出现有可能会导致使用无法预估的内存。
+
+程序例子
+
+转换我们上面的茶例子.首先我们有茶类型和茶制作者
+
+{% highlight java %}
+// Anything that will be cached is flyweight.
+// Types of tea here will be flyweights.
+class KarakTea
+{
+}
+
+// Acts as a factory and saves the tea
+class TeaMaker
+{
+    protected $availableTea = [];
+
+    public function make($preference)
+    {
+        if (empty($this->availableTea[$preference])) {
+            $this->availableTea[$preference] = new KarakTea();
+        }
+
+        return $this->availableTea[$preference];
+    }
+}
+{% endhighlight java  %}
+
+
+然后我们有接受订单和服务**茶店**
+
+{% highlight java  %}
+class TeaShop
+{
+    protected $orders;
+    protected $teaMaker;
+
+    public function __construct(TeaMaker $teaMaker)
+    {
+        $this->teaMaker = $teaMaker;
+    }
+
+    public function takeOrder(string $teaType, int $table)
+    {
+        $this->orders[$table] = $this->teaMaker->make($teaType);
+    }
+
+    public function serve()
+    {
+        foreach ($this->orders as $table => $tea) {
+            echo "Serving tea to table# " . $table;
+        }
+    }
+}
+{% endhighlight   %}
+
+
+它可以这么被使用
+
+{% highlight java %}
+$teaMaker = new TeaMaker();
+$shop = new TeaShop($teaMaker);
+
+$shop->takeOrder('less sugar', 1);
+$shop->takeOrder('more milk', 2);
+$shop->takeOrder('without sugar', 5);
+
+$shop->serve();
+// Serving tea to table# 1
+// Serving tea to table# 2
+// Serving tea to table# 5
+{% endhighlight   %}
+
+### 代理模式
+
+应用例子
+
+> 你是否曾使用过门禁卡开门呢? 有几种方式可以打开门. 它可以使用门禁卡打开或者是通过绕过安全按下一个按钮。 门的主要功能是被打开但是在它的上面通过代理添加某些功能。让我们使用代码里子来更好的解释它们。
+
+简单地说
+
+> 使用代理模式，用来代表另外一个类的功能的类
+
+维基百科说
+
+>  代理，在它最通用的形式，是一个功能类作为其它东西的接口。代理是封装或者是代理对象，通过客户端调用来访问场景后面的真实服务目标。代理的使用能够最终访问到真实目标，或者提供额外的逻辑功能。代理中能够提供额外的功能，例如当操作在资源密集型的真实对象能够缓存，或者在触发真实对象操作前检查条件。
+
+程序例子
+
+以我们的安全门为例。首先我们拥有门接口以及门实现
+
+{% highlight java %}
+interface Door
+{
+    public function open();
+    public function close();
+}
+
+class LabDoor implements Door
+{
+    public function open()
+    {
+        echo "Opening lab door";
+    }
+
+    public function close()
+    {
+        echo "Closing the lab door";
+    }
+}
+{% endhighlight java  %}
+
+然后我们有着能提高任何门安全性的代理
+
+{% highlight java %}
+class Security
+{
+    protected $door;
+
+    public function __construct(Door $door)
+    {
+        $this->door = $door;
+    }
+
+    public function open($password)
+    {
+        if ($this->authenticate($password)) {
+            $this->door->open();
+        } else {
+            echo "Big no! It ain't possible.";
+        }
+    }
+
+    public function authenticate($password)
+    {
+        return $password === '$ecr@t';
+    }
+
+    public function close()
+    {
+        $this->door->close();
+    }
+}
+{% endhighlight java %}
+
+
+如何使用它
+
+{% highlight java %}
+$door = new Security(new LabDoor());
+$door->open('invalid'); // Big no! It ain't possible.
+
+$door->open('$ecr@t'); // Opening lab door
+$door->close(); // Closing lab door
+
+{% endhighlight java %}
+
+
+还有另外一个例子是某种数据映射实现。 例如，我现在使用这个模式写了一个MongoDB的对象数据映射层，我写了一个代理封装了mongo的类，当使用魔术方法 *_call()*， 所有的方法调用都代理到原生的mongo类以及返回它所期望的结果。不过 *find* 或者 *findOne* 数据映射到所需的类目标以及目标返回并不是*Cursor*。
+
+### End 结构型 ###
+
+
+| 日期| 作者 | 说明 |
+| ------------ | ------------- | ------------ |
+| 2017-03-28 | YC | 初步翻译完成 |
+
+
+
+
+
+
 
 

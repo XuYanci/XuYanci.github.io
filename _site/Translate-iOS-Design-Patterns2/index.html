@@ -2,7 +2,7 @@
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8"><![endif]--><!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9"><![endif]--><!--[if gt IE 8]><!--><html class="no-js">
 <!--<![endif]--> <head> <meta charset="UTF-8"> <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <title>Translate-iOS-DesignPatterns(2) – 一朵云风</title> <meta name="description" content="Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform."> <meta name="keywords" content="designpatterns"> <!-- Twitter Cards --> <meta name="twitter:card" content="summary"> <meta name="twitter:image" content="http://localhost:4000/assets/img/logo.jpg"> <meta name="twitter:title" content="Translate-iOS-DesignPatterns(2)"> <meta name="twitter:description" content="Translate-iOS-DesignPatterns(2)"> <meta name="twitter:site" content="@TWWind"> <meta name="twitter:creator" content="@TWWind"> <!-- Open Graph --> <meta property="og:locale" content="en_US"> <meta property="og:type" content="article"> <meta property="og:title" content="Translate-iOS-DesignPatterns(2)"> <meta property="og:description" content="Translate-iOS-DesignPatterns(2)"> <meta property="og:url" content="http://localhost:4000/Translate-iOS-Design-Patterns2/"> <meta property="og:site_name" content="一朵云风"> <meta property="og:image" content="http://localhost:4000/assets/img/logo.jpg"> <link rel="canonical" href="http://localhost:4000/Translate-iOS-Design-Patterns2/"> <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="一朵云风 Feed"> <!-- Handheld --> <meta name="HandheldFriendly" content="True"> <meta name="MobileOptimized" content="320"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- CSS --> <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css"> <!-- JS --> <script src="http://localhost:4000/assets/js/modernizr-3.3.1.custom.min.js"></script> <!-- 百度统计 --> <script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?c86955c3d2189170232d1f59c6e368d0"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script> <!-- google analytics --> <script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-60787758-1', 'auto'); ga('send', 'pageview'); </script> <!-- Favicons --> <link rel="apple-touch-icon" href="http://localhost:4000/assets/img/favicons/apple-icon-precomposed.png"> <link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/assets/img/favicons/apple-icon-72x72.png"> <link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/assets/img/favicons/apple-icon-114x114.png"> <link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/assets/img/favicons/apple-icon-144x144.png"> <link rel="shortcut icon" type="image/png" href="http://localhost:4000/favicon.png"> <link rel="shortcut icon" href="http://localhost:4000/favicon.ico"> <!-- Background Image --> <style type="text/css">body {background-image:url(http://localhost:4000/assets/img/placeholder-big.jpg); background-repeat: no-repeat; background-size: cover; }</style> <!-- Post Feature Image --> </head> <body> <nav id="dl-menu" class="dl-menuwrapper" role="navigation"> <button class="dl-trigger">Open Menu</button> <ul class="dl-menu"> <li><a href="http://localhost:4000/">Home</a></li> <li> <a href="#">About</a> <ul class="dl-submenu"> <li> <img src="http://localhost:4000/assets/img/logo.jpg" alt="一朵云风 photo" class="author-photo"> <h4>一朵云风</h4> <p>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</p> </li> <li><a href="http://localhost:4000/about/"><span class="btn btn-inverse">Learn More</span></a></li> <li> <a href="http://twitter.com/TWWind" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a> </li> <li> <a href="http://github.com/XuYanci" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-github"></i> Github</a> </li> <li> <a href="http://www.weibo.com/5316510203" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-weibo"></i> Weibo</a> </li> </ul>
 <!-- /.dl-submenu --> </li> <li> <a href="#">Posts</a> <ul class="dl-submenu"> <li><a href="http://localhost:4000/posts/">All Posts</a></li> <li><a href="http://localhost:4000/tags/">All Tags</a></li> </ul> </li> <li><a href="http://localhost:4000/projects/">Projects</a></li> </ul>
-<!-- /.dl-menu --> </nav><!-- /.dl-menuwrapper --> <!-- Header --> <header class="header" role="banner"> <div class="wrapper animated fadeIn"> <div class="content"> <div class="post-title "> <h1>Translate-iOS-DesignPatterns(2)</h1> <h4>19 Mar 2017</h4> <p class="reading-time"> <i class="fa fa-clock-o"></i> Reading time ~1 minute </p>
+<!-- /.dl-menu --> </nav><!-- /.dl-menuwrapper --> <!-- Header --> <header class="header" role="banner"> <div class="wrapper animated fadeIn"> <div class="content"> <div class="post-title "> <h1>Translate-iOS-DesignPatterns(2)</h1> <h4>19 Mar 2017</h4> <p class="reading-time"> <i class="fa fa-clock-o"></i> Reading time ~5 minutes </p>
 <!-- /.entry-reading-time --> <a class="btn zoombtn" href="http://localhost:4000/posts/"> <i class="fa fa-chevron-left"></i> </a> </div> <h3 id="section">结构型设计模式</h3> <p>简单的说 &gt; 结构型模式主要是关注对象组合，换句话说实体之间如何互相使用。另外一个解释是，它能够帮助回答 “怎样建立一个软件零件”</p> <p>维基百科说</p> <blockquote> <p>在软件工程中，结构型设计模式是通过识别一个简单的方式来实现实体之间的联系。</p> </blockquote> <ul> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-adapter">适配</a></li> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-bridge">桥接</a></li> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-composite">组合</a></li> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-decorator">装饰者</a></li> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-facade">外观</a></li> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-flyweight">享元</a></li> <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-proxy">代理</a></li> </ul> <h4 id="section-1">适配器</h4> <p>应用例子</p> <blockquote> <p>考虑一下你的内存卡里面有一些图片，你需要将它们传送到你的电脑中。要传输它们的话，你需要某种类型的适配器兼容你电脑端口，这样你可以连接你的内存卡到你的电脑。在这个例子中读卡器就是适配器。另外一个例子就是那个有名的电源适配器；三脚插头没法连接到两孔的插座。它需要使用电源适配器来让它兼容两孔的插座。还有另外一个例子是翻译一个人说的话给另外一个人。</p> </blockquote> <p>简单的说</p> <blockquote> <p>适配者模式让你包装一个不兼容的对象在适配器中，让它与其他类兼容。</p> </blockquote> <p>维基百科说</p> <blockquote> <p>在软件工程中，适配器模式是软件设计模式，允许一个已经存在类的接口能够以另外一个接口来使用。它经常用来使用存在的类来与其他类工作而不用修改他们的源代码。</p> </blockquote> <h4 id="programmatic-example">Programmatic Example</h4> <p>考虑一下有猎人角色以及被捕猎的狮子角色的游戏。 首先我们有一个<strong>狮子</strong>接口由其他狮子类型的接口来实现。</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"> 
 <span class="kd">interface</span> <span class="nc">Lion</span>
 <span class="o">{</span>
@@ -117,5 +117,307 @@
 <span class="n">$careers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Careers</span><span class="o">(</span><span class="n">$darkTheme</span><span class="o">);</span>
 
 <span class="n">echo</span> <span class="n">$about</span><span class="o">-&gt;</span><span class="n">getContent</span><span class="o">();</span> <span class="c1">// "About page in Dark Black";</span>
-<span class="n">echo</span> <span class="n">$careers</span><span class="o">-&gt;</span><span class="n">getContent</span><span class="o">();</span> <span class="c1">// "Careers page in Dark Black";</span></code></pre></figure> <h3 id="section-3">组合模式</h3> <p>待续</p> <div class="entry-meta"> <br> <hr> <span class="entry-tags"><a href="http://localhost:4000/tags/#designpatterns" title="Pages tagged designpatterns" class="tag"><span class="term">designpatterns</span></a></span> <span class="social-share"> <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/Translate-iOS-Design-Patterns2/" title="Share on Facebook" class="tag"> <span class="term"><i class="fa fa-facebook-square"></i> Like</span> </a> <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/Translate-iOS-Design-Patterns2/" title="Share on Twitter" class="tag"> <span class="term"><i class="fa fa-twitter-square"></i> Tweet</span> </a> <a href="https://plus.google.com/share?url=http://localhost:4000/Translate-iOS-Design-Patterns2/" title="Share on Google+" class="tag"> <span class="term"><i class="fa fa-google-plus-square"></i> +1</span> </a> </span> <div style="clear:both"></div> </div> </div> </div> <section id="disqus_thread" class="animated fadeInUp"></section><!-- /#disqus_thread --> </header> <!-- JS --> <script src="http://localhost:4000/assets/js/jquery-1.12.0.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.dlmenu.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.goup.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.magnific-popup.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.fitvid.min.js"></script> <script src="http://localhost:4000/assets/js/scripts.js"></script> <script type="text/javascript"> var disqus_shortname = 'yanciomgblog'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); (function () { var s = document.createElement('script'); s.async = true; s.type = 'text/javascript'; s.src = '//' + disqus_shortname + '.disqus.com/count.js'; (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s); }()); </script> <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+<span class="n">echo</span> <span class="n">$careers</span><span class="o">-&gt;</span><span class="n">getContent</span><span class="o">();</span> <span class="c1">// "Careers page in Dark Black";</span></code></pre></figure> <h3 id="section-3">组合模式</h3> <p>应用例子</p> <blockquote> <p>每一个公司都由员工组成。 每一个员工都有着同样的特性,例如 有工资，有责任，或许需要向某人报告，或许有下属等。 </p> </blockquote> <p>简单的说</p> <blockquote> <p>组合模式让你用同一种方式对待不同的对象。</p> </blockquote> <p>维基百科说</p> <blockquote> <p>在软件工程中，组合模式是的分隔的设计模式。组合模式描述一组对象可以作为单一对象来相同对待。组合的目的是组合对象到树结构中来代表部分-全部分类。完成组合模式让你同样的方式对待不同的目标以及组合。</p> </blockquote> <p>程序例子</p> <p>我们看看上面的雇员例子. 我们有着不同的雇员类型</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">Employee</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">string</span> <span class="n">$name</span><span class="o">,</span> <span class="kt">float</span> <span class="n">$salary</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getName</span><span class="o">():</span> <span class="n">string</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">setSalary</span><span class="o">(</span><span class="kt">float</span> <span class="n">$salary</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getSalary</span><span class="o">():</span> <span class="kt">float</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getRoles</span><span class="o">():</span> <span class="n">array</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Developer</span> <span class="kd">implements</span> <span class="n">Employee</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$salary</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="n">$name</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">string</span> <span class="n">$name</span><span class="o">,</span> <span class="kt">float</span> <span class="n">$salary</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="n">$name</span><span class="o">;</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">salary</span> <span class="o">=</span> <span class="n">$salary</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getName</span><span class="o">():</span> <span class="n">string</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">setSalary</span><span class="o">(</span><span class="kt">float</span> <span class="n">$salary</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">salary</span> <span class="o">=</span> <span class="n">$salary</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getSalary</span><span class="o">():</span> <span class="kt">float</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">salary</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getRoles</span><span class="o">():</span> <span class="n">array</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">roles</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Designer</span> <span class="kd">implements</span> <span class="n">Employee</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$salary</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="n">$name</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">string</span> <span class="n">$name</span><span class="o">,</span> <span class="kt">float</span> <span class="n">$salary</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="n">$name</span><span class="o">;</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">salary</span> <span class="o">=</span> <span class="n">$salary</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getName</span><span class="o">():</span> <span class="n">string</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">setSalary</span><span class="o">(</span><span class="kt">float</span> <span class="n">$salary</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">salary</span> <span class="o">=</span> <span class="n">$salary</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getSalary</span><span class="o">():</span> <span class="kt">float</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">salary</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getRoles</span><span class="o">():</span> <span class="n">array</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">roles</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>我们有个组织包含不同类型的雇员</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Organization</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$employees</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">addEmployee</span><span class="o">(</span><span class="n">Employee</span> <span class="n">$employee</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">employees</span><span class="o">[]</span> <span class="o">=</span> <span class="n">$employee</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getNetSalaries</span><span class="o">():</span> <span class="kt">float</span>
+    <span class="o">{</span>
+        <span class="n">$netSalary</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="n">foreach</span> <span class="o">(</span><span class="n">$this</span><span class="o">-&gt;</span><span class="n">employees</span> <span class="n">as</span> <span class="n">$employee</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">$netSalary</span> <span class="o">+=</span> <span class="n">$employee</span><span class="o">-&gt;</span><span class="n">getSalary</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">$netSalary</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="n">And</span> <span class="n">then</span> <span class="n">it</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">as</span>
+
+<span class="c1">// Prepare the employees</span>
+<span class="n">$john</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Developer</span><span class="o">(</span><span class="err">'</span><span class="n">John</span> <span class="n">Doe</span><span class="err">'</span><span class="o">,</span> <span class="mi">12000</span><span class="o">);</span>
+<span class="n">$jane</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Designer</span><span class="o">(</span><span class="err">'</span><span class="n">Jane</span><span class="err">'</span><span class="o">,</span> <span class="mi">10000</span><span class="o">);</span>
+
+<span class="c1">// Add them to organization</span>
+<span class="n">$organization</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Organization</span><span class="o">();</span>
+<span class="n">$organization</span><span class="o">-&gt;</span><span class="n">addEmployee</span><span class="o">(</span><span class="n">$john</span><span class="o">);</span>
+<span class="n">$organization</span><span class="o">-&gt;</span><span class="n">addEmployee</span><span class="o">(</span><span class="n">$jane</span><span class="o">);</span>
+
+<span class="n">echo</span> <span class="s">"Net salaries: "</span> <span class="o">.</span> <span class="n">$organization</span><span class="o">-&gt;</span><span class="n">getNetSalaries</span><span class="o">();</span> <span class="c1">// Net Salaries: 22000</span></code></pre></figure> <h3 id="section-4">装饰者</h3> <p>应用例子</p> <blockquote> <p>想象你运营一个提供多种服务的汽车服务商店。现在你怎样计算账单？ 你挑选一个服务以及动态添加到提供服务的价格中直到你获取到最终花费。这里每种类型的服务器都是装饰者。</p> </blockquote> <p>简单的说</p> <blockquote> <p>装饰者模式让你运行中动态修改对象的行为，通过封装成一个装饰者类。</p> </blockquote> <p>维基百科说 </p> <blockquote> <p>在面向对象编程中,装饰者模式是一种设计模式,允许行为动态添加到单独的目标中,要么静态或者动态的,在同一个类中不需要影响其他目标的行为。装饰者模式由于遵循着单一职责原则所以非常有用的,它允许功能根据不同关注领域分类。</p> </blockquote> <p>程序例子 </p> <p>让我们以咖啡这个为例子。 首先我们有个实现咖啡接口的简单咖啡</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">Coffee</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getCost</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getDescription</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">SimpleCoffee</span> <span class="kd">implements</span> <span class="n">Coffee</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getCost</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="mi">10</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getDescription</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="err">'</span><span class="n">Simple</span> <span class="n">coffee</span><span class="err">'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>我们想要使得代码可扩展从而允许选项可变更。 让我们做些扩展 (装饰者)</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">MilkCoffee</span> <span class="kd">implements</span> <span class="n">Coffee</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$coffee</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">Coffee</span> <span class="n">$coffee</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">coffee</span> <span class="o">=</span> <span class="n">$coffee</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getCost</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">coffee</span><span class="o">-&gt;</span><span class="n">getCost</span><span class="o">()</span> <span class="o">+</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getDescription</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">coffee</span><span class="o">-&gt;</span><span class="n">getDescription</span><span class="o">()</span> <span class="o">.</span> <span class="err">'</span><span class="o">,</span> <span class="n">milk</span><span class="err">'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">WhipCoffee</span> <span class="kd">implements</span> <span class="n">Coffee</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$coffee</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">Coffee</span> <span class="n">$coffee</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">coffee</span> <span class="o">=</span> <span class="n">$coffee</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getCost</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">coffee</span><span class="o">-&gt;</span><span class="n">getCost</span><span class="o">()</span> <span class="o">+</span> <span class="mi">5</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getDescription</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">coffee</span><span class="o">-&gt;</span><span class="n">getDescription</span><span class="o">()</span> <span class="o">.</span> <span class="err">'</span><span class="o">,</span> <span class="n">whip</span><span class="err">'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">VanillaCoffee</span> <span class="kd">implements</span> <span class="n">Coffee</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$coffee</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">Coffee</span> <span class="n">$coffee</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">coffee</span> <span class="o">=</span> <span class="n">$coffee</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getCost</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">coffee</span><span class="o">-&gt;</span><span class="n">getCost</span><span class="o">()</span> <span class="o">+</span> <span class="mi">3</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getDescription</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">coffee</span><span class="o">-&gt;</span><span class="n">getDescription</span><span class="o">()</span> <span class="o">.</span> <span class="err">'</span><span class="o">,</span> <span class="n">vanilla</span><span class="err">'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>让我们现在制作一杯咖啡</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$someCoffee</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleCoffee</span><span class="o">();</span>
+<span class="n">echo</span> <span class="n">$someCoffee</span><span class="o">-&gt;</span><span class="n">getCost</span><span class="o">();</span> <span class="c1">// 10</span>
+<span class="n">echo</span> <span class="n">$someCoffee</span><span class="o">-&gt;</span><span class="n">getDescription</span><span class="o">();</span> <span class="c1">// Simple Coffee</span>
+
+<span class="n">$someCoffee</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MilkCoffee</span><span class="o">(</span><span class="n">$someCoffee</span><span class="o">);</span>
+<span class="n">echo</span> <span class="n">$someCoffee</span><span class="o">-&gt;</span><span class="n">getCost</span><span class="o">();</span> <span class="c1">// 12</span>
+<span class="n">echo</span> <span class="n">$someCoffee</span><span class="o">-&gt;</span><span class="n">getDescription</span><span class="o">();</span> <span class="c1">// Simple Coffee, milk</span>
+
+<span class="n">$someCoffee</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WhipCoffee</span><span class="o">(</span><span class="n">$someCoffee</span><span class="o">);</span>
+<span class="n">echo</span> <span class="n">$someCoffee</span><span class="o">-&gt;</span><span class="n">getCost</span><span class="o">();</span> <span class="c1">// 17</span>
+<span class="n">echo</span> <span class="n">$someCoffee</span><span class="o">-&gt;</span><span class="n">getDescription</span><span class="o">();</span> <span class="c1">// Simple Coffee, milk, whip</span>
+
+<span class="n">$someCoffee</span> <span class="o">=</span> <span class="k">new</span> <span class="n">VanillaCoffee</span><span class="o">(</span><span class="n">$someCoffee</span><span class="o">);</span>
+<span class="n">echo</span> <span class="n">$someCoffee</span><span class="o">-&gt;</span><span class="n">getCost</span><span class="o">();</span> <span class="c1">// 20</span>
+<span class="n">echo</span> <span class="n">$someCoffee</span><span class="o">-&gt;</span><span class="n">getDescription</span><span class="o">();</span> <span class="c1">// Simple Coffee, milk, whip, vanilla</span></code></pre></figure> <h3 id="section-5">外观模式</h3> <p>应用例子</p> <blockquote> <p>你怎么打开电脑? “按下电源按钮” 你这么说！ 这是因为你相信因为你在使用一个电脑暴露在外面的接口，内部它不得不做大量东西。这个简单接口对于复杂子系统来说就是外观。</p> </blockquote> <p>简单的说 </p> <blockquote> <p>外观模式给复杂子系统提供一个简化的接口。</p> </blockquote> <p>维基百科说</p> <blockquote> <p>外观是一个给大量代码实体提供一个简单接口，例如类库。</p> </blockquote> <p>程序里子</p> <p>让我们看看上面的电脑例子. 这里我们有电脑类</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Computer</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getElectricShock</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">echo</span> <span class="s">"Ouch!"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">makeSound</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">echo</span> <span class="s">"Beep beep!"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">showLoadingScreen</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">echo</span> <span class="s">"Loading.."</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">bam</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">echo</span> <span class="s">"Ready to be used!"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">closeEverything</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">echo</span> <span class="s">"Bup bup bup buzzzz!"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">sooth</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">echo</span> <span class="s">"Zzzzz"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">pullCurrent</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">echo</span> <span class="s">"Haaah!"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>现在我们有一个外观</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">ComputerFacade</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$computer</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">Computer</span> <span class="n">$computer</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">computer</span> <span class="o">=</span> <span class="n">$computer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">turnOn</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">computer</span><span class="o">-&gt;</span><span class="n">getElectricShock</span><span class="o">();</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">computer</span><span class="o">-&gt;</span><span class="n">makeSound</span><span class="o">();</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">computer</span><span class="o">-&gt;</span><span class="n">showLoadingScreen</span><span class="o">();</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">computer</span><span class="o">-&gt;</span><span class="n">bam</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">turnOff</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">computer</span><span class="o">-&gt;</span><span class="n">closeEverything</span><span class="o">();</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">computer</span><span class="o">-&gt;</span><span class="n">pullCurrent</span><span class="o">();</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">computer</span><span class="o">-&gt;</span><span class="n">sooth</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>让我们使用这个外观</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$computer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ComputerFacade</span><span class="o">(</span><span class="k">new</span> <span class="n">Computer</span><span class="o">());</span>
+<span class="n">$computer</span><span class="o">-&gt;</span><span class="n">turnOn</span><span class="o">();</span> <span class="c1">// Ouch! Beep beep! Loading.. Ready to be used!</span>
+<span class="n">$computer</span><span class="o">-&gt;</span><span class="n">turnOff</span><span class="o">();</span> <span class="c1">// Bup bup buzzz! Haah! Zzzzz</span></code></pre></figure> <h3 id="section-6">享元模式</h3> <p>应用例子</p> <blockquote> <p>你是不是从小摊买过新鲜茶叶? 他们经常售卖几杯你所需要的，剩下的就保留起来给其他客人用。 享元模式就是有关这些.分享。</p> </blockquote> <p>简单的说</p> <blockquote> <p>他是用来最小化内存使用或者是计算花费通过最大化的共享类似的目标。</p> </blockquote> <p>维基百科说</p> <blockquote> <p>在电脑编程中，享元模式是一个软件设计模式。享元模式是能够用来最小化内存使用或者是计算花费通过最大化的共享类似的目标。它是如何正确大量对象的一种方式，当简单重复出现有可能会导致使用无法预估的内存。</p> </blockquote> <p>程序例子</p> <p>转换我们上面的茶例子.首先我们有茶类型和茶制作者</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Anything that will be cached is flyweight.</span>
+<span class="c1">// Types of tea here will be flyweights.</span>
+<span class="kd">class</span> <span class="nc">KarakTea</span>
+<span class="o">{</span>
+<span class="o">}</span>
+
+<span class="c1">// Acts as a factory and saves the tea</span>
+<span class="kd">class</span> <span class="nc">TeaMaker</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$availableTea</span> <span class="o">=</span> <span class="o">[];</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">make</span><span class="o">(</span><span class="n">$preference</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">empty</span><span class="o">(</span><span class="n">$this</span><span class="o">-&gt;</span><span class="n">availableTea</span><span class="o">[</span><span class="n">$preference</span><span class="o">]))</span> <span class="o">{</span>
+            <span class="n">$this</span><span class="o">-&gt;</span><span class="n">availableTea</span><span class="o">[</span><span class="n">$preference</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">KarakTea</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">availableTea</span><span class="o">[</span><span class="n">$preference</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>然后我们有接受订单和服务<strong>茶店</strong></p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">TeaShop</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$orders</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="n">$teaMaker</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">TeaMaker</span> <span class="n">$teaMaker</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">teaMaker</span> <span class="o">=</span> <span class="n">$teaMaker</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">takeOrder</span><span class="o">(</span><span class="n">string</span> <span class="n">$teaType</span><span class="o">,</span> <span class="kt">int</span> <span class="n">$table</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">orders</span><span class="o">[</span><span class="n">$table</span><span class="o">]</span> <span class="o">=</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">teaMaker</span><span class="o">-&gt;</span><span class="n">make</span><span class="o">(</span><span class="n">$teaType</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">serve</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">foreach</span> <span class="o">(</span><span class="n">$this</span><span class="o">-&gt;</span><span class="n">orders</span> <span class="n">as</span> <span class="n">$table</span> <span class="o">=&gt;</span> <span class="n">$tea</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">echo</span> <span class="s">"Serving tea to table# "</span> <span class="o">.</span> <span class="n">$table</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>它可以这么被使用</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$teaMaker</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TeaMaker</span><span class="o">();</span>
+<span class="n">$shop</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TeaShop</span><span class="o">(</span><span class="n">$teaMaker</span><span class="o">);</span>
+
+<span class="n">$shop</span><span class="o">-&gt;</span><span class="n">takeOrder</span><span class="o">(</span><span class="err">'</span><span class="n">less</span> <span class="n">sugar</span><span class="err">'</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+<span class="n">$shop</span><span class="o">-&gt;</span><span class="n">takeOrder</span><span class="o">(</span><span class="err">'</span><span class="n">more</span> <span class="n">milk</span><span class="err">'</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+<span class="n">$shop</span><span class="o">-&gt;</span><span class="n">takeOrder</span><span class="o">(</span><span class="err">'</span><span class="n">without</span> <span class="n">sugar</span><span class="err">'</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+
+<span class="n">$shop</span><span class="o">-&gt;</span><span class="n">serve</span><span class="o">();</span>
+<span class="c1">// Serving tea to table# 1</span>
+<span class="c1">// Serving tea to table# 2</span>
+<span class="c1">// Serving tea to table# 5</span></code></pre></figure> <h3 id="section-7">代理模式</h3> <p>应用例子</p> <blockquote> <p>你是否曾使用过门禁卡开门呢? 有几种方式可以打开门. 它可以使用门禁卡打开或者是通过绕过安全按下一个按钮。 门的主要功能是被打开但是在它的上面通过代理添加某些功能。让我们使用代码里子来更好的解释它们。</p> </blockquote> <p>简单地说</p> <blockquote> <p>使用代理模式，用来代表另外一个类的功能的类</p> </blockquote> <p>维基百科说</p> <blockquote> </blockquote> <div class="entry-meta"> <br> <hr> <span class="entry-tags"><a href="http://localhost:4000/tags/#designpatterns" title="Pages tagged designpatterns" class="tag"><span class="term">designpatterns</span></a></span> <span class="social-share"> <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/Translate-iOS-Design-Patterns2/" title="Share on Facebook" class="tag"> <span class="term"><i class="fa fa-facebook-square"></i> Like</span> </a> <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/Translate-iOS-Design-Patterns2/" title="Share on Twitter" class="tag"> <span class="term"><i class="fa fa-twitter-square"></i> Tweet</span> </a> <a href="https://plus.google.com/share?url=http://localhost:4000/Translate-iOS-Design-Patterns2/" title="Share on Google+" class="tag"> <span class="term"><i class="fa fa-google-plus-square"></i> +1</span> </a> </span> <div style="clear:both"></div> </div> </div> </div> <section id="disqus_thread" class="animated fadeInUp"></section><!-- /#disqus_thread --> </header> <!-- JS --> <script src="http://localhost:4000/assets/js/jquery-1.12.0.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.dlmenu.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.goup.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.magnific-popup.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.fitvid.min.js"></script> <script src="http://localhost:4000/assets/js/scripts.js"></script> <script type="text/javascript"> var disqus_shortname = 'yanciomgblog'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); (function () { var s = document.createElement('script'); s.async = true; s.type = 'text/javascript'; s.src = '//' + disqus_shortname + '.disqus.com/count.js'; (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s); }()); </script> <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
 </noscript> <!-- MathJax --> <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> </body> </html>
