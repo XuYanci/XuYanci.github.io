@@ -757,7 +757,9 @@ $door->close(); // Closing lab door
 
 
 
+### Reference
 
+[https://github.com/kamranahmedse/design-patterns-for-humans](https://github.com/kamranahmedse/design-patterns-for-humans)
 
 
 
