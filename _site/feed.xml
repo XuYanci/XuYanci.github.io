@@ -1,4 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-28T11:51:06+08:00</updated><id>http://localhost:4000//</id><title type="html">一朵云风</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>一朵云风</name></author><entry><title type="html">Translate-iOS-DesignPatterns(2)</title><link href="http://localhost:4000/Translate-iOS-Design-Patterns2/" rel="alternate" type="text/html" title="Translate-iOS-DesignPatterns(2)" /><published>2017-03-19T00:00:00+08:00</published><updated>2017-03-19T00:00:00+08:00</updated><id>http://localhost:4000/Translate-iOS-Design-Patterns2</id><content type="html" xml:base="http://localhost:4000/Translate-iOS-Design-Patterns2/">&lt;h3 id=&quot;section&quot;&gt;结构型设计模式&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-12T21:38:23+08:00</updated><id>http://localhost:4000//</id><title type="html">一朵云风</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>一朵云风</name></author><entry><title type="html">Translate-iOS-DesignPatterns(3)</title><link href="http://localhost:4000/Translate-iOS-Design-Patterns3/" rel="alternate" type="text/html" title="Translate-iOS-DesignPatterns(3)" /><published>2017-04-04T00:00:00+08:00</published><updated>2017-04-04T00:00:00+08:00</updated><id>http://localhost:4000/Translate-iOS-Design-Patterns3</id><content type="html" xml:base="http://localhost:4000/Translate-iOS-Design-Patterns3/">&lt;h2 id=&quot;section&quot;&gt;行为型设计模式&lt;/h2&gt;
+
+&lt;p&gt;简单的说&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;它是有关对象之间的责任分配。它们和结构型设计模式不同的是它们不定义结构但是也概述了相关模式用来做它们之间的消息传递/通讯。用另外的一句话说，它们有助于回答 “如何在软件元件中运行行为?”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;维基百科说&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在软件工程中，行为型设计模式是代表对象之间常用的通讯模式以及模式实现。通过这么做的话，这些模式实现这些通讯会提高复杂度。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;责任链&lt;/li&gt;
+  &lt;li&gt;命令&lt;/li&gt;
+  &lt;li&gt;迭代者&lt;/li&gt;
+  &lt;li&gt;中间者&lt;/li&gt;
+  &lt;li&gt;备忘录&lt;/li&gt;
+  &lt;li&gt;观察者&lt;/li&gt;
+  &lt;li&gt;访问者&lt;/li&gt;
+  &lt;li&gt;策略模式&lt;/li&gt;
+  &lt;li&gt;状态模式&lt;/li&gt;
+  &lt;li&gt;模板方法模式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;责任链模式&lt;/h3&gt;
+
+&lt;p&gt;应用例子&lt;/p&gt;
+
+&lt;p&gt;举个例子，你的账号有三个方式付款（A，B，和C）；他们中都有一个不同的账号。A有100USD，B有300USD和C有1000USD ， 付款的优先级是A，B，C。你购买价值210USD的东西。通过使用责任链模式，首先账号A如果能够购买的话就扣钱，响应链断开。如果不够，则继续换到账号B检查是否足够扣钱，同理按照这个方式知道找到合适的处理。这里A，B，和C都是链的链接以及责任链的所有现象。&lt;/p&gt;
+
+&lt;p&gt;简单的说&lt;/p&gt;
+
+&lt;p&gt;维基百科说&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="designpatterns" /><summary type="html">Translate-iOS-DesignPatterns(3)</summary></entry><entry><title type="html">Translate-iOS-DesignPatterns(2)</title><link href="http://localhost:4000/Translate-iOS-Design-Patterns2/" rel="alternate" type="text/html" title="Translate-iOS-DesignPatterns(2)" /><published>2017-03-19T00:00:00+08:00</published><updated>2017-03-19T00:00:00+08:00</updated><id>http://localhost:4000/Translate-iOS-Design-Patterns2</id><content type="html" xml:base="http://localhost:4000/Translate-iOS-Design-Patterns2/">&lt;h3 id=&quot;section&quot;&gt;结构型设计模式&lt;/h3&gt;
 
 &lt;p&gt;简单的说
 &amp;gt; 结构型模式主要是关注对象组合，换句话说实体之间如何互相使用。另外一个解释是，它能够帮助回答 “怎样建立一个软件零件”&lt;/p&gt;
@@ -659,8 +694,95 @@
 &lt;p&gt;维基百科说&lt;/p&gt;
 
 &lt;blockquote&gt;
+  &lt;p&gt;代理，在它最通用的形式，是一个功能类作为其它东西的接口。代理是封装或者是代理对象，通过客户端调用来访问场景后面的真实服务目标。代理的使用能够最终访问到真实目标，或者提供额外的逻辑功能。代理中能够提供额外的功能，例如当操作在资源密集型的真实对象能够缓存，或者在触发真实对象操作前检查条件。&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;/blockquote&gt;</content><author><name>一朵云风</name></author><category term="designpatterns" /><summary type="html">Translate-iOS-DesignPatterns(2)</summary></entry><entry><title type="html">Translate-iOS-DesignPatterns(1)</title><link href="http://localhost:4000/Translate-iOS-Design-Patterns1/" rel="alternate" type="text/html" title="Translate-iOS-DesignPatterns(1)" /><published>2017-03-08T00:00:00+08:00</published><updated>2017-03-08T00:00:00+08:00</updated><id>http://localhost:4000/Translate-iOS-Design-Patterns1</id><content type="html" xml:base="http://localhost:4000/Translate-iOS-Design-Patterns1/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;程序例子&lt;/p&gt;
+
+&lt;p&gt;以我们的安全门为例。首先我们拥有门接口以及门实现&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Door&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LabDoor&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Door&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Opening lab door&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Closing the lab door&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;然后我们有着能提高任何门安全性的代理&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Security&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$door&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Door&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$door&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;door&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$door&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;authenticate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;door&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Big no! It ain't possible.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;authenticate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$ecr&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;@t&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;door&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;如何使用它&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;$door&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Security&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LabDoor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;$door&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;invalid&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Big no! It ain't possible.&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;$door&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$ecr&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;@t&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Opening lab door&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;$door&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Closing lab door&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;还有另外一个例子是某种数据映射实现。 例如，我现在使用这个模式写了一个MongoDB的对象数据映射层，我写了一个代理封装了mongo的类，当使用魔术方法 &lt;em&gt;_call()&lt;/em&gt;， 所有的方法调用都代理到原生的mongo类以及返回它所期望的结果。不过 &lt;em&gt;find&lt;/em&gt; 或者 &lt;em&gt;findOne&lt;/em&gt; 数据映射到所需的类目标以及目标返回并不是&lt;em&gt;Cursor&lt;/em&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;end-&quot;&gt;End 结构型&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;日期&lt;/th&gt;
+      &lt;th&gt;作者&lt;/th&gt;
+      &lt;th&gt;说明&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2017-03-28&lt;/td&gt;
+      &lt;td&gt;YC&lt;/td&gt;
+      &lt;td&gt;初步翻译完成&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/kamranahmedse/design-patterns-for-humans&quot;&gt;https://github.com/kamranahmedse/design-patterns-for-humans&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="designpatterns" /><summary type="html">Translate-iOS-DesignPatterns(2)</summary></entry><entry><title type="html">Translate-iOS-DesignPatterns(1)</title><link href="http://localhost:4000/Translate-iOS-Design-Patterns1/" rel="alternate" type="text/html" title="Translate-iOS-DesignPatterns(1)" /><published>2017-03-08T00:00:00+08:00</published><updated>2017-03-08T00:00:00+08:00</updated><id>http://localhost:4000/Translate-iOS-Design-Patterns1</id><content type="html" xml:base="http://localhost:4000/Translate-iOS-Design-Patterns1/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;设计模式是针对反复出现问题的解决方式;&lt;strong&gt;主旨在怎样解决特定问题&lt;/strong&gt;. 它们不是类，包，也不是库，你能够接入到你的程序中坐等魔法产生。然而，它们是针对特定场合某些特定问题的解决方式。&lt;/p&gt;
 
@@ -2811,14 +2933,4 @@ let声明的变量作用域包含定义它的块以及任何包含的子块中�
 
 &lt;p&gt;Reference: &lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/technotes/tn2154/_index.html&quot;&gt;UIScrollView With AutoLayout&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="iOS UIScrollView AutoLayout" /><summary type="html">UIKit-Learning-UIScrollView And AutoLayout</summary></entry><entry><title type="html">Summary - 2016 Year</title><link href="http://localhost:4000/Summary-2016Summary/" rel="alternate" type="text/html" title="Summary - 2016 Year" /><published>2016-12-22T00:00:00+08:00</published><updated>2016-12-22T00:00:00+08:00</updated><id>http://localhost:4000/Summary-2016Summary</id><content type="html" xml:base="http://localhost:4000/Summary-2016Summary/">&lt;p&gt;一下子就不知不觉步入了2017年，回首2016做个总结吧。&lt;/p&gt;
-
-&lt;p&gt;2016 主要是带队做事情,在过程中学习了如何去引导他人，指导他人，并学会取舍，懂的公司的目标是最重要的，并且也确定了以后的职业方向。&lt;/p&gt;
-
-&lt;p&gt;技术方面，iOS还是以解决问题为主，毕竟经验都是实战中积累的，主要接触了腾讯云即时通讯以及最火的直播功能。简单学习了一下前端，主要是以html+css+div为主。&lt;/p&gt;
-
-&lt;p&gt;思维方面，学会了如何多方面考虑产品需求，提前做好规划等。而不是凭感觉去定义某些事情，要去实践认知的过程中取得有用的经验。做事情可以依靠许多工具来辅助解决，愿望清单，脑图，以及google keep等，一步一步规划清晰目标，并加强执行力，毕竟行动胜于一切。&lt;/p&gt;
-
-&lt;p&gt;玩方面，今年去一趟海南岛，爸妈以及哥哥的第二故乡，领悟挺多。还去一趟龙门铁泉，泡泡温泉，舒服一下。有什么好玩的地方，记得告诉我哦！&lt;/p&gt;
-
-&lt;p&gt;2017， 规划方面，希望能够提升项目管理能力，后端开发尝尝鲜，接触一下新的语言，跟上时代的步伐。 &lt;/p&gt;</content><author><name>一朵云风</name></author><category term="summary 2016" /><summary type="html">Summary - 2016 Year</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/technotes/tn2154/_index.html&quot;&gt;UIScrollView With AutoLayout&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="iOS UIScrollView AutoLayout" /><summary type="html">UIKit-Learning-UIScrollView And AutoLayout</summary></entry></feed>
