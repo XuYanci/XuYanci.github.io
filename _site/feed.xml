@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-12T21:38:23+08:00</updated><id>http://localhost:4000//</id><title type="html">一朵云风</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>一朵云风</name></author><entry><title type="html">Translate-iOS-DesignPatterns(3)</title><link href="http://localhost:4000/Translate-iOS-Design-Patterns3/" rel="alternate" type="text/html" title="Translate-iOS-DesignPatterns(3)" /><published>2017-04-04T00:00:00+08:00</published><updated>2017-04-04T00:00:00+08:00</updated><id>http://localhost:4000/Translate-iOS-Design-Patterns3</id><content type="html" xml:base="http://localhost:4000/Translate-iOS-Design-Patterns3/">&lt;h2 id=&quot;section&quot;&gt;行为型设计模式&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-06-28T21:39:09+08:00</updated><id>http://localhost:4000//</id><title type="html">XuYanci</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>XuYanci</name></author><entry><title type="html">Translate-iOS-DesignPatterns(3)</title><link href="http://localhost:4000/Translate-iOS-Design-Patterns3/" rel="alternate" type="text/html" title="Translate-iOS-DesignPatterns(3)" /><published>2017-04-04T00:00:00+08:00</published><updated>2017-04-04T00:00:00+08:00</updated><id>http://localhost:4000/Translate-iOS-Design-Patterns3</id><content type="html" xml:base="http://localhost:4000/Translate-iOS-Design-Patterns3/">&lt;h2 id=&quot;section&quot;&gt;行为型设计模式&lt;/h2&gt;
 
 &lt;p&gt;简单的说&lt;/p&gt;
 
@@ -29,11 +29,111 @@
 
 &lt;p&gt;应用例子&lt;/p&gt;
 
-&lt;p&gt;举个例子，你的账号有三个方式付款（A，B，和C）；他们中都有一个不同的账号。A有100USD，B有300USD和C有1000USD ， 付款的优先级是A，B，C。你购买价值210USD的东西。通过使用责任链模式，首先账号A如果能够购买的话就扣钱，响应链断开。如果不够，则继续换到账号B检查是否足够扣钱，同理按照这个方式知道找到合适的处理。这里A，B，和C都是链的链接以及责任链的所有现象。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;举个例子，你的账号有三个方式付款（A，B，和C）；他们中都有一个不同的账号。A有100USD，B有300USD和C有1000USD ， 付款的优先级是A，B，C。你购买价值210USD的东西。通过使用责任链模式，首先账号A如果能够购买的话就扣钱，响应链断开。如果不够，则继续换到账号B检查是否足够扣钱，同理按照这个方式知道找到合适的处理。这里A，B，和C都是链的链接以及责任链的所有现象。&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;简单的说&lt;/p&gt;
 
-&lt;p&gt;维基百科说&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="designpatterns" /><summary type="html">Translate-iOS-DesignPatterns(3)</summary></entry><entry><title type="html">Translate-iOS-DesignPatterns(2)</title><link href="http://localhost:4000/Translate-iOS-Design-Patterns2/" rel="alternate" type="text/html" title="Translate-iOS-DesignPatterns(2)" /><published>2017-03-19T00:00:00+08:00</published><updated>2017-03-19T00:00:00+08:00</updated><id>http://localhost:4000/Translate-iOS-Design-Patterns2</id><content type="html" xml:base="http://localhost:4000/Translate-iOS-Design-Patterns2/">&lt;h3 id=&quot;section&quot;&gt;结构型设计模式&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;它帮助构建一系列目标。请求从一端发起，然后一个一个目标寻找，直到找到合适的处理。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;维基百科说&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在面向对象设计中，责任链模式是由命令目标源以及一系列处理目标组成的。每一个处理目标包含着定义命令目标所能处理的类型；剩下的传递给链中的下一个处理目标&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;程序例子&lt;/p&gt;
+
+&lt;p&gt;翻译我们上面的账号例子。首先我们有一个基础账号，里面包含着串联账号到一起的逻辑以及某些账号。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Account&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$successor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$balance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Account&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$account&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;successor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$account&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$amountToPay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;canPay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$amountToPay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sprintf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Paid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PHP_EOL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$amountToPay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_called_class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elseif&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;successor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sprintf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Cannot&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pay&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Proceeding&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PHP_EOL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_called_class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;successor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$amountToPay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;accounts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;have&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;enough&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;canPay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$amount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bool&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$amount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bank&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Account&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$balance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$balance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$balance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Paypal&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Account&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$balance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$balance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$balance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bitcoin&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Account&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$balance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$balance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$balance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Now&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prepare&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;chain&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;links&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defined&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;above&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bank&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Paypal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bitcoin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Let's prepare a chain like below&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//      $bank-&amp;gt;$paypal-&amp;gt;$bitcoin&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// First priority bank&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//      If bank can't pay then paypal&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//      If paypal can't pay then bit coin&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;$bank&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bank&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// Bank with balance 100&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;$paypal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Paypal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// Paypal with balance 200&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;$bitcoin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bitcoin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// Bitcoin with balance 300&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;$bank&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$paypal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;$paypal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$bitcoin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Let's try to pay using the first priority i.e. bank&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;$bank&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;259&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Output will be&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// ==============&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Cannot pay using bank. Proceeding ..&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Cannot pay using paypal. Proceeding ..:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Paid 259 using Bitcoin!&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;命令模式&lt;/h3&gt;
+
+&lt;p&gt;continue … &lt;/p&gt;</content><author><name>XuYanci</name></author><category term="designpatterns" /><summary type="html">Translate-iOS-DesignPatterns(3)</summary></entry><entry><title type="html">Translate-iOS-DesignPatterns(2)</title><link href="http://localhost:4000/Translate-iOS-Design-Patterns2/" rel="alternate" type="text/html" title="Translate-iOS-DesignPatterns(2)" /><published>2017-03-19T00:00:00+08:00</published><updated>2017-03-19T00:00:00+08:00</updated><id>http://localhost:4000/Translate-iOS-Design-Patterns2</id><content type="html" xml:base="http://localhost:4000/Translate-iOS-Design-Patterns2/">&lt;h3 id=&quot;section&quot;&gt;结构型设计模式&lt;/h3&gt;
 
 &lt;p&gt;简单的说
 &amp;gt; 结构型模式主要是关注对象组合，换句话说实体之间如何互相使用。另外一个解释是，它能够帮助回答 “怎样建立一个软件零件”&lt;/p&gt;
@@ -782,7 +882,7 @@
 
 &lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/kamranahmedse/design-patterns-for-humans&quot;&gt;https://github.com/kamranahmedse/design-patterns-for-humans&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="designpatterns" /><summary type="html">Translate-iOS-DesignPatterns(2)</summary></entry><entry><title type="html">Translate-iOS-DesignPatterns(1)</title><link href="http://localhost:4000/Translate-iOS-Design-Patterns1/" rel="alternate" type="text/html" title="Translate-iOS-DesignPatterns(1)" /><published>2017-03-08T00:00:00+08:00</published><updated>2017-03-08T00:00:00+08:00</updated><id>http://localhost:4000/Translate-iOS-Design-Patterns1</id><content type="html" xml:base="http://localhost:4000/Translate-iOS-Design-Patterns1/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/kamranahmedse/design-patterns-for-humans&quot;&gt;https://github.com/kamranahmedse/design-patterns-for-humans&lt;/a&gt;&lt;/p&gt;</content><author><name>XuYanci</name></author><category term="designpatterns" /><summary type="html">Translate-iOS-DesignPatterns(2)</summary></entry><entry><title type="html">Translate-iOS-DesignPatterns(1)</title><link href="http://localhost:4000/Translate-iOS-Design-Patterns1/" rel="alternate" type="text/html" title="Translate-iOS-DesignPatterns(1)" /><published>2017-03-08T00:00:00+08:00</published><updated>2017-03-08T00:00:00+08:00</updated><id>http://localhost:4000/Translate-iOS-Design-Patterns1</id><content type="html" xml:base="http://localhost:4000/Translate-iOS-Design-Patterns1/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;设计模式是针对反复出现问题的解决方式;&lt;strong&gt;主旨在怎样解决特定问题&lt;/strong&gt;. 它们不是类，包，也不是库，你能够接入到你的程序中坐等魔法产生。然而，它们是针对特定场合某些特定问题的解决方式。&lt;/p&gt;
 
@@ -1389,7 +1489,7 @@
 &lt;/table&gt;
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/kamranahmedse/design-patterns-for-humans&quot;&gt;https://github.com/kamranahmedse/design-patterns-for-humans&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="designpatterns" /><summary type="html">Translate-iOS-DesignPatterns(1)</summary></entry><entry><title type="html">Translate-LifeStyle-这11条原则将会永远的改变你的生活</title><link href="http://localhost:4000/Translate-LifeStyle-These11RulesWillChangeYourLifeForever/" rel="alternate" type="text/html" title="Translate-LifeStyle-这11条原则将会永远的改变你的生活" /><published>2017-01-23T00:00:00+08:00</published><updated>2017-01-23T00:00:00+08:00</updated><id>http://localhost:4000/Translate-LifeStyle-These11RulesWillChangeYourLifeForever</id><content type="html" xml:base="http://localhost:4000/Translate-LifeStyle-These11RulesWillChangeYourLifeForever/">&lt;h1 id=&quot;section&quot;&gt;这11条原则将会永远的改变你的生活&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/kamranahmedse/design-patterns-for-humans&quot;&gt;https://github.com/kamranahmedse/design-patterns-for-humans&lt;/a&gt;&lt;/p&gt;</content><author><name>XuYanci</name></author><category term="designpatterns" /><summary type="html">Translate-iOS-DesignPatterns(1)</summary></entry><entry><title type="html">Translate-LifeStyle-这11条原则将会永远的改变你的生活</title><link href="http://localhost:4000/Translate-LifeStyle-These11RulesWillChangeYourLifeForever/" rel="alternate" type="text/html" title="Translate-LifeStyle-这11条原则将会永远的改变你的生活" /><published>2017-01-23T00:00:00+08:00</published><updated>2017-01-23T00:00:00+08:00</updated><id>http://localhost:4000/Translate-LifeStyle-These11RulesWillChangeYourLifeForever</id><content type="html" xml:base="http://localhost:4000/Translate-LifeStyle-These11RulesWillChangeYourLifeForever/">&lt;h1 id=&quot;section&quot;&gt;这11条原则将会永远的改变你的生活&lt;/h1&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;人活在这个世界上，但不知道为了什么&lt;/h3&gt;
 
@@ -1672,7 +1772,7 @@
       &lt;td&gt;初步翻译完成&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>一朵云风</name></author><category term="lifeStyle translate" /><summary type="html">Translate-LifeStyle-这11条原则将会永远的改变你的生活</summary></entry><entry><title type="html">iOS-OpenSource-ReactiveCocoa</title><link href="http://localhost:4000/iOS-OpenSource-Learning-ReactiveCocoa/" rel="alternate" type="text/html" title="iOS-OpenSource-ReactiveCocoa" /><published>2017-01-22T00:00:00+08:00</published><updated>2017-01-22T00:00:00+08:00</updated><id>http://localhost:4000/iOS-OpenSource-Learning-ReactiveCocoa</id><content type="html" xml:base="http://localhost:4000/iOS-OpenSource-Learning-ReactiveCocoa/">&lt;h3 id=&quot;section&quot;&gt;目录&lt;/h3&gt;
+&lt;/table&gt;</content><author><name>XuYanci</name></author><category term="lifeStyle translate" /><summary type="html">Translate-LifeStyle-这11条原则将会永远的改变你的生活</summary></entry><entry><title type="html">iOS-OpenSource-ReactiveCocoa</title><link href="http://localhost:4000/iOS-OpenSource-Learning-ReactiveCocoa/" rel="alternate" type="text/html" title="iOS-OpenSource-ReactiveCocoa" /><published>2017-01-22T00:00:00+08:00</published><updated>2017-01-22T00:00:00+08:00</updated><id>http://localhost:4000/iOS-OpenSource-Learning-ReactiveCocoa</id><content type="html" xml:base="http://localhost:4000/iOS-OpenSource-Learning-ReactiveCocoa/">&lt;h3 id=&quot;section&quot;&gt;目录&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;函数响应式编程(FRP)&lt;/li&gt;
   &lt;li&gt;热信号和冷信号&lt;/li&gt;
@@ -1869,7 +1969,7 @@
 &lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://www.infoq.com/cn/articles/functional-reactive-programming&quot;&gt;http://www.infoq.com/cn/articles/functional-reactive-programming&lt;/a&gt;
-&lt;a href=&quot;https://github.com/ReactiveCocoa/ReactiveCocoa&quot;&gt;https://github.com/ReactiveCocoa/ReactiveCocoa&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="reactivecocoa ios" /><summary type="html">iOS-OpenSource-ReactiveCocoa</summary></entry><entry><title type="html">Book-Learning-iOS核心动画高级技巧</title><link href="http://localhost:4000/Book-Learning-iOS%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" rel="alternate" type="text/html" title="Book-Learning-iOS核心动画高级技巧" /><published>2017-01-22T00:00:00+08:00</published><updated>2017-01-22T00:00:00+08:00</updated><id>http://localhost:4000/Book-Learning-iOS%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7</id><content type="html" xml:base="http://localhost:4000/Book-Learning-iOS%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/">&lt;p&gt;&lt;strong&gt;阅读iOS核心动画高级技巧读书笔记&lt;/strong&gt;&lt;/p&gt;
+&lt;a href=&quot;https://github.com/ReactiveCocoa/ReactiveCocoa&quot;&gt;https://github.com/ReactiveCocoa/ReactiveCocoa&lt;/a&gt;&lt;/p&gt;</content><author><name>XuYanci</name></author><category term="reactivecocoa ios" /><summary type="html">iOS-OpenSource-ReactiveCocoa</summary></entry><entry><title type="html">Book-Learning-iOS核心动画高级技巧</title><link href="http://localhost:4000/Book-Learning-iOS%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" rel="alternate" type="text/html" title="Book-Learning-iOS核心动画高级技巧" /><published>2017-01-22T00:00:00+08:00</published><updated>2017-01-22T00:00:00+08:00</updated><id>http://localhost:4000/Book-Learning-iOS%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7</id><content type="html" xml:base="http://localhost:4000/Book-Learning-iOS%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/">&lt;p&gt;&lt;strong&gt;阅读iOS核心动画高级技巧读书笔记&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section&quot;&gt;图层树&lt;/h3&gt;
 
@@ -1966,7 +2066,7 @@
 
 &lt;h3 id=&quot;io&quot;&gt;图像IO&lt;/h3&gt;
 
-&lt;h3 id=&quot;section-13&quot;&gt;图层性能&lt;/h3&gt;</content><author><name>一朵云风</name></author><category term="iOS animation" /><summary type="html">Book-Learning-iOS核心动画高级技巧</summary></entry><entry><title type="html">iOS-Learning-iOS闭包</title><link href="http://localhost:4000/iOS-Learning-iOS%E9%97%AD%E5%8C%85/" rel="alternate" type="text/html" title="iOS-Learning-iOS闭包" /><published>2017-01-22T00:00:00+08:00</published><updated>2017-01-22T00:00:00+08:00</updated><id>http://localhost:4000/iOS-Learning-iOS%E9%97%AD%E5%8C%85</id><content type="html" xml:base="http://localhost:4000/iOS-Learning-iOS%E9%97%AD%E5%8C%85/">&lt;h4 id=&quot;section&quot;&gt;目录&lt;/h4&gt;
+&lt;h3 id=&quot;section-13&quot;&gt;图层性能&lt;/h3&gt;</content><author><name>XuYanci</name></author><category term="iOS animation" /><summary type="html">Book-Learning-iOS核心动画高级技巧</summary></entry><entry><title type="html">iOS-Learning-iOS闭包</title><link href="http://localhost:4000/iOS-Learning-iOS%E9%97%AD%E5%8C%85/" rel="alternate" type="text/html" title="iOS-Learning-iOS闭包" /><published>2017-01-22T00:00:00+08:00</published><updated>2017-01-22T00:00:00+08:00</updated><id>http://localhost:4000/iOS-Learning-iOS%E9%97%AD%E5%8C%85</id><content type="html" xml:base="http://localhost:4000/iOS-Learning-iOS%E9%97%AD%E5%8C%85/">&lt;h4 id=&quot;section&quot;&gt;目录&lt;/h4&gt;
 &lt;ul&gt;
   &lt;li&gt;什么是闭包&lt;/li&gt;
   &lt;li&gt;匿名函数&lt;/li&gt;
@@ -2093,7 +2193,7 @@
 &lt;p&gt;任何一对花括号（｛和｝）中的语句集都属于一个块，在这之中定义的所有变量在代码块外都是不可见的，我们称之为块级作用域。 函数作用域就好理解了，定义在函数中的参数和变量在函数外部是不可见的。
   所以iOS是块作用域，而javascript则是&lt;a href=&quot;https://yanci.me/JavaScript-Learning-js%E9%97%AD%E5%8C%85/&quot;&gt;函数作用域&lt;/a&gt;。&lt;/p&gt;
 
-&lt;h3 id=&quot;end&quot;&gt;End&lt;/h3&gt;</content><author><name>一朵云风</name></author><category term="iOS Block" /><summary type="html">iOS-Learning-iOS闭包</summary></entry><entry><title type="html">Translate-iOS-Architecture-Patterns</title><link href="http://localhost:4000/Translate-iOS-Architecture-Patterns/" rel="alternate" type="text/html" title="Translate-iOS-Architecture-Patterns" /><published>2017-01-16T00:00:00+08:00</published><updated>2017-01-16T00:00:00+08:00</updated><id>http://localhost:4000/Translate-iOS-Architecture-Patterns</id><content type="html" xml:base="http://localhost:4000/Translate-iOS-Architecture-Patterns/">&lt;h3 id=&quot;ios-architecture-patterns&quot;&gt;iOS Architecture Patterns&lt;/h3&gt;
+&lt;h3 id=&quot;end&quot;&gt;End&lt;/h3&gt;</content><author><name>XuYanci</name></author><category term="iOS Block" /><summary type="html">iOS-Learning-iOS闭包</summary></entry><entry><title type="html">Translate-iOS-Architecture-Patterns</title><link href="http://localhost:4000/Translate-iOS-Architecture-Patterns/" rel="alternate" type="text/html" title="Translate-iOS-Architecture-Patterns" /><published>2017-01-16T00:00:00+08:00</published><updated>2017-01-16T00:00:00+08:00</updated><id>http://localhost:4000/Translate-iOS-Architecture-Patterns</id><content type="html" xml:base="http://localhost:4000/Translate-iOS-Architecture-Patterns/">&lt;h3 id=&quot;ios-architecture-patterns&quot;&gt;iOS Architecture Patterns&lt;/h3&gt;
 
 &lt;h4 id=&quot;demystifying-mvc-mvp-mvvm-and-viper&quot;&gt;Demystifying MVC, MVP, MVVM and VIPER&lt;/h4&gt;
 
@@ -2692,7 +2792,7 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;&lt;strong&gt;本文翻译自&lt;/strong&gt; &lt;a href=&quot;https://medium.com/ios-os-x-development/ios-architecture- patterns-ecba4c38de52#.67bu0gn15&quot;&gt;iOSArchitecturePatterns&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="ios architecture" /><summary type="html">Translate-iOS-Architecture-Patterns</summary></entry><entry><title type="html">JavaScript-Learning-js闭包</title><link href="http://localhost:4000/JavaScript-Learning-js%E9%97%AD%E5%8C%85/" rel="alternate" type="text/html" title="JavaScript-Learning-js闭包" /><published>2017-01-12T00:00:00+08:00</published><updated>2017-01-12T00:00:00+08:00</updated><id>http://localhost:4000/JavaScript-Learning-js%E9%97%AD%E5%8C%85</id><content type="html" xml:base="http://localhost:4000/JavaScript-Learning-js%E9%97%AD%E5%8C%85/">&lt;p&gt;目录&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;本文翻译自&lt;/strong&gt; &lt;a href=&quot;https://medium.com/ios-os-x-development/ios-architecture- patterns-ecba4c38de52#.67bu0gn15&quot;&gt;iOSArchitecturePatterns&lt;/a&gt;&lt;/p&gt;</content><author><name>XuYanci</name></author><category term="ios architecture" /><summary type="html">Translate-iOS-Architecture-Patterns</summary></entry><entry><title type="html">JavaScript-Learning-js闭包</title><link href="http://localhost:4000/JavaScript-Learning-js%E9%97%AD%E5%8C%85/" rel="alternate" type="text/html" title="JavaScript-Learning-js闭包" /><published>2017-01-12T00:00:00+08:00</published><updated>2017-01-12T00:00:00+08:00</updated><id>http://localhost:4000/JavaScript-Learning-js%E9%97%AD%E5%8C%85</id><content type="html" xml:base="http://localhost:4000/JavaScript-Learning-js%E9%97%AD%E5%8C%85/">&lt;p&gt;目录&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;块级作用域与函数级作用域 &lt;/li&gt;
@@ -2893,7 +2993,7 @@ let声明的变量作用域包含定义它的块以及任何包含的子块中�
 
 &lt;p&gt;😁 是不是超级熟悉,这不就是我们很常用的语法么!&lt;/p&gt;
 
-&lt;h3 id=&quot;end&quot;&gt;End&lt;/h3&gt;</content><author><name>一朵云风</name></author><category term="js closure" /><summary type="html">JavaScript-Learning-js闭包</summary></entry><entry><title type="html">UIKit-Learning-UIScrollView And AutoLayout</title><link href="http://localhost:4000/UIKit-Learning-UIScrollView-And-AutoLayout/" rel="alternate" type="text/html" title="UIKit-Learning-UIScrollView And AutoLayout" /><published>2017-01-01T00:00:00+08:00</published><updated>2017-01-01T00:00:00+08:00</updated><id>http://localhost:4000/UIKit-Learning-UIScrollView%20And%20AutoLayout</id><content type="html" xml:base="http://localhost:4000/UIKit-Learning-UIScrollView-And-AutoLayout/">&lt;p&gt;Ques: UIScrollView 是如何使得其内容视图滚动显示的。&lt;/p&gt;
+&lt;h3 id=&quot;end&quot;&gt;End&lt;/h3&gt;</content><author><name>XuYanci</name></author><category term="js closure" /><summary type="html">JavaScript-Learning-js闭包</summary></entry><entry><title type="html">UIKit-Learning-UIScrollView And AutoLayout</title><link href="http://localhost:4000/UIKit-Learning-UIScrollView-And-AutoLayout/" rel="alternate" type="text/html" title="UIKit-Learning-UIScrollView And AutoLayout" /><published>2017-01-01T00:00:00+08:00</published><updated>2017-01-01T00:00:00+08:00</updated><id>http://localhost:4000/UIKit-Learning-UIScrollView%20And%20AutoLayout</id><content type="html" xml:base="http://localhost:4000/UIKit-Learning-UIScrollView-And-AutoLayout/">&lt;p&gt;Ques: UIScrollView 是如何使得其内容视图滚动显示的。&lt;/p&gt;
 
 &lt;p&gt;Answser: 通过改变UIScrollView自身的Position,也就是bounds。&lt;/p&gt;
 
@@ -2933,4 +3033,4 @@ let声明的变量作用域包含定义它的块以及任何包含的子块中�
 
 &lt;p&gt;Reference: &lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/technotes/tn2154/_index.html&quot;&gt;UIScrollView With AutoLayout&lt;/a&gt;&lt;/p&gt;</content><author><name>一朵云风</name></author><category term="iOS UIScrollView AutoLayout" /><summary type="html">UIKit-Learning-UIScrollView And AutoLayout</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/technotes/tn2154/_index.html&quot;&gt;UIScrollView With AutoLayout&lt;/a&gt;&lt;/p&gt;</content><author><name>XuYanci</name></author><category term="iOS UIScrollView AutoLayout" /><summary type="html">UIKit-Learning-UIScrollView And AutoLayout</summary></entry></feed>

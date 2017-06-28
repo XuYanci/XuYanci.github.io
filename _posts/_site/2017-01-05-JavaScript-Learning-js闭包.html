@@ -1,0 +1,202 @@
+<p>目录</p>
+
+<ol>
+  <li>块级作用域与函数级作用域 </li>
+  <li>闭包基本知识 </li>
+  <li>作用域基本知识</li>
+  <li>IIFE 立即执行的函数表达式  </li>
+  <li>let 关键字</li>
+</ol>
+
+<h3 id="section">块级作用域与函数级作用域</h3>
+<blockquote>
+  <p>任何一对花括号（｛和｝）中的语句集都属于一个块，在这之中定义的所有变量在代码块外都是不可见的，我们称之为块级作用域。
+函数作用域就好理解了，定义在函数中的参数和变量在函数外部是不可见的。</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"> <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> 
+ <span class="p">{</span>
+   	 <span class="cm">/* 这里的i可见  */</span>	  
+ <span class="p">}</span>
+ <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%d"</span><span class="p">,</span><span class="n">i</span><span class="p">);</span> <span class="cm">/* 这里的i未定义 */</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> 
+ <span class="p">{</span>	
+ 	<span class="cm">/* 这里的i可见*/</span>	
+ <span class="p">}</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>	<span class="cm">/* 这里的i可见 */</span>    </code></pre></figure>
+
+<p>得出结论:</p>
+
+<p>js是函数级别作用域。</p>
+
+<h3 id="section-1">闭包基本知识</h3>
+<ul>
+  <li>
+    <p>闭包的解释</p>
+
+    <blockquote>
+      <p>闭包是指那些能够访问独立(自由)变量的函数 (变量在本地使用，但定义在一个封闭的作用域中)。换句话说，这些函数可以“记忆”它被创建时候的环境。</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>闭包的产生</p>
+
+    <blockquote>
+      <p>由于 JavaScript 中，函数是对象，对象是属性的集合，而属性的值又可以是对象，则在函数内定义函数成为理所当然，如果在函数 func 内部声明函数 inner，然后在函数外部调用 inner，这个过程即产生了一个闭包。</p>
+    </blockquote>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">	<span class="kd">function</span> <span class="nx">outer</span><span class="p">()</span> <span class="p">{</span>
+		<span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">// 定义变量i </span>
+		<span class="kd">function</span> <span class="nx">inner</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// 内部函数 </span>
+			<span class="nx">alert</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">return</span> <span class="nx">inner</span><span class="p">;</span>
+	<span class="p">}</span>
+		
+	<span class="kd">var</span> <span class="nx">func</span> <span class="o">=</span> <span class="nx">outer</span><span class="p">();</span> <span class="c1">// 产生一个闭包 </span>
+	<span class="nx">func</span><span class="p">();</span> <span class="c1">// alert(100)</span></code></pre></figure>
+
+<h3 id="section-2">作用域基本知识</h3>
+<ul>
+  <li>
+    <p>作用域的解释</p>
+
+    <blockquote>
+      <p>在 JavaScript 中，变量的作用域是由它在源代码中所处位置决定的（显然如此），并且嵌套的函数可以访问到其外层作用域中声明的变量。
+ 作用域链的原理和原型链很类似，如果这个变量在自己的作用域中没有，那么它会寻找父级的，直到最顶层。</p>
+    </blockquote>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">	<span class="cm">/*! 定义全局变量 g_i */</span>
+	<span class="kd">var</span> <span class="nx">g_i</span> <span class="o">=</span> <span class="mi">101</span><span class="p">;</span>
+	<span class="kd">function</span> <span class="nx">outer</span><span class="p">()</span> <span class="p">{</span>
+		<span class="cm">/*! 定义变量i */</span>
+		<span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> 
+		<span class="cm">/*! 内部函数 */</span>
+		<span class="kd">function</span> <span class="nx">inner</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">alert</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="nx">g_i</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">return</span> <span class="nx">inner</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="kd">var</span> <span class="nx">func</span> <span class="o">=</span> <span class="nx">outer</span><span class="p">();</span> 
+	<span class="nx">func</span><span class="p">();</span> <span class="c1">// alert(201)</span>
+	
+  </code></pre></figure>
+
+<h3 id="iife-">IIFE 立即执行的函数表达式</h3>
+<ul>
+  <li>
+    <p>IIFE的解释</p>
+
+    <blockquote>
+      <p>IIFE (立即调用函数表达式) 是一个 JavaScript 函数 ，它会在定义时立即执行。
+IIFE的引用主要是限制变量的生命周期,以及可以用来锁定值并且有效的保存当时的状态。</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>IIFE的应用</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">g_i</span> <span class="o">=</span> <span class="mi">101</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">outer</span><span class="p">()</span> <span class="p">{</span>
+	<span class="cm">/*! 定义变量i */</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> 
+	<span class="cm">/*! 内部函数 */</span>
+	<span class="kd">function</span> <span class="nx">inner</span><span class="p">()</span> <span class="p">{</span>
+	<span class="cm">/*! 定义变量j*/</span>
+	<span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">101</span><span class="p">;</span>
+	<span class="nx">alert</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="nx">g_i</span><span class="p">);</span>
+	<span class="nx">alert</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span> <span class="cm">/*! 这里可以访问j变量*/</span>
+	<span class="p">};</span>
+	<span class="k">return</span> <span class="nx">inner</span><span class="p">;</span>
+<span class="p">};</span> 	
+
+<span class="kd">var</span> <span class="nx">func</span> <span class="o">=</span> <span class="nx">outer</span><span class="p">();</span>
+<span class="nx">func</span><span class="p">();</span> <span class="c1">// alert (201) , alert(101)</span></code></pre></figure>
+
+<p>如何限制变量j的生命周期的,通过引用一个立即调用函数表达式。</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">g_i</span> <span class="o">=</span> <span class="mi">101</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">outer</span><span class="p">()</span> <span class="p">{</span>
+	<span class="cm">/*! 定义变量i */</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> 
+	<span class="cm">/*! 内部函数 */</span>
+	<span class="kd">function</span> <span class="nx">inner</span><span class="p">()</span> <span class="p">{</span>
+	<span class="cm">/*! 这里引用立即调用函数表达式 */</span>
+	<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="cm">/*! 定义变量j*/</span>
+	<span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">101</span><span class="p">;</span>
+	<span class="nx">alert</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="nx">g_i</span><span class="p">);</span>
+	<span class="p">)();</span>
+	<span class="nx">alert</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span> <span class="cm">/*! 这里无法访问j变量*/</span>
+<span class="p">};</span>
+	<span class="k">return</span> <span class="nx">inner</span><span class="p">;</span>
+<span class="p">};</span> 	
+
+<span class="kd">var</span> <span class="nx">func</span> <span class="o">=</span> <span class="nx">outer</span><span class="p">();</span>
+<span class="nx">func</span><span class="p">();</span> <span class="c1">// alert (201)</span></code></pre></figure>
+
+<p>下面看一个例子</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">indicators</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"li"</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">indicators</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+	 <span class="kd">var</span> <span class="nx">trigger</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+		 <span class="nx">indicators</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		 	<span class="nx">alert</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+		 <span class="p">}</span>
+	<span class="p">}</span>
+	<span class="nx">trigger</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>当你点击指示器的时候,我们会发现执行结果是alert(indicators.length),并非我们期望的 alert(i)。
+也就是onclick事件触发时候, i的值是循环后最后的值。(ps: 通过闭包以及作用域我们知道事件触发时候i当时的值是最后的值)。</p>
+
+<p>FAQ : 那怎么去锁定值i并且有效的保存当时的状态. 通过引用一个立即调用函数表达式即可。</p>
+
+<p>Answer: 使用IIFE。</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">indicators</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"li"</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">indicators</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+	 <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">temp</span><span class="p">){</span>
+		 <span class="nx">indicators</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		 	<span class="nx">alert</span><span class="p">(</span><span class="nx">temp</span><span class="p">);</span>
+		 <span class="p">}</span>
+	<span class="p">})(</span><span class="nx">i</span><span class="p">);</span> <span class="cm">/*! 通过IIFE来锁定值i并且有效的保存当时的状态 */</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>当你点击指示器的时候,执行结果就是你点击对应的指示器index。</p>
+
+<h3 id="let">let关键字</h3>
+<ul>
+  <li>
+    <p>let解释</p>
+
+    <blockquote>
+      <p>let 允许把变量的作用域限制在块级域中。与 var 不同处是：var 声明变量要么是全局的，要么是函数级的，而无法是块级的。    <br />
+let声明的变量作用域包含定义它的块以及任何包含的子块中。在这方面，let与var非常像。它们之间主要的区别在于一个var变量的作用域是整个封闭函数。</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p>在上个例子,我们通过IIFE来锁定值i并且有效的保存当时的状态,主要是因为var是函数级作用域的原因。接着我们看看let关键字(块作用域)如何来实现锁定值i并且有效的保存当时的状态。</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">indicators</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"li"</span><span class="p">);</span>
+<span class="cm">/* 替换var */</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">indicators</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> 
+	 <span class="kd">var</span> <span class="nx">trigger</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+		 <span class="nx">indicators</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		 	<span class="nx">alert</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+		 <span class="p">}</span>
+	<span class="p">}</span>
+	<span class="nx">trigger</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>😁 是不是超级熟悉,这不就是我们很常用的语法么!</p>
+
+<h3 id="end">End</h3>
