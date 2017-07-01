@@ -134,11 +134,151 @@ $bank->pay(259);
 
 ### 命令模式
 
-continue ... 
+应用例子
+> 一个一般的例子是你在餐厅定餐。 你(i.e. Client) 问服务员 (i.e. Invoker) 去买一些食物 (i.e. Command) 和 服务员传递请求给知道烹饪什么和如何烹饪的厨师 (i.e. Receiver)。 另外一个例子是你(i.e. Client) 使用遥控器来控制 (i.e. Command) 电视 (i.e. Receiver)
+
+简单地说
+> 允许你对目标封装行为。它的主要目的是提供工具来解耦客户以及接受者。
+
+维基百科说
+> 在面向对象编程中，命令模式是行为设计模式，一个目标被封装成包含所有的信息来完成动作以及延迟触发一个事件。这个信息包含方法名，这个目标拥有该方法以及方法参数的目标
+
+程序例子
+首先我们有一个接受者，它拥有所有动作的实现以及能被执行
 
 
+{% highlight java %}
+
+// Receiver
+class Bulb
+{
+public function turnOn()
+{
+echo "Bulb has been lit";
+}
+
+public function turnOff()
+{
+echo "Darkness!";
+}
+}
+
+{% endhighlight %} 
+
+然后我们有一个接口，它包含每一个被实现的命令以及我们有一个目标集合
+
+{% highlight java %}
+interface Command
+{
+public function execute();
+public function undo();
+public function redo();
+}
+
+// Command
+class TurnOn implements Command
+{
+protected $bulb;
+
+public function __construct(Bulb $bulb)
+{
+$this->bulb = $bulb;
+}
+
+public function execute()
+{
+$this->bulb->turnOn();
+}
+
+public function undo()
+{
+$this->bulb->turnOff();
+}
+
+public function redo()
+{
+$this->execute();
+}
+}
+
+class TurnOff implements Command
+{
+protected $bulb;
+
+public function __construct(Bulb $bulb)
+{
+$this->bulb = $bulb;
+}
+
+public function execute()
+{
+$this->bulb->turnOff();
+}
+
+public function undo()
+{
+$this->bulb->turnOn();
+}
+
+public function redo()
+{
+$this->execute();
+}
+}
+
+{% endhighlight %} 
+
+然后我们有一个Invoker，客户能够调用它来处理所有的命令
+
+{% highlight java %}
+// Invoker
+class RemoteControl
+{
+public function submit(Command $command)
+{
+$command->execute();
+}
+}
+
+{% endhighlight %} 
+
+最后 让我们看如何使用
+
+{% highlight java %}
+$bulb = new Bulb();
+
+$turnOn = new TurnOn($bulb);
+$turnOff = new TurnOff($bulb);
+
+$remote = new RemoteControl();
+$remote->submit($turnOn); // Bulb has been lit!
+$remote->submit($turnOff); // Darkness!
 
 
+{% endhighlight %} 
+
+命令模式能够被使用来完成一个事务系统。当你保存执行过的历史命令。如果最后一个命令成功执行，
+这是很棒的，否则你可以迭代这个命令历史来为所有执行过的命令执行undo操作。
 
 
+### Iterator (Wait ...)
 
+### Mediator
+
+### Memento
+
+### Observer
+
+### Visitor
+
+### Strategy
+
+### State
+
+### Template Method
+
+### Wrap Up Folks
+
+### Contribution
+
+### License
