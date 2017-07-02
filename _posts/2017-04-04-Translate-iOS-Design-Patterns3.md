@@ -135,12 +135,15 @@ $bank->pay(259);
 ### 命令模式
 
 应用例子
+
 > 一个一般的例子是你在餐厅定餐。 你(i.e. Client) 问服务员 (i.e. Invoker) 去买一些食物 (i.e. Command) 和 服务员传递请求给知道烹饪什么和如何烹饪的厨师 (i.e. Receiver)。 另外一个例子是你(i.e. Client) 使用遥控器来控制 (i.e. Command) 电视 (i.e. Receiver)
 
 简单地说
+
 > 允许你对目标封装行为。它的主要目的是提供工具来解耦客户以及接受者。
 
 维基百科说
+
 > 在面向对象编程中，命令模式是行为设计模式，一个目标被封装成包含所有的信息来完成动作以及延迟触发一个事件。这个信息包含方法名，这个目标拥有该方法以及方法参数的目标
 
 程序例子
@@ -261,9 +264,118 @@ $remote->submit($turnOff); // Darkness!
 这是很棒的，否则你可以迭代这个命令历史来为所有执行过的命令执行undo操作。
 
 
-### Iterator (Wait ...)
+### Iterator 
+应用例子
 
-### Mediator
+> 老式的电台是一个很好的迭代器例子，用户从某个频道开始，按上一个或者下一个按钮来收听对应的频道。或者举一个MP3播放器的例子，或者举一个TV电视的例子，你可以按上一个和下一个按钮来顺序的浏览频道。换句话说，他们提供同一个接口来迭代浏览对应的频道，歌曲或者音频频道。
+
+简单的说 
+
+> 它提供一个方式来访问目标的元素，但并不暴露底层的实现。
+
+维基百科说
+
+> 在面向对象编程中，迭代器模式是一个迭代器用来遍历容器以及访问容器里的元素。迭代者模式从容器中解耦算法；在某些例子中，算法是容器特定必要的以及无法被解耦的。
+
+程序例子
+
+在PHP中，很容易使用SPL(Standard PHP Library)来实现。将上面的电台例子翻译一下。首先我们有一个**RadioStation**
+
+{% highlight java %}
+class RadioStation
+{
+protected $frequency;
+
+public function __construct(float $frequency)
+{
+$this->frequency = $frequency;
+}
+
+public function getFrequency(): float
+{
+return $this->frequency;
+}
+}
+
+{% endhighlight %} 
+
+然后我们有着自己的迭代器
+
+{% highlight java %}
+use Countable;
+use Iterator;
+
+class StationList implements Countable, Iterator
+{
+/** @var RadioStation[] $stations */
+protected $stations = [];
+
+/** @var int $counter */
+protected $counter;
+
+public function addStation(RadioStation $station)
+{
+$this->stations[] = $station;
+}
+
+public function removeStation(RadioStation $toRemove)
+{
+$toRemoveFrequency = $toRemove->getFrequency();
+$this->stations = array_filter($this->stations, function (RadioStation $station) use ($toRemoveFrequency) {
+return $station->getFrequency() !== $toRemoveFrequency;
+});
+}
+
+public function count(): int
+{
+return count($this->stations);
+}
+
+public function current(): RadioStation
+{
+return $this->stations[$this->counter];
+}
+
+public function key()
+{
+return $this->counter;
+}
+
+public function next()
+{
+$this->counter++;
+}
+
+public function rewind()
+{
+$this->counter = 0;
+}
+
+public function valid(): bool
+{
+return isset($this->stations[$this->counter]);
+}
+}
+
+{% endhighlight %} 
+
+然后它能这样来使用
+{% highlight java %}
+$stationList = new StationList();
+
+$stationList->addStation(new RadioStation(89));
+$stationList->addStation(new RadioStation(101));
+$stationList->addStation(new RadioStation(102));
+$stationList->addStation(new RadioStation(103.2));
+
+foreach($stationList as $station) {
+echo $station->getFrequency() . PHP_EOL;
+}
+
+$stationList->removeStation(new RadioStation(89)); // Will remove station 89
+{% endhighlight %} 
+
+### Mediator (Wait ...)
 
 ### Memento
 
