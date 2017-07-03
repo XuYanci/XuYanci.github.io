@@ -375,9 +375,87 @@ echo $station->getFrequency() . PHP_EOL;
 $stationList->removeStation(new RadioStation(89)); // Will remove station 89
 {% endhighlight %} 
 
-### Mediator (Wait ...)
+### Mediator 
 
-### Memento
+应用例子
+
+> 一个普通的例子就是当你通过电话和别人说话的时候，有一个网络提供者在你们的会话中间，你们说话并不是直接传送的，在这个例子中网络提供者就就是中介者。
+
+简单的说
+
+> 中介者模式添加第三方对象(称为中介者) 来控制两个目标之间的交互(称为同伴)。它主要是解耦类之间的通讯。因为现在他们并不需要知道各自的实现。
+
+维基百科说
+
+> 在软件工程中，中介者模式封装了目标间之间的交互。这个模式被认为是一个行为模式是因为它能够改变程序运行中的行为。
+
+程序例子
+
+这是一个最简单的聊天室例子(i.e. 中介者) ，用户(i.e. 同伴)之间互相发送消息
+
+首先，我们有一个中介者.i.e.聊天室
+
+{% highlight java %}
+interface ChatRoomMediator 
+{
+public function showMessage(User $user, string $message);
+}
+
+// Mediator
+class ChatRoom implements ChatRoomMediator
+{
+public function showMessage(User $user, string $message)
+{
+$time = date('M d, y H:i');
+$sender = $user->getName();
+
+echo $time . '[' . $sender . ']:' . $message;
+}
+}
+
+{% endhighlight %} 
+
+然后我们有我们的用户i.e.同伴
+
+{% highlight java %}
+class User {
+protected $name;
+protected $chatMediator;
+
+public function __construct(string $name, ChatRoomMediator $chatMediator) {
+$this->name = $name;
+$this->chatMediator = $chatMediator;
+}
+
+public function getName() {
+return $this->name;
+}
+
+public function send($message) {
+$this->chatMediator->showMessage($this, $message);
+}
+}
+{% endhighlight %} 
+
+以及用法
+
+{% highlight java %}
+
+$mediator = new ChatRoom();
+
+$john = new User('John Doe', $mediator);
+$jane = new User('Jane Doe', $mediator);
+
+$john->send('Hi there!');
+$jane->send('Hey!');
+
+// Output will be
+// Feb 14, 10:58 [John]: Hi there!
+// Feb 14, 10:58 [Jane]: Hey!
+
+{% endhighlight %} 
+
+### Memento (Wait ...)
 
 ### Observer
 
