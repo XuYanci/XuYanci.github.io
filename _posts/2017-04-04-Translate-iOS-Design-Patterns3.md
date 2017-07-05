@@ -455,11 +455,101 @@ $jane->send('Hey!');
 
 {% endhighlight %} 
 
-### Memento (Wait ...)
+### Memento 
+应用例子
+
+> 举一个计算器的例子 (i.e. originator), 你在哪里完成计算的时候，最后的计算结果都会保存在内存之中 (i.e. memento) ，你可以回溯它，也可以使用某些动作按钮来存储它(i.e. caretaker)。
+
+简单的说
+
+> 备忘录模式是在一定程度上关于拷贝和存储目标的当前状态，他也能够以平稳的方式存储。
+
+
+维基百科说 
+
+> 备忘录模式是一个软件设计模式，能够提供恢复到之前状态的能力（undo via rollback)
+
+在你需要提供某些取消的功能是非常有用的。
+
+程序例子
+
+举一个文本编辑器的例子，它能够实时保存状态，而且你能过回复你所想要的。
+首先，我们有自己的备忘录对象，它能够保存编辑器状态
+
+{% highlight java %}
+class EditorMemento
+{
+protected $content;
+
+public function __construct(string $content)
+{
+$this->content = $content;
+}
+
+public function getContent()
+{
+return $this->content;
+}
+}
+{% endhighlight %} 
+
+然后我们有我们的编辑器 i.e. originator 来使用备忘录对象
+
+{% highlight java %}
+class Editor
+{
+protected $content = '';
+
+public function type(string $words)
+{
+$this->content = $this->content . ' ' . $words;
+}
+
+public function getContent()
+{
+return $this->content;
+}
+
+public function save()
+{
+return new EditorMemento($this->content);
+}
+
+public function restore(EditorMemento $memento)
+{
+$this->content = $memento->getContent();
+}
+}
+{% endhighlight %} 
+
+它能这么被使用
+{% highlight java %}
+$editor = new Editor();
+
+// Type some stuff
+$editor->type('This is the first sentence.');
+$editor->type('This is second.');
+
+// Save the state to restore to : This is the first sentence. This is second.
+$saved = $editor->save();
+
+// Type some more
+$editor->type('And this is third.');
+
+// Output: Content before Saving
+echo $editor->getContent(); // This is the first sentence. This is second. And this is third.
+
+// Restoring to last saved state
+$editor->restore($saved);
+
+$editor->getContent(); // This is the first sentence. This is second.
+{% endhighlight %} 
 
 ### Observer
 
-### Visitor
+
+
+### Visitor (Wait ...)
 
 ### Strategy
 
