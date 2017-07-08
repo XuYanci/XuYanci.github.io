@@ -547,18 +547,568 @@ $editor->getContent(); // This is the first sentence. This is second.
 
 ### Observer
 
+应用例子
+
+> 一个好的例子是求职者在求职网站订阅工作，如果有匹配的工作机会他们将会被通知。
+
+简单的说
+
+> 定义一个目标之间的依赖，当目标状态被修改了，所有它的依赖都会被通知
+
+维基百科说
+
+> 观察者模式是一个软件设计模式，一个目标我们称为话题。保存着一个它的依赖列表，我们称为订阅者，当状态修改了会自动通知他们，一般会调用它们的犯法。
 
 
-### Visitor (Wait ...)
+
+程序例子
+
+翻译我们上面的例子。首先我们有求职者需要在工作发布时候被通知。
+
+
+{% highlight java %}
+
+class JobPost
+{
+protected $title;
+
+public function __construct(string $title)
+{
+$this->title = $title;
+}
+
+public function getTitle()
+{
+return $this->title;
+}
+}
+
+class JobSeeker implements Observer
+{
+protected $name;
+
+public function __construct(string $name)
+{
+$this->name = $name;
+}
+
+public function onJobPosted(JobPost $job)
+{
+// Do something with the job posting
+echo 'Hi ' . $this->name . '! New job posted: '. $job->getTitle();
+}
+}
+
+{% endhighlight %} 
+
+然后我们有我们的发布工作，求职者会订阅它
+
+{% highlight java %}
+class JobPostings implements Observable
+{
+protected $observers = [];
+
+protected function notify(JobPost $jobPosting)
+{
+foreach ($this->observers as $observer) {
+$observer->onJobPosted($jobPosting);
+}
+}
+
+public function attach(Observer $observer)
+{
+$this->observers[] = $observer;
+}
+
+public function addJob(JobPost $jobPosting)
+{
+$this->notify($jobPosting);
+}
+}
+{% endhighlight %} 
+
+然后这样使用它
+
+{% highlight java %}
+
+// Create subscribers
+$johnDoe = new JobSeeker('John Doe');
+$janeDoe = new JobSeeker('Jane Doe');
+
+// Create publisher and attach subscribers
+$jobPostings = new JobPostings();
+$jobPostings->attach($johnDoe);
+$jobPostings->attach($janeDoe);
+
+// Add a new job and see if subscribers get notified
+$jobPostings->addJob(new JobPost('Software Engineer'));
+
+// Output
+// Hi John Doe! New job posted: Software Engineer
+// Hi Jane Doe! New job posted: Software Engineer
+
+{% endhighlight %} 
+
+### Visitor 
+
+应用例子
+
+想象某个人拜访迪拜。他们只是需要一个方式进入迪拜(i.e. visa)，到了之后，他们可以自己拜访迪拜的任何地方，而不需要请求许可或者做些跑腿工作来拜访；只是让他们知道什么地方可以拜访。访问者模式让你做这些，它帮你添加地方来访问，因此它们能够被访问而不需要做其他跑腿工作。   
+
+简单的说 
+
+访问者模式让你添加更多操作而不需要修改他们。
+
+维基百科说
+
+在面向对象编程以及软件工程中，访问者设计模式是一种分离它操作的目标结构的一种算法。一个实际操作例子是为已经存在的目标添加额外操作而不需要修改这些结构。它也是一种遵循开闭原则的方式。
+
+
+程序例子
+
+让我们举一个动物园的例子，我们有着不同种类的动物以及我们让它们发出声音。让我们使用访问者模式来转换它。
+
+
+{% highlight java %}
+// Visitee
+interface Animal
+{
+public function accept(AnimalOperation $operation);
+}
+
+// Visitor
+interface AnimalOperation
+{
+public function visitMonkey(Monkey $monkey);
+public function visitLion(Lion $lion);
+public function visitDolphin(Dolphin $dolphin);
+}
+{% endhighlight %} 
+
+然后我们有动物们的实现
+
+{% highlight java %}
+class Monkey implements Animal
+{
+public function shout()
+{
+echo 'Ooh oo aa aa!';
+}
+
+public function accept(AnimalOperation $operation)
+{
+$operation->visitMonkey($this);
+}
+}
+
+class Lion implements Animal
+{
+public function roar()
+{
+echo 'Roaaar!';
+}
+
+public function accept(AnimalOperation $operation)
+{
+$operation->visitLion($this);
+}
+}
+
+class Dolphin implements Animal
+{
+public function speak()
+{
+echo 'Tuut tuttu tuutt!';
+}
+
+public function accept(AnimalOperation $operation)
+{
+$operation->visitDolphin($this);
+}
+}
+
+{% endhighlight %} 
+
+继续完成我们的访问者
+
+class Speak implements AnimalOperation
+{
+public function visitMonkey(Monkey $monkey)
+{
+$monkey->shout();
+}
+
+public function visitLion(Lion $lion)
+{
+$lion->roar();
+}
+
+public function visitDolphin(Dolphin $dolphin)
+{
+$dolphin->speak();
+}
+}
+
+我们可以这么使用
+
+{% highlight java %}
+$monkey = new Monkey();
+$lion = new Lion();
+$dolphin = new Dolphin();
+
+$speak = new Speak();
+
+$monkey->accept($speak);    // Ooh oo aa aa!    
+$lion->accept($speak);      // Roaaar!
+$dolphin->accept($speak);   // Tuut tutt tuutt!
+{% endhighlight %} 
+
+我们可以通过继承动物们来做这些，但是当我们添加新的行为的时候，我们不得不修改动物。而我们现在不需要去修改它们。例如我们需要为动物们添加跳跃动作，我们只需要简单添加一个新的拜访者。
+
+{% highlight java %}
+class Jump implements AnimalOperation
+{
+public function visitMonkey(Monkey $monkey)
+{
+echo 'Jumped 20 feet high! on to the tree!';
+}
+
+public function visitLion(Lion $lion)
+{
+echo 'Jumped 7 feet! Back on the ground!';
+}
+
+public function visitDolphin(Dolphin $dolphin)
+{
+echo 'Walked on water a little and disappeared';
+}
+}
+{% endhighlight %} 
+
+我们这样来使用
+
+{% highlight java %}
+$jump = new Jump();
+
+$monkey->accept($speak);   // Ooh oo aa aa!
+$monkey->accept($jump);    // Jumped 20 feet high! on to the tree!
+
+$lion->accept($speak);     // Roaaar!
+$lion->accept($jump);      // Jumped 7 feet! Back on the ground!
+
+$dolphin->accept($speak);  // Tuut tutt tuutt!
+$dolphin->accept($jump);   // Walked on water a little and disappeared
+{% endhighlight %} 
 
 ### Strategy
 
+应用例子
+
+考虑一下排序的例子，我们完成了冒泡排序，但是当数据增长的时候，冒泡排序就变得越来越慢了。为了解决这个我们完成了快速排序。但是尽管快速排序对大数据集合比较快，但对小数据集合就变得很慢了。为了解决这个问题，我们实现一个当小数据集合时候，我们使用冒泡排序，当大数据集合时候，我们使用快速排序。
+
+简单地说
+
+策略模式允许你根据不同的情形来切换算法和策略
+
+维基百科说
+
+在计算机编程中，策略模式(也叫政策模式)是行为型模式，它允许算法行为动态选择。
+
+程序例子
+
+转换我们上面的例子。首先我们有我们的策略接口以及不同的策略实现
+
+
+{% highlight java %}
+interface SortStrategy
+{
+public function sort(array $dataset): array;
+}
+
+class BubbleSortStrategy implements SortStrategy
+{
+public function sort(array $dataset): array
+{
+echo "Sorting using bubble sort";
+
+// Do sorting
+return $dataset;
+}
+}
+
+class QuickSortStrategy implements SortStrategy
+{
+public function sort(array $dataset): array
+{
+echo "Sorting using quick sort";
+
+// Do sorting
+return $dataset;
+}
+}
+{% endhighlight %}
+
+然后我们有一个我们的客户来实现任何策略
+
+{% highlight java %}
+class Sorter
+{
+protected $sorter;
+
+public function __construct(SortStrategy $sorter)
+{
+$this->sorter = $sorter;
+}
+
+public function sort(array $dataset): array
+{
+return $this->sorter->sort($dataset);
+}
+}
+{% endhighlight %}
+
+它能这么使用
+
+{% highlight java %}
+$dataset = [1, 5, 4, 3, 2, 8];
+
+$sorter = new Sorter(new BubbleSortStrategy());
+$sorter->sort($dataset); // Output : Sorting using bubble sort
+
+$sorter = new Sorter(new QuickSortStrategy());
+$sorter->sort($dataset); // Output : Sorting using quick sort
+{% endhighlight %}
+
+
 ### State
+
+应用例子
+
+> 想象你在使用某些绘图程序，你选择画刷来绘制。现在画刷根据选择的颜色来改变它的行为 i.e.。如果你已经选择了红色，它就会是红色，如果是蓝色，它就会是蓝色。
+
+简单的说
+
+> 它让你在状态改变的时候改变类行为。
+
+维基百科说
+
+> 状态模式是行为软件设计模式，它使用一种面向对象的方式实现状态机。使用状态模式，通过实现不同的状态作为状态模式接口的派生类来实现，通过调用在状态父类的方法实现状态转换。状态模式可以被解释为策略模式，它通过调用定义在模式中的接口来切换当前的状态。
+
+程序例子
+
+
+> 让我们举一个文本编辑器的例子，它让你改变已经编辑文本的状态 i.e. 如果你选择粗体，它就会是粗体，如果选择细体，他就是细体 etc.
+
+首先我们有我们的状态接口以及某些状态实现
+
+{% highlight java %}
+interface WritingState
+{
+public function write(string $words);
+}
+
+class UpperCase implements WritingState
+{
+public function write(string $words)
+{
+echo strtoupper($words);
+}
+}
+
+class LowerCase implements WritingState
+{
+public function write(string $words)
+{
+echo strtolower($words);
+}
+}
+
+class Default implements WritingState
+{
+public function write(string $words)
+{
+echo $words;
+}
+}
+{% endhighlight %}
+
+然后我们有自己的编辑器
+
+{% highlight java %}
+class TextEditor
+{
+protected $state;
+
+public function __construct(WritingState $state)
+{
+$this->state = $state;
+}
+
+public function setState(WritingState $state)
+{
+$this->state = $state;
+}
+
+public function type(string $words)
+{
+$this->state->write($words);
+}
+}
+{% endhighlight %}
+
+然后我们这样使用
+
+{% highlight java %}
+$editor = new TextEditor(new Default());
+
+$editor->type('First line');
+
+$editor->setState(new UpperCase());
+
+$editor->type('Second line');
+$editor->type('Third line');
+
+$editor->setState(new LowerCase());
+
+$editor->type('Fourth line');
+$editor->type('Fifth line');
+
+// Output:
+// First line
+// SECOND LINE
+// THIRD LINE
+// fourth line
+// fifth line
+{% endhighlight %}
 
 ### Template Method
 
-### Wrap Up Folks
+应用例子
 
-### Contribution
+假如我们要建房子。建房子的步骤可能 
 
-### License
+>
+
+* 打地基
+* 建墙壁
+* 添加屋顶
+* 添加地板
+
+这些步骤的顺序不会改变。你不能在建墙壁之前建立屋顶。但是这些步骤能够被修改，例如墙壁能够是木做的，或者聚酯或者石头。
+
+简单的说
+
+> 模板方法定义一个能够执行确定算法的骨架。但是将实现延迟放到子类来实现。
+
+维基百科说
+
+> 在软件工程中，模板方法是行为设计模式用来定义在操作中算法的程序骨架，延迟这些步骤到子类实现。它让你重定义算法步骤而不需要修改到算法结构。
+
+程序例子
+
+> 加入我们有一个建造工具能够帮我们测试，建造以及产生建造报告(i.e. 代码覆盖报告 etc)，然后发布我们的应用到测试服务器。
+
+首先我们有一个基类定义建造算法的骨架。
+
+{% highlight java %}
+abstract class Builder
+{
+
+// Template method
+final public function build()
+{
+$this->test();
+$this->lint();
+$this->assemble();
+$this->deploy();
+}
+
+abstract public function test();
+abstract public function lint();
+abstract public function assemble();
+abstract public function deploy();
+}
+{% endhighlight %}
+
+然后我们的实现
+
+
+{% highlight java %}
+class AndroidBuilder extends Builder
+{
+public function test()
+{
+echo 'Running android tests';
+}
+
+public function lint()
+{
+echo 'Linting the android code';
+}
+
+public function assemble()
+{
+echo 'Assembling the android build';
+}
+
+public function deploy()
+{
+echo 'Deploying android build to server';
+}
+}
+
+class IosBuilder extends Builder
+{
+public function test()
+{
+echo 'Running ios tests';
+}
+
+public function lint()
+{
+echo 'Linting the ios code';
+}
+
+public function assemble()
+{
+echo 'Assembling the ios build';
+}
+
+public function deploy()
+{
+echo 'Deploying ios build to server';
+}
+}
+{% endhighlight %}
+
+然后我们这么使用
+
+{% highlight java %}
+$androidBuilder = new AndroidBuilder();
+$androidBuilder->build();
+
+// Output:
+// Running android tests
+// Linting the android code
+// Assembling the android build
+// Deploying android build to server
+
+$iosBuilder = new IosBuilder();
+$iosBuilder->build();
+
+// Output:
+// Running ios tests
+// Linting the ios code
+// Assembling the ios build
+// Deploying ios build to server
+{% endhighlight %}
+
+
+
+### End 行为 ###
+
+| 日期| 作者 | 说明 |
+| ------------ | ------------- | ------------ |
+| 2017-07-09 | YC | 初步翻译完成 |
+
+
