@@ -1,0 +1,176 @@
+<h3 id="specs">Specs</h3>
+
+<p><strong>Podspec</strong> 描述了一个Pod库的版本。 一个Pod， 在大部分时间里，会拥有很多Specs。它包含了从哪里获取源码，使用什么文件，应用什么设置以及其他元数据例如它的名称，版本以及描述等。</p>
+
+<p><em>Example</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="no">Pod</span><span class="o">::</span><span class="no">Spec</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">spec</span><span class="o">|</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">name</span>             <span class="o">=</span> <span class="s1">'Reachability'</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">version</span>          <span class="o">=</span> <span class="s1">'3.1.0'</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">license</span>          <span class="o">=</span> <span class="p">{</span> <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'BSD'</span> <span class="p">}</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">homepage</span>         <span class="o">=</span> <span class="s1">'https://github.com/tonymillion/Reachability'</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">authors</span>          <span class="o">=</span> <span class="p">{</span> <span class="s1">'Tony Million'</span> <span class="o">=&gt;</span> <span class="s1">'tonymillion@gmail.com'</span> <span class="p">}</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">summary</span>          <span class="o">=</span> <span class="s1">'ARC and GCD Compatible Reachability Class for iOS and macOS.'</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">source</span>           <span class="o">=</span> <span class="p">{</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/tonymillion/Reachability.git'</span><span class="p">,</span> <span class="ss">:tag</span> <span class="o">=&gt;</span> <span class="s1">'v3.1.0'</span> <span class="p">}</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">source_files</span>     <span class="o">=</span> <span class="s1">'Reachability.h,m'</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">framework</span>        <span class="o">=</span> <span class="s1">'SystemConfiguration'</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">requires_arc</span>     <span class="o">=</span> <span class="kp">true</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<h3 id="specs-repo">Specs Repo</h3>
+
+<p><strong>Specs Repo</strong> 是一个GitHub上的仓库，包含所有可用Pods。每一个库有着单独的文件夹，里面包含那个库中可用版本的子文件夹。</p>
+
+<p><em>Example</em></p>
+
+<p><img src="/Users/tdw/Desktop/Yanci/tdw/Resources/CocoaPods/8.png" alt="8" /></p>
+
+<h3 id="sub-specs">Sub Specs</h3>
+
+<p><strong>Subspecs</strong> 是一种分离Podspec功能的方式，允许用户安装你库中的某部分功能。</p>
+
+<p><em>Example</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="no">Pod</span><span class="o">::</span><span class="no">Spec</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">spec</span><span class="o">|</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">name</span>          <span class="o">=</span> <span class="s1">'ShareKit'</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">source_files</span>  <span class="o">=</span> <span class="s1">'Classes/ShareKit/{Configuration,Core,Customize UI,UI}/**/*.{h,m,c}'</span>
+<span class="c1"># ...</span>
+
+<span class="n">spec</span><span class="p">.</span><span class="nf">subspec</span> <span class="s1">'Evernote'</span> <span class="k">do</span> <span class="o">|</span><span class="n">evernote</span><span class="o">|</span>
+<span class="n">evernote</span><span class="p">.</span><span class="nf">source_files</span> <span class="o">=</span> <span class="s1">'Classes/ShareKit/Sharers/Services/Evernote/**/*.{h,m}'</span>
+<span class="k">end</span>
+
+<span class="n">spec</span><span class="p">.</span><span class="nf">subspec</span> <span class="s1">'Facebook'</span> <span class="k">do</span> <span class="o">|</span><span class="n">facebook</span><span class="o">|</span>
+<span class="n">facebook</span><span class="p">.</span><span class="nf">source_files</span>   <span class="o">=</span> <span class="s1">'Classes/ShareKit/Sharers/Services/Facebook/**/*.{h,m}'</span>
+<span class="n">facebook</span><span class="p">.</span><span class="nf">compiler_flags</span> <span class="o">=</span> <span class="s1">'-Wno-incomplete-implementation -Wno-missing-prototypes'</span>
+<span class="n">facebook</span><span class="p">.</span><span class="nf">dependency</span> <span class="s1">'Facebook-iOS-SDK'</span>
+<span class="k">end</span>
+<span class="c1"># ...</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p><strong>pod ‘ShareKit’</strong> 意味着安装整个库，<strong>pod ‘ShareKit/Facebook’</strong> 意味着安装库中的Facebook部分。</p>
+
+<h4 id="sub-module">Sub Module</h4>
+
+<p>当你在仓库中有某些子模块，你需要设置 <strong>s.souce</strong>中的key <strong>:submodules</strong> 为true。 然后你可以使用上述的方式来使用它。</p>
+
+<p><em>Example</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="no">Pod</span><span class="o">::</span><span class="no">Spec</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">spec</span><span class="o">|</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">name</span>          <span class="o">=</span> <span class="s1">'SDLoginKit'</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">source</span>        <span class="o">=</span>  <span class="p">{</span> 
+<span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/dulaccc/SDLoginKit.git'</span><span class="p">,</span>
+<span class="ss">:tag</span> <span class="o">=&gt;</span> <span class="s1">'1.0.2'</span><span class="p">,</span> 
+<span class="ss">:submodules</span> <span class="o">=&gt;</span> <span class="kp">true</span> 
+<span class="p">}</span>
+<span class="c1"># ...</span>
+
+<span class="n">spec</span><span class="p">.</span><span class="nf">subspec</span> <span class="s1">'SDKit'</span> <span class="k">do</span> <span class="o">|</span><span class="n">sdkit</span><span class="o">|</span>
+<span class="n">sdkit</span><span class="p">.</span><span class="nf">source_files</span> <span class="o">=</span> <span class="s1">'SDKit/**/*.{h,m}'</span>
+<span class="n">sdkit</span><span class="p">.</span><span class="nf">resources</span>    <span class="o">=</span> <span class="s1">'SDKit/**/Assets/*.png'</span>
+<span class="k">end</span>
+<span class="c1"># ...</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<h3 id="private-pods">Private Pods</h3>
+
+<ol>
+  <li>创建一个私有的Spec repo</li>
+  <li>添加你的私有仓库到你的CocoaPods安装位置</li>
+  <li>添加你的Podspec到你的repo</li>
+  <li>就是这样!</li>
+</ol>
+
+<h3 id="section">团贷网私有库</h3>
+
+<p><em>Gitlab - 创建一个私有的Spec repo</em></p>
+
+<p><img src="/Users/tdw/Desktop/Yanci/tdw/Resources/CocoaPods/1.png" alt="1" /></p>
+
+<p><em>添加你的私有仓库到你的CocoaPods安装位置</em></p>
+
+<p><img src="/Users/tdw/Desktop/Yanci/tdw/Resources/CocoaPods/2.png" alt="2" /></p>
+
+<p><em>Gitlab - 创建一个TDWLoanToolCaculator库</em></p>
+
+<p><img src="/Users/tdw/Desktop/Yanci/tdw/Resources/CocoaPods/6.png" alt="6" /></p>
+
+<p><em>克隆TDWLoanToolCaculator到本地，新建TDWLoanToolCaculatr.podspec、LICENSE、等文件</em></p>
+
+<p><img src="/Users/tdw/Desktop/Yanci/tdw/Resources/CocoaPods/3.png" alt="3" /></p>
+
+<p><em>TDWLoanToolLoanCaculator.podspec内容如下</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#</span>
+<span class="c"># Be sure to run `pod lib lint podTestLibrary.podspec' to ensure this is a</span>
+<span class="c"># valid spec before submitting.</span>
+<span class="c">#</span>
+<span class="c"># Any lines starting with a # are optional, but their use is encouraged</span>
+<span class="c"># To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html</span>
+<span class="c">#</span>
+Pod::Spec.new <span class="k">do</span> |s|
+s.name             <span class="o">=</span> <span class="s1">'TDWLoanToolCaculator'</span>
+s.version          <span class="o">=</span> <span class="s1">'0.0.1'</span>
+s.summary          <span class="o">=</span> <span class="s1">'Calculator of tuandaiwang loan tools'</span>
+s.description      <span class="o">=</span> <span class="sh">&lt;&lt;-DESC
+TDWLoanToolCaculator is an loan tool calculator.
+DESC
+</span>s.homepage         <span class="o">=</span> <span class="s2">"http://git.tuandai888.com/XuLiJun/TDWLoanToolCaculator.git"</span>
+s.screenshots      <span class="o">=</span> <span class="s1">''</span>,
+s.license          <span class="o">=</span> <span class="s1">'Code is MIT, then custom calculator licenses.'</span>
+s.author           <span class="o">=</span> <span class="o">{</span> <span class="s1">'XuYanci'</span> <span class="o">=</span>&gt; <span class="s1">'grandy.wind@gmail.com'</span> <span class="o">}</span>
+s.source           <span class="o">=</span> <span class="o">{</span> :git <span class="o">=</span>&gt; <span class="s1">'http://git.tuandai888.com/XuLiJun/TDWLoanToolCaculator.git'</span>, :tag <span class="o">=</span>&gt; s.version.to_s <span class="o">}</span>
+s.ios.deployment_target <span class="o">=</span> <span class="s1">'8.0'</span>
+s.source_files <span class="o">=</span> <span class="s1">'TDWLoanToolCaculator/Classes/**/*'</span>
+<span class="c">#s.resource_bundles = {</span>
+<span class="c">#   'TDWLoanToolCaculator' =&gt; ['TDWLoanToolCaculator/Assets/*.png']</span>
+<span class="c"># }</span>
+<span class="c"># s.public_header_files = 'Pod/Classes/**/*.h'</span>
+<span class="c"># s.frameworks = 'UIKit', 'MapKit'</span>
+<span class="c"># s.dependency 'AFNetworking', '~&gt; 2.3'</span>
+end
+</code></pre>
+</div>
+
+<p><em>验证一下是否可用</em></p>
+
+<p><img src="/Users/tdw/Desktop/Yanci/tdw/Resources/CocoaPods/5.png" alt="5" /></p>
+
+<p><em>提交代码，打上标签0.0.1,然后添加你的Podspec到你的私有库</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git add .
+git commit -m <span class="s2">"init repo"</span>
+git tag <span class="s1">'0.0.1'</span>    
+git push --tags
+git push origin master
+pod repo push TDWSpecs TDWLoanToolCaculator.podspec
+</code></pre>
+</div>
+
+<p><em>就是这样使用</em></p>
+
+<p><img src="/Users/tdw/Desktop/Yanci/tdw/Resources/CocoaPods/7.png" alt="7" /></p>
+
+<p><em>小伙伴们试试看</em></p>
+
+<pre><code class="language-Shell">第一步: pod repo add TDWSpecs http://git.tuandai888.com/XuLiJun/TDWSpecs.git
+第二步: 在Podfile里面添加
+source 'https://github.com/CocoaPods/Specs.git'
+pod 'TDWLoanToolCaculator'
+应该就可以用了!
+</code></pre>
+
+<h3 id="section-1">参考链接</h3>
+
+<p>http://guides.cocoapods.org/making/specs-and-specs-repo.html#how-does-the-specs-repo-work</p>
+
+<p>http://guides.cocoapods.org/making/private-cocoapods.html</p>
+
+<p>http://www.jianshu.com/p/ddc2490bff9f</p>
+

@@ -1,0 +1,609 @@
+<h2 id="introduction">Introduction</h2>
+
+<p>设计模式是针对反复出现问题的解决方式;<strong>主旨在怎样解决特定问题</strong>. 它们不是类，包，也不是库，你能够接入到你的程序中坐等魔法产生。然而，它们是针对特定场合某些特定问题的解决方式。</p>
+
+<blockquote>
+  <p>设计模式是用来解决重复发生问题的方式；旨在怎样解决特定问题。</p>
+</blockquote>
+
+<p>维基百科词条解释</p>
+
+<blockquote>
+  <p>在软件工程中，软件设计模式是可以反复用来解决常见的在软件设计中的上下文问题。它并不是能够直接转换成源代码或者机器代码的最终设计。它只是在很多不同的场合下如何解决一个问题的描述和模板。</p>
+</blockquote>
+
+<h3 id="be-careful">Be Careful</h3>
+
+<ul>
+  <li>设计模式并不是解决所有问题的银弹</li>
+  <li>别尝试去强用他们；坏事情很可能会出现，如果这样做的话。 记住设计模式使用从来解决问题的方式，不是用来发现问题的方式；因此别过度思考</li>
+  <li>设计模式就像一把双利刃,他们可以是用来解决问题，也可以导致糟糕的问题</li>
+</ul>
+
+<blockquote>
+  <p>以下代码例子是使用PHP-7来编写的，然而思想是一致的并不应该会导致你停止学习。同样也是支持其他语言。</p>
+</blockquote>
+
+<h3 id="types-of-design-patterns">Types of Design Patterns</h3>
+
+<ul>
+  <li><a href="https://github.com/XuYanci/design-patterns-for-humans#creational-design-patterns">创建型</a> </li>
+  <li><a href="https://github.com/XuYanci/design-patterns-for-humans#structural-design-patterns">结构型</a></li>
+  <li><a href="https://github.com/XuYanci/design-patterns-for-humans#behavioral-design-patterns">行为型</a></li>
+</ul>
+
+<h2 id="creational-design-patterns">Creational Design Patterns</h2>
+
+<p>简单来说
+&gt; 创建型模式主要关注点是用来初始化对象或者一组相关对象</p>
+
+<p>维基百科说</p>
+
+<blockquote>
+  <p>在软件工程中，创建型设计模式针对对象创建的设计模式，旨在在特定场合下合理的创建对象。对象的创建能够导致设计问题以及增加设计复杂性。创建型设计模式通过怎样控制对象的创建来解决此类问题。</p>
+</blockquote>
+
+<ul>
+  <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-simple-factory">简单工厂</a></li>
+  <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-factory-method">工程方法</a></li>
+  <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-abstract-factory">抽象工程</a></li>
+  <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-builder">建造者</a></li>
+  <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-prototype">模板</a></li>
+  <li><a href="https://github.com/XuYanci/design-patterns-for-humans#-singleton">单例</a></li>
+</ul>
+
+<h3 id="section">简单工厂</h3>
+
+<p>应用实例
+&gt; 仔细想一下，你在建一栋房子以及你需要门。如果每次你需要一个们的时候，你都穿上你的木匠衣服在你的房子里制作门那会是多么糟糕。然而你可以从工厂里面拿门。</p>
+
+<p>简单的说</p>
+
+<blockquote>
+  <p>简单工厂给客户端产生一个实例，但不暴露任何实例化内部逻辑</p>
+</blockquote>
+
+<p>维基百科说</p>
+
+<blockquote>
+  <p>在面向对象编程中，工厂是用来创建其他对象的对象 - 一般来说工厂是一个功能或者方法通过调用方法返回可变类型或者可变类的对象，可认为是 “new”。</p>
+</blockquote>
+
+<h4 id="section-1">编程例子</h4>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">Door</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getWidth</span><span class="o">():</span> <span class="kt">float</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getHeight</span><span class="o">():</span> <span class="kt">float</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">WoodenDoor</span> <span class="kd">implements</span> <span class="n">Door</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$width</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="n">$height</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="kt">float</span> <span class="n">$width</span><span class="o">,</span> <span class="kt">float</span> <span class="n">$height</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="n">$width</span><span class="o">;</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="n">$height</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getWidth</span><span class="o">():</span> <span class="kt">float</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">width</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getHeight</span><span class="o">():</span> <span class="kt">float</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">height</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>然后我们有了门工厂能够产生门和返回它 </p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">DoorFactory</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">function</span> <span class="nf">makeDoor</span><span class="o">(</span><span class="n">$width</span><span class="o">,</span> <span class="n">$height</span><span class="o">):</span> <span class="n">Door</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">WoodenDoor</span><span class="o">(</span><span class="n">$width</span><span class="o">,</span> <span class="n">$height</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>以及如何来使用它</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$door</span> <span class="o">=</span> <span class="nl">DoorFactory:</span><span class="o">:</span><span class="n">makeDoor</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+<span class="n">echo</span> <span class="err">'</span><span class="nl">Width:</span> <span class="err">'</span> <span class="o">.</span> <span class="n">$door</span><span class="o">-&gt;</span><span class="n">getWidth</span><span class="o">();</span>
+<span class="n">echo</span> <span class="err">'</span><span class="nl">Height:</span> <span class="err">'</span> <span class="o">.</span> <span class="n">$door</span><span class="o">-&gt;</span><span class="n">getHeight</span><span class="o">();</span></code></pre></figure>
+
+<p><strong>什么时候使用</strong></p>
+
+<p>当你创建一个对象并不只是一些赋值或者包括某些逻辑，将它放在一个专门的工厂里面而不是重复代码是非常有意义额。</p>
+
+<h3 id="section-2">工厂方法</h3>
+
+<p>应用实例</p>
+
+<blockquote>
+  <p>考虑一下招聘管理的例子。一个人是不可能面试所有职位的。在公开工作的基础上，她必须针对不同人决定和委托面试步骤。</p>
+</blockquote>
+
+<p>简单的说</p>
+
+<blockquote>
+  <p>它提供了一个路径来委托实例化逻辑给它的子类。</p>
+</blockquote>
+
+<p>维基百科说</p>
+
+<blockquote>
+  <p>在基于类的编程中，工厂方法模式是属于创建型模式，我们使用工厂方法来处理一些对象创建问题，而不需要去指定实际创建对象的类。</p>
+</blockquote>
+
+<p>编程例子</p>
+
+<p>考虑一下上面我们招聘管理员的例子。首先我们有一个面试者接口和一些实现</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">Interviewer</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">askQuestions</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Developer</span> <span class="kd">implements</span> <span class="n">Interviewer</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">askQuestions</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">echo</span> <span class="err">'</span><span class="n">Asking</span> <span class="n">about</span> <span class="n">design</span> <span class="n">patterns</span><span class="o">!</span><span class="err">'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">CommunityExecutive</span> <span class="kd">implements</span> <span class="n">Interviewer</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">askQuestions</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">echo</span> <span class="err">'</span><span class="n">Asking</span> <span class="n">about</span> <span class="n">community</span> <span class="n">building</span><span class="err">'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>现在让我们创建我们的 <em>HiringManager</em></p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">HiringManager</span>
+<span class="o">{</span>
+
+    <span class="c1">// Factory method</span>
+    <span class="kd">abstract</span> <span class="kd">public</span> <span class="n">function</span> <span class="nf">makeInterviewer</span><span class="o">():</span> <span class="n">Interviewer</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">takeInterview</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">$interviewer</span> <span class="o">=</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">makeInterviewer</span><span class="o">();</span>
+        <span class="n">$interviewer</span><span class="o">-&gt;</span><span class="n">askQuestions</span><span class="o">();</span>
+      <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>现在任何子类都能够扩展它以及提供所需要的面试者</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">DevelopmentManager</span> <span class="kd">extends</span> <span class="n">HiringManager</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">makeInterviewer</span><span class="o">():</span> <span class="n">Interviewer</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Developer</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MarketingManager</span> <span class="kd">extends</span> <span class="n">HiringManager</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">makeInterviewer</span><span class="o">():</span> <span class="n">Interviewer</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">CommunityExecutive</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>我们这样使用</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$devManager</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DevelopmentManager</span><span class="o">();</span>
+<span class="n">$devManager</span><span class="o">-&gt;</span><span class="n">takeInterview</span><span class="o">();</span> <span class="c1">// Output: Asking about design patterns</span>
+
+<span class="n">$marketingManager</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MarketingManager</span><span class="o">();</span>
+<span class="n">$marketingManager</span><span class="o">-&gt;</span><span class="n">takeInterview</span><span class="o">();</span> <span class="c1">// Output: Asking about community building.</span></code></pre></figure>
+
+<p><strong>什么时候使用？</strong></p>
+
+<p>当类中需要处理东西但是所需的子类会在运行中动态确定这是非常有用的。换句话说，客户并不知道它需要什么样的子类。</p>
+
+<h3 id="section-3">抽象工厂</h3>
+
+<p>应用实例</p>
+
+<blockquote>
+  <p>从简单工厂中扩展我们的门例子。你可能需要从木门店获取木门，从铁门店获取铁门，从相关的商店获取PVC门。你或许需要一个不同的门专家，例如负责木门的木匠，负责铁门的焊接工。你可以看到门之间的一些依赖。 木门需要木匠，铁门需要焊接工等。</p>
+</blockquote>
+
+<p>简单的说</p>
+
+<blockquote>
+  <p>工厂的集合；一个聚合了独立但互相依赖的工
+厂而不用去指定他们的具体类的工厂。</p>
+</blockquote>
+
+<p>维基百科说</p>
+
+<blockquote>
+  <p>抽象工厂模式提供一个方式，用来封装有着相同主题但不指定他们具体类的相互独立工厂集合。</p>
+</blockquote>
+
+<p>程序例子</p>
+
+<p>转化一下上面的门例子。首先我们有我们的<em>Door</em>接口和某些它的实现</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">Door</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getDescription</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">WoodenDoor</span> <span class="kd">implements</span> <span class="n">Door</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getDescription</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">echo</span> <span class="err">'</span><span class="n">I</span> <span class="n">am</span> <span class="n">a</span> <span class="n">wooden</span> <span class="n">door</span><span class="err">'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">IronDoor</span> <span class="kd">implements</span> <span class="n">Door</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getDescription</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">echo</span> <span class="err">'</span><span class="n">I</span> <span class="n">am</span> <span class="n">an</span> <span class="n">iron</span> <span class="n">door</span><span class="err">'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>然后我们有某些对应的专家对应不同的门类型</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">DoorFittingExpert</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getDescription</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Welder</span> <span class="kd">implements</span> <span class="n">DoorFittingExpert</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getDescription</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">echo</span> <span class="err">'</span><span class="n">I</span> <span class="n">can</span> <span class="n">only</span> <span class="n">fit</span> <span class="n">iron</span> <span class="n">doors</span><span class="err">'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Carpenter</span> <span class="kd">implements</span> <span class="n">DoorFittingExpert</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getDescription</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">echo</span> <span class="err">'</span><span class="n">I</span> <span class="n">can</span> <span class="n">only</span> <span class="n">fit</span> <span class="n">wooden</span> <span class="n">doors</span><span class="err">'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>现在我们有我们的抽象工厂，可以让我们生成相关对象的。 木门工厂可以生产木门以及木门专家，铁门工厂能够生产铁门和铁门专家。</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"> <span class="kd">interface</span> <span class="nc">DoorFactory</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">makeDoor</span><span class="o">():</span> <span class="n">Door</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">makeFittingExpert</span><span class="o">():</span> <span class="n">DoorFittingExpert</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// Wooden factory to return carpenter and wooden door</span>
+<span class="kd">class</span> <span class="nc">WoodenDoorFactory</span> <span class="kd">implements</span> <span class="n">DoorFactory</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">makeDoor</span><span class="o">():</span> <span class="n">Door</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">WoodenDoor</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">makeFittingExpert</span><span class="o">():</span> <span class="n">DoorFittingExpert</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Carpenter</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// Iron door factory to get iron door and the relevant fitting expert</span>
+<span class="kd">class</span> <span class="nc">IronDoorFactory</span> <span class="kd">implements</span> <span class="n">DoorFactory</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">makeDoor</span><span class="o">():</span> <span class="n">Door</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">IronDoor</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">makeFittingExpert</span><span class="o">():</span> <span class="n">DoorFittingExpert</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Welder</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>他们能够这样使用</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$woodenFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WoodenDoorFactory</span><span class="o">();</span>
+
+<span class="n">$door</span> <span class="o">=</span> <span class="n">$woodenFactory</span><span class="o">-&gt;</span><span class="n">makeDoor</span><span class="o">();</span>
+<span class="n">$expert</span> <span class="o">=</span> <span class="n">$woodenFactory</span><span class="o">-&gt;</span><span class="n">makeFittingExpert</span><span class="o">();</span>
+
+<span class="n">$door</span><span class="o">-&gt;</span><span class="n">getDescription</span><span class="o">();</span>  <span class="c1">// Output: I am a wooden door</span>
+<span class="n">$expert</span><span class="o">-&gt;</span><span class="n">getDescription</span><span class="o">();</span> <span class="c1">// Output: I can only fit wooden doors</span>
+
+<span class="c1">// Same for Iron Factory</span>
+<span class="n">$ironFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IronDoorFactory</span><span class="o">();</span>
+
+<span class="n">$door</span> <span class="o">=</span> <span class="n">$ironFactory</span><span class="o">-&gt;</span><span class="n">makeDoor</span><span class="o">();</span>
+<span class="n">$expert</span> <span class="o">=</span> <span class="n">$ironFactory</span><span class="o">-&gt;</span><span class="n">makeFittingExpert</span><span class="o">();</span>
+
+<span class="n">$door</span><span class="o">-&gt;</span><span class="n">getDescription</span><span class="o">();</span>  <span class="c1">// Output: I am an iron door</span>
+<span class="n">$expert</span><span class="o">-&gt;</span><span class="n">getDescription</span><span class="o">();</span> <span class="c1">// Output: I can only fit iron doors</span></code></pre></figure>
+
+<p>正如你所见的木门工厂封装了 <em>carpenter</em> 和 <em>wooden door</em> 以及铁门工厂封装了 <em>iron door</em> 和 <em>welder</em> 。 它也帮助我们确定了当创建门的时候，不会匹配到错误的专家。</p>
+
+<p><strong>什么时候使用？</strong> 
+当依赖相关以及创建逻辑不容易的时候。</p>
+
+<h3 id="section-4">建造者</h3>
+
+<p>应用例子</p>
+
+<blockquote>
+  <p>想象一下你在哈迪斯定了一份餐，说 “大哈迪斯” ，他们直接给你递过来而不用咨询你任何问题；
+这是简单工厂的例子。但是这是一些包含多个步骤的创建逻辑例子。举例说，你想要一份自定义的地铁餐，你对你的汉堡包怎么做，面包片什么类型，调料什么类型，芝士想要什么等等都有自己的观点。建造者模式能够解决这样的情景。</p>
+</blockquote>
+
+<p>简单地说</p>
+
+<blockquote>
+  <p>允许你创建不同口味的东东(汉堡包)从而避免构造器污染。这是非常有用的当东东(汉堡包)有几种口味的时候。或者是当东东(汉堡包)创建时候需要大量步骤的时候。</p>
+</blockquote>
+
+<p>维基百科说</p>
+
+<blockquote>
+  <p>建造者模式是对象创建设计模式，主要是寻找可伸缩的构造型<a href="https://en.wikipedia.org/wiki/Anti-pattern">反面式模式</a>。</p>
+</blockquote>
+
+<p>让我们进一步说明一下反面式模式是什么。在某个时候我们见过构造函数像这样:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">$size</span><span class="o">,</span> <span class="n">$cheese</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">$pepperoni</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">$tomato</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">$lettuce</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>就如你所见的；构造器参数很快将会无法控制以及它或许会很难去理解参数的排列等。进一步这个参数列表会继续增长如何你想要添加更多的参数。 这个我们就叫做可伸缩的构造型反面式模式。</p>
+
+<p>程序例子</p>
+
+<p>明智的可替代方案是使用建造者模式。 首先我们看看我们想要制作的汉堡包</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Burger</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$size</span><span class="o">;</span>
+
+    <span class="kd">protected</span> <span class="n">$cheese</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="n">$pepperoni</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="n">$lettuce</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="n">$tomato</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">BurgerBuilder</span> <span class="n">$builder</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">$builder</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">;</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">cheese</span> <span class="o">=</span> <span class="n">$builder</span><span class="o">-&gt;</span><span class="n">cheese</span><span class="o">;</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">pepperoni</span> <span class="o">=</span> <span class="n">$builder</span><span class="o">-&gt;</span><span class="n">pepperoni</span><span class="o">;</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">lettuce</span> <span class="o">=</span> <span class="n">$builder</span><span class="o">-&gt;</span><span class="n">lettuce</span><span class="o">;</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">tomato</span> <span class="o">=</span> <span class="n">$builder</span><span class="o">-&gt;</span><span class="n">tomato</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>然后我们有建造者</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">BurgerBuilder</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="n">$size</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">$cheese</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">$pepperoni</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">$lettuce</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">$tomato</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="kt">int</span> <span class="n">$size</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">$size</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">addPepperoni</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">pepperoni</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">addLettuce</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">lettuce</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">addCheese</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">cheese</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">addTomato</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">tomato</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">build</span><span class="o">():</span> <span class="n">Burger</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Burger</span><span class="o">(</span><span class="n">$this</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>然后我们这样使用它:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$burger</span> <span class="o">=</span> <span class="o">(</span><span class="k">new</span> <span class="n">BurgerBuilder</span><span class="o">(</span><span class="mi">14</span><span class="o">))</span>
+                    <span class="o">-&gt;</span><span class="n">addPepperoni</span><span class="o">()</span>
+                    <span class="o">-&gt;</span><span class="n">addLettuce</span><span class="o">()</span>
+                    <span class="o">-&gt;</span><span class="n">addTomato</span><span class="o">()</span>
+                    <span class="o">-&gt;</span><span class="n">build</span><span class="o">();</span></code></pre></figure>
+
+<p><strong>什么时候使用呢?</strong>
+当某个东东有着一些特点的时候，避免构重叠构造器。和工厂模式的主要区别是; 工程模式创建过程只需要一步而建造者模式创建过程通常需要好几步。</p>
+
+<h3 id="section-5">原型模式</h3>
+
+<p>应用例子</p>
+
+<blockquote>
+  <p>记得那只羊多莉不？ 那只克隆羊！ 我们不过多讨论细节重点是克隆。</p>
+</blockquote>
+
+<p>简单的说</p>
+
+<blockquote>
+  <p>在存在的对象上通过克隆创建。</p>
+</blockquote>
+
+<p>维基百科</p>
+
+<blockquote>
+  <p>原型模式是软件开发中的创建型设计模式。通过原型实例来创建目标的类型来使用，被克隆来产生新实例。</p>
+</blockquote>
+
+<p>简单来说，它允许你创建存在对象的拷贝以及根据需要修改,并不是通过建立或者从头开始建立对象。</p>
+
+<p>程序例子</p>
+
+<p>在PHP中,它可以通过 <em>clone</em>来实现</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Sheep</span>
+<span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">$name</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="n">$category</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">string</span> <span class="n">$name</span><span class="o">,</span> <span class="n">string</span> <span class="n">$category</span> <span class="o">=</span> <span class="err">'</span><span class="n">Mountain</span> <span class="n">Sheep</span><span class="err">'</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="n">$name</span><span class="o">;</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">category</span> <span class="o">=</span> <span class="n">$category</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">setName</span><span class="o">(</span><span class="n">string</span> <span class="n">$name</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="n">$name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getName</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">setCategory</span><span class="o">(</span><span class="n">string</span> <span class="n">$category</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">$this</span><span class="o">-&gt;</span><span class="n">category</span> <span class="o">=</span> <span class="n">$category</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">function</span> <span class="nf">getCategory</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">category</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>它能够这样被克隆</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$original</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Sheep</span><span class="o">(</span><span class="err">'</span><span class="n">Jolly</span><span class="err">'</span><span class="o">);</span>
+<span class="n">echo</span> <span class="n">$original</span><span class="o">-&gt;</span><span class="n">getName</span><span class="o">();</span> <span class="c1">// Jolly</span>
+<span class="n">echo</span> <span class="n">$original</span><span class="o">-&gt;</span><span class="n">getCategory</span><span class="o">();</span> <span class="c1">// Mountain Sheep</span>
+
+<span class="c1">// Clone and modify what is required</span>
+<span class="n">$cloned</span> <span class="o">=</span> <span class="n">clone</span> <span class="n">$original</span><span class="o">;</span>
+<span class="n">$cloned</span><span class="o">-&gt;</span><span class="n">setName</span><span class="o">(</span><span class="err">'</span><span class="n">Dolly</span><span class="err">'</span><span class="o">);</span>
+<span class="n">echo</span> <span class="n">$cloned</span><span class="o">-&gt;</span><span class="n">getName</span><span class="o">();</span> <span class="c1">// Dolly</span>
+<span class="n">echo</span> <span class="n">$cloned</span><span class="o">-&gt;</span><span class="n">getCategory</span><span class="o">();</span> <span class="c1">// Mountain sheep</span></code></pre></figure>
+
+<p>你也可以使用魔术方法 <em>_clone</em> 来修改克隆行为。</p>
+
+<p><strong>什么时候使用?</strong>
+当需要创建一个类似已存在对象时候或者是创建对象相比克隆耗费太多的时候。</p>
+
+<h3 id="section-6">单例</h3>
+
+<p>实际例子</p>
+
+<blockquote>
+  <p>同一时间只允许一个国家只允许一个总统。每当值班电话响起来的时候,同样的总统不得不被起诉。总统是唯一的。</p>
+</blockquote>
+
+<p>简单的说 </p>
+
+<blockquote>
+  <p>确保指定类只有一个对象被创建</p>
+</blockquote>
+
+<p>维基百科说</p>
+
+<blockquote>
+  <p>在软件工程中，单例模式是用来限制类实例化单一目标的软件设计模式。这个在整个系统中仅需要一个对象来协调功能是非常有用的。 </p>
+</blockquote>
+
+<p>单例模式实际上是反面模式，尽量避免过渡使用。它使用起来并不糟糕而且有些某些有效的使用例子，但是使用它我们要注意它在程序中是有着全局状态的，修改它可能会影响到其他地方，而且它很慢被调试。
+另外比较不好的地方是它会导致你的代码紧耦合，同时模拟单例模式也是非常困难的。</p>
+
+<p>程序例子</p>
+
+<p>使用单例模式，使得构造器保持私有，不允许克隆，不允许扩展，创建一个静态变量来持有实例。</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">final</span> <span class="kd">class</span> <span class="nc">President</span>
+<span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">$instance</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="c1">// Hide the constructor</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">function</span> <span class="nf">getInstance</span><span class="o">():</span> <span class="n">President</span>
+    <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="nl">self:</span><span class="o">:</span><span class="n">$instance</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nl">self:</span><span class="o">:</span><span class="n">$instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">self</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="nl">self:</span><span class="o">:</span><span class="n">$instance</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">function</span> <span class="nf">__clone</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="c1">// Disable cloning</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">function</span> <span class="nf">__wakeup</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="c1">// Disable unserialize</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>然后这样使用</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$president1</span> <span class="o">=</span> <span class="nl">President:</span><span class="o">:</span><span class="n">getInstance</span><span class="o">();</span>
+<span class="n">$president2</span> <span class="o">=</span> <span class="nl">President:</span><span class="o">:</span><span class="n">getInstance</span><span class="o">();</span>
+
+<span class="n">var_dump</span><span class="o">(</span><span class="n">$president1</span> <span class="o">===</span> <span class="n">$president2</span><span class="o">);</span> <span class="c1">// true</span></code></pre></figure>
+
+<h3 id="end-">End 创建型</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>日期</th>
+      <th>作者</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2017-03-08</td>
+      <td>YC</td>
+      <td>初步翻译完成</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="reference">Reference</h2>
+<p><a href="https://github.com/kamranahmedse/design-patterns-for-humans">https://github.com/kamranahmedse/design-patterns-for-humans</a></p>
+
