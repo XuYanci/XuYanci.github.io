@@ -2,7 +2,7 @@
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8"><![endif]--><!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9"><![endif]--><!--[if gt IE 8]><!--><html class="no-js">
 <!--<![endif]--> <head> <meta charset="UTF-8"> <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <title>Translate-iOS-DesignPatterns(3) – XuYanci</title> <meta name="description" content="Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform."> <meta name="keywords" content="designpatterns"> <!-- Twitter Cards --> <meta name="twitter:card" content="summary"> <meta name="twitter:image" content="http://localhost:4000/assets/img/logo.png"> <meta name="twitter:title" content="Translate-iOS-DesignPatterns(3)"> <meta name="twitter:description" content="Translate-iOS-DesignPatterns(3)"> <meta name="twitter:site" content="@TWWind"> <meta name="twitter:creator" content="@TWWind"> <!-- Open Graph --> <meta property="og:locale" content="en_US"> <meta property="og:type" content="article"> <meta property="og:title" content="Translate-iOS-DesignPatterns(3)"> <meta property="og:description" content="Translate-iOS-DesignPatterns(3)"> <meta property="og:url" content="http://localhost:4000/Translate-iOS-Design-Patterns3/"> <meta property="og:site_name" content="XuYanci"> <meta property="og:image" content="http://localhost:4000/assets/img/logo.png"> <link rel="canonical" href="http://localhost:4000/Translate-iOS-Design-Patterns3/"> <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="XuYanci Feed"> <!-- Handheld --> <meta name="HandheldFriendly" content="True"> <meta name="MobileOptimized" content="320"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- CSS --> <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css"> <!-- JS --> <script src="http://localhost:4000/assets/js/modernizr-3.3.1.custom.min.js"></script> <!-- 百度统计 --> <script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?c86955c3d2189170232d1f59c6e368d0"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script> <!-- google analytics --> <script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-60787758-1', 'auto'); ga('send', 'pageview'); </script> <!-- Favicons --> <link rel="apple-touch-icon" href="http://localhost:4000/assets/img/favicons/apple-icon-precomposed.png"> <link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/assets/img/favicons/apple-icon-72x72.png"> <link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/assets/img/favicons/apple-icon-114x114.png"> <link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/assets/img/favicons/apple-icon-144x144.png"> <link rel="shortcut icon" type="image/png" href="http://localhost:4000/favicon.png"> <link rel="shortcut icon" href="http://localhost:4000/favicon.ico"> <!-- Background Image --> <style type="text/css">body {background-image:url(http://localhost:4000/assets/img/placeholder-big.jpg); background-repeat: no-repeat; background-size: cover; }</style> <!-- Post Feature Image --> </head> <body> <nav id="dl-menu" class="dl-menuwrapper" role="navigation"> <button class="dl-trigger">Open Menu</button> <ul class="dl-menu"> <li><a href="http://localhost:4000/">Home</a></li> <li> <a href="#">About</a> <ul class="dl-submenu"> <li> <img src="http://localhost:4000/assets/img/logo.png" alt="XuYanci photo" class="author-photo"> <h4>XuYanci</h4> <p>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</p> </li> <li><a href="http://localhost:4000/about/"><span class="btn btn-inverse">Learn More</span></a></li> <li> <a href="http://twitter.com/TWWind" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a> </li> <li> <a href="http://github.com/XuYanci" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-github"></i> Github</a> </li> <li> <a href="http://www.weibo.com/5316510203" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-weibo"></i> Weibo</a> </li> </ul>
 <!-- /.dl-submenu --> </li> <li> <a href="#">Posts</a> <ul class="dl-submenu"> <li><a href="http://localhost:4000/posts/">All Posts</a></li> <li><a href="http://localhost:4000/tags/">All Tags</a></li> </ul> </li> <li><a href="http://localhost:4000/projects/">Projects</a></li> </ul>
-<!-- /.dl-menu --> </nav><!-- /.dl-menuwrapper --> <!-- Header --> <header class="header" role="banner"> <div class="wrapper animated fadeIn"> <div class="content"> <div class="post-title "> <h1>Translate-iOS-DesignPatterns(3)</h1> <h4>04 Apr 2017</h4> <p class="reading-time"> <i class="fa fa-clock-o"></i> Reading time ~5 minutes </p>
+<!-- /.dl-menu --> </nav><!-- /.dl-menuwrapper --> <!-- Header --> <header class="header" role="banner"> <div class="wrapper animated fadeIn"> <div class="content"> <div class="post-title "> <h1>Translate-iOS-DesignPatterns(3)</h1> <h4>04 Apr 2017</h4> <p class="reading-time"> <i class="fa fa-clock-o"></i> Reading time ~9 minutes </p>
 <!-- /.entry-reading-time --> <a class="btn zoombtn" href="http://localhost:4000/posts/"> <i class="fa fa-chevron-left"></i> </a> </div> <h2 id="section">行为型设计模式</h2> <p>简单的说</p> <blockquote> <p>它是有关对象之间的责任分配。它们和结构型设计模式不同的是它们不定义结构但是也概述了相关模式用来做它们之间的消息传递/通讯。用另外的一句话说，它们有助于回答 “如何在软件元件中运行行为?”</p> </blockquote> <p>维基百科说</p> <blockquote> <p>在软件工程中，行为型设计模式是代表对象之间常用的通讯模式以及模式实现。通过这么做的话，这些模式实现这些通讯会提高复杂度。</p> </blockquote> <ul> <li>责任链</li> <li>命令</li> <li>迭代者</li> <li>中间者</li> <li>备忘录</li> <li>观察者</li> <li>访问者</li> <li>策略模式</li> <li>状态模式</li> <li>模板方法模式</li> </ul> <h3 id="section-1">责任链模式</h3> <p>应用例子</p> <blockquote> <p>举个例子，你的账号有三个方式付款（A，B，和C）；他们中都有一个不同的账号。A有100USD，B有300USD和C有1000USD ， 付款的优先级是A，B，C。你购买价值210USD的东西。通过使用责任链模式，首先账号A如果能够购买的话就扣钱，响应链断开。如果不够，则继续换到账号B检查是否足够扣钱，同理按照这个方式知道找到合适的处理。这里A，B，和C都是链的链接以及责任链的所有现象。</p> </blockquote> <p>简单的说</p> <blockquote> <p>它帮助构建一系列目标。请求从一端发起，然后一个一个目标寻找，直到找到合适的处理。</p> </blockquote> <p>维基百科说</p> <blockquote> <p>在面向对象设计中，责任链模式是由命令目标源以及一系列处理目标组成的。每一个处理目标包含着定义命令目标所能处理的类型；剩下的传递给链中的下一个处理目标</p> </blockquote> <p>程序例子</p> <p>翻译我们上面的账号例子。首先我们有一个基础账号，里面包含着串联账号到一起的逻辑以及某些账号。</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Account</span>
 <span class="o">{</span>
 <span class="kd">protected</span> <span class="n">$successor</span><span class="o">;</span>
@@ -337,5 +337,334 @@
 <span class="c1">// Restoring to last saved state</span>
 <span class="n">$editor</span><span class="o">-&gt;</span><span class="n">restore</span><span class="o">(</span><span class="n">$saved</span><span class="o">);</span>
 
-<span class="n">$editor</span><span class="o">-&gt;</span><span class="n">getContent</span><span class="o">();</span> <span class="c1">// This is the first sentence. This is second.</span></code></pre></figure> <h3 id="observer">Observer</h3> <h3 id="visitor-wait-">Visitor (Wait …)</h3> <h3 id="strategy">Strategy</h3> <h3 id="state">State</h3> <h3 id="template-method">Template Method</h3> <h3 id="wrap-up-folks">Wrap Up Folks</h3> <h3 id="contribution">Contribution</h3> <h3 id="license">License</h3> <div class="entry-meta"> <br> <hr> <span class="entry-tags"><a href="http://localhost:4000/tags/#designpatterns" title="Pages tagged designpatterns" class="tag"><span class="term">designpatterns</span></a></span> <span class="social-share"> <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/Translate-iOS-Design-Patterns3/" title="Share on Facebook" class="tag"> <span class="term"><i class="fa fa-facebook-square"></i> Like</span> </a> <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/Translate-iOS-Design-Patterns3/" title="Share on Twitter" class="tag"> <span class="term"><i class="fa fa-twitter-square"></i> Tweet</span> </a> <a href="https://plus.google.com/share?url=http://localhost:4000/Translate-iOS-Design-Patterns3/" title="Share on Google+" class="tag"> <span class="term"><i class="fa fa-google-plus-square"></i> +1</span> </a> </span> <div style="clear:both"></div> </div> </div> </div> <section id="disqus_thread" class="animated fadeInUp"></section><!-- /#disqus_thread --> </header> <!-- JS --> <script src="http://localhost:4000/assets/js/jquery-1.12.0.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.dlmenu.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.goup.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.magnific-popup.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.fitvid.min.js"></script> <script src="http://localhost:4000/assets/js/scripts.js"></script> <script type="text/javascript"> var disqus_shortname = 'yanciomgblog'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); (function () { var s = document.createElement('script'); s.async = true; s.type = 'text/javascript'; s.src = '//' + disqus_shortname + '.disqus.com/count.js'; (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s); }()); </script> <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+<span class="n">$editor</span><span class="o">-&gt;</span><span class="n">getContent</span><span class="o">();</span> <span class="c1">// This is the first sentence. This is second.</span></code></pre></figure> <h3 id="observer">Observer</h3> <p>应用例子</p> <blockquote> <p>一个好的例子是求职者在求职网站订阅工作，如果有匹配的工作机会他们将会被通知。</p> </blockquote> <p>简单的说</p> <blockquote> <p>定义一个目标之间的依赖，当目标状态被修改了，所有它的依赖都会被通知</p> </blockquote> <p>维基百科说</p> <blockquote> <p>观察者模式是一个软件设计模式，一个目标我们称为话题。保存着一个它的依赖列表，我们称为订阅者，当状态修改了会自动通知他们，一般会调用它们的犯法。</p> </blockquote> <p>程序例子</p> <p>翻译我们上面的例子。首先我们有求职者需要在工作发布时候被通知。</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">JobPost</span>
+<span class="o">{</span>
+<span class="kd">protected</span> <span class="n">$title</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">string</span> <span class="n">$title</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">$this</span><span class="o">-&gt;</span><span class="n">title</span> <span class="o">=</span> <span class="n">$title</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">getTitle</span><span class="o">()</span>
+<span class="o">{</span>
+<span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">title</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">JobSeeker</span> <span class="kd">implements</span> <span class="n">Observer</span>
+<span class="o">{</span>
+<span class="kd">protected</span> <span class="n">$name</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">string</span> <span class="n">$name</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">$this</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="n">$name</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">onJobPosted</span><span class="o">(</span><span class="n">JobPost</span> <span class="n">$job</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="c1">// Do something with the job posting</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Hi</span> <span class="err">'</span> <span class="o">.</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">.</span> <span class="err">'</span><span class="o">!</span> <span class="n">New</span> <span class="n">job</span> <span class="nl">posted:</span> <span class="err">'</span><span class="o">.</span> <span class="n">$job</span><span class="o">-&gt;</span><span class="n">getTitle</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>然后我们有我们的发布工作，求职者会订阅它</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">JobPostings</span> <span class="kd">implements</span> <span class="n">Observable</span>
+<span class="o">{</span>
+<span class="kd">protected</span> <span class="n">$observers</span> <span class="o">=</span> <span class="o">[];</span>
+
+<span class="kd">protected</span> <span class="n">function</span> <span class="nf">notify</span><span class="o">(</span><span class="n">JobPost</span> <span class="n">$jobPosting</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">foreach</span> <span class="o">(</span><span class="n">$this</span><span class="o">-&gt;</span><span class="n">observers</span> <span class="n">as</span> <span class="n">$observer</span><span class="o">)</span> <span class="o">{</span>
+<span class="n">$observer</span><span class="o">-&gt;</span><span class="n">onJobPosted</span><span class="o">(</span><span class="n">$jobPosting</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">attach</span><span class="o">(</span><span class="n">Observer</span> <span class="n">$observer</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">$this</span><span class="o">-&gt;</span><span class="n">observers</span><span class="o">[]</span> <span class="o">=</span> <span class="n">$observer</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">addJob</span><span class="o">(</span><span class="n">JobPost</span> <span class="n">$jobPosting</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">$this</span><span class="o">-&gt;</span><span class="n">notify</span><span class="o">(</span><span class="n">$jobPosting</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>然后这样使用它</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Create subscribers</span>
+<span class="n">$johnDoe</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JobSeeker</span><span class="o">(</span><span class="err">'</span><span class="n">John</span> <span class="n">Doe</span><span class="err">'</span><span class="o">);</span>
+<span class="n">$janeDoe</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JobSeeker</span><span class="o">(</span><span class="err">'</span><span class="n">Jane</span> <span class="n">Doe</span><span class="err">'</span><span class="o">);</span>
+
+<span class="c1">// Create publisher and attach subscribers</span>
+<span class="n">$jobPostings</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JobPostings</span><span class="o">();</span>
+<span class="n">$jobPostings</span><span class="o">-&gt;</span><span class="n">attach</span><span class="o">(</span><span class="n">$johnDoe</span><span class="o">);</span>
+<span class="n">$jobPostings</span><span class="o">-&gt;</span><span class="n">attach</span><span class="o">(</span><span class="n">$janeDoe</span><span class="o">);</span>
+
+<span class="c1">// Add a new job and see if subscribers get notified</span>
+<span class="n">$jobPostings</span><span class="o">-&gt;</span><span class="n">addJob</span><span class="o">(</span><span class="k">new</span> <span class="n">JobPost</span><span class="o">(</span><span class="err">'</span><span class="n">Software</span> <span class="n">Engineer</span><span class="err">'</span><span class="o">));</span>
+
+<span class="c1">// Output</span>
+<span class="c1">// Hi John Doe! New job posted: Software Engineer</span>
+<span class="c1">// Hi Jane Doe! New job posted: Software Engineer</span></code></pre></figure> <h3 id="visitor">Visitor</h3> <p>应用例子</p> <p>想象某个人拜访迪拜。他们只是需要一个方式进入迪拜(i.e. visa)，到了之后，他们可以自己拜访迪拜的任何地方，而不需要请求许可或者做些跑腿工作来拜访；只是让他们知道什么地方可以拜访。访问者模式让你做这些，它帮你添加地方来访问，因此它们能够被访问而不需要做其他跑腿工作。 </p> <p>简单的说 </p> <p>访问者模式让你添加更多操作而不需要修改他们。</p> <p>维基百科说</p> <p>在面向对象编程以及软件工程中，访问者设计模式是一种分离它操作的目标结构的一种算法。一个实际操作例子是为已经存在的目标添加额外操作而不需要修改这些结构。它也是一种遵循开闭原则的方式。</p> <p>程序例子</p> <p>让我们举一个动物园的例子，我们有着不同种类的动物以及我们让它们发出声音。让我们使用访问者模式来转换它。</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Visitee</span>
+<span class="kd">interface</span> <span class="nc">Animal</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">accept</span><span class="o">(</span><span class="n">AnimalOperation</span> <span class="n">$operation</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">// Visitor</span>
+<span class="kd">interface</span> <span class="nc">AnimalOperation</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">visitMonkey</span><span class="o">(</span><span class="n">Monkey</span> <span class="n">$monkey</span><span class="o">);</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">visitLion</span><span class="o">(</span><span class="n">Lion</span> <span class="n">$lion</span><span class="o">);</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">visitDolphin</span><span class="o">(</span><span class="n">Dolphin</span> <span class="n">$dolphin</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure> <p>然后我们有动物们的实现</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Monkey</span> <span class="kd">implements</span> <span class="n">Animal</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">shout</span><span class="o">()</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Ooh</span> <span class="n">oo</span> <span class="n">aa</span> <span class="n">aa</span><span class="o">!</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">accept</span><span class="o">(</span><span class="n">AnimalOperation</span> <span class="n">$operation</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">$operation</span><span class="o">-&gt;</span><span class="n">visitMonkey</span><span class="o">(</span><span class="n">$this</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Lion</span> <span class="kd">implements</span> <span class="n">Animal</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">roar</span><span class="o">()</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Roaaar</span><span class="o">!</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">accept</span><span class="o">(</span><span class="n">AnimalOperation</span> <span class="n">$operation</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">$operation</span><span class="o">-&gt;</span><span class="n">visitLion</span><span class="o">(</span><span class="n">$this</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Dolphin</span> <span class="kd">implements</span> <span class="n">Animal</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">speak</span><span class="o">()</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Tuut</span> <span class="n">tuttu</span> <span class="n">tuutt</span><span class="o">!</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">accept</span><span class="o">(</span><span class="n">AnimalOperation</span> <span class="n">$operation</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">$operation</span><span class="o">-&gt;</span><span class="n">visitDolphin</span><span class="o">(</span><span class="n">$this</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>继续完成我们的访问者</p> <p>class Speak implements AnimalOperation { public function visitMonkey(Monkey $monkey) { $monkey-&gt;shout(); }</p> <p>public function visitLion(Lion $lion) { $lion-&gt;roar(); }</p> <p>public function visitDolphin(Dolphin $dolphin) { $dolphin-&gt;speak(); } }</p> <p>我们可以这么使用</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$monkey</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Monkey</span><span class="o">();</span>
+<span class="n">$lion</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Lion</span><span class="o">();</span>
+<span class="n">$dolphin</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dolphin</span><span class="o">();</span>
+
+<span class="n">$speak</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Speak</span><span class="o">();</span>
+
+<span class="n">$monkey</span><span class="o">-&gt;</span><span class="n">accept</span><span class="o">(</span><span class="n">$speak</span><span class="o">);</span>    <span class="c1">// Ooh oo aa aa!    </span>
+<span class="n">$lion</span><span class="o">-&gt;</span><span class="n">accept</span><span class="o">(</span><span class="n">$speak</span><span class="o">);</span>      <span class="c1">// Roaaar!</span>
+<span class="n">$dolphin</span><span class="o">-&gt;</span><span class="n">accept</span><span class="o">(</span><span class="n">$speak</span><span class="o">);</span>   <span class="c1">// Tuut tutt tuutt!</span></code></pre></figure> <p>我们可以通过继承动物们来做这些，但是当我们添加新的行为的时候，我们不得不修改动物。而我们现在不需要去修改它们。例如我们需要为动物们添加跳跃动作，我们只需要简单添加一个新的拜访者。</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Jump</span> <span class="kd">implements</span> <span class="n">AnimalOperation</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">visitMonkey</span><span class="o">(</span><span class="n">Monkey</span> <span class="n">$monkey</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Jumped</span> <span class="mi">20</span> <span class="n">feet</span> <span class="n">high</span><span class="o">!</span> <span class="n">on</span> <span class="n">to</span> <span class="n">the</span> <span class="n">tree</span><span class="o">!</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">visitLion</span><span class="o">(</span><span class="n">Lion</span> <span class="n">$lion</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Jumped</span> <span class="mi">7</span> <span class="n">feet</span><span class="o">!</span> <span class="n">Back</span> <span class="n">on</span> <span class="n">the</span> <span class="n">ground</span><span class="o">!</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">visitDolphin</span><span class="o">(</span><span class="n">Dolphin</span> <span class="n">$dolphin</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Walked</span> <span class="n">on</span> <span class="n">water</span> <span class="n">a</span> <span class="n">little</span> <span class="n">and</span> <span class="n">disappeared</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>我们这样来使用</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$jump</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Jump</span><span class="o">();</span>
+
+<span class="n">$monkey</span><span class="o">-&gt;</span><span class="n">accept</span><span class="o">(</span><span class="n">$speak</span><span class="o">);</span>   <span class="c1">// Ooh oo aa aa!</span>
+<span class="n">$monkey</span><span class="o">-&gt;</span><span class="n">accept</span><span class="o">(</span><span class="n">$jump</span><span class="o">);</span>    <span class="c1">// Jumped 20 feet high! on to the tree!</span>
+
+<span class="n">$lion</span><span class="o">-&gt;</span><span class="n">accept</span><span class="o">(</span><span class="n">$speak</span><span class="o">);</span>     <span class="c1">// Roaaar!</span>
+<span class="n">$lion</span><span class="o">-&gt;</span><span class="n">accept</span><span class="o">(</span><span class="n">$jump</span><span class="o">);</span>      <span class="c1">// Jumped 7 feet! Back on the ground!</span>
+
+<span class="n">$dolphin</span><span class="o">-&gt;</span><span class="n">accept</span><span class="o">(</span><span class="n">$speak</span><span class="o">);</span>  <span class="c1">// Tuut tutt tuutt!</span>
+<span class="n">$dolphin</span><span class="o">-&gt;</span><span class="n">accept</span><span class="o">(</span><span class="n">$jump</span><span class="o">);</span>   <span class="c1">// Walked on water a little and disappeared</span></code></pre></figure> <h3 id="strategy">Strategy</h3> <p>应用例子</p> <p>考虑一下排序的例子，我们完成了冒泡排序，但是当数据增长的时候，冒泡排序就变得越来越慢了。为了解决这个我们完成了快速排序。但是尽管快速排序对大数据集合比较快，但对小数据集合就变得很慢了。为了解决这个问题，我们实现一个当小数据集合时候，我们使用冒泡排序，当大数据集合时候，我们使用快速排序。</p> <p>简单地说</p> <p>策略模式允许你根据不同的情形来切换算法和策略</p> <p>维基百科说</p> <p>在计算机编程中，策略模式(也叫政策模式)是行为型模式，它允许算法行为动态选择。</p> <p>程序例子</p> <p>转换我们上面的例子。首先我们有我们的策略接口以及不同的策略实现</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">SortStrategy</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">sort</span><span class="o">(</span><span class="n">array</span> <span class="n">$dataset</span><span class="o">):</span> <span class="n">array</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">BubbleSortStrategy</span> <span class="kd">implements</span> <span class="n">SortStrategy</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">sort</span><span class="o">(</span><span class="n">array</span> <span class="n">$dataset</span><span class="o">):</span> <span class="n">array</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="s">"Sorting using bubble sort"</span><span class="o">;</span>
+
+<span class="c1">// Do sorting</span>
+<span class="k">return</span> <span class="n">$dataset</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">QuickSortStrategy</span> <span class="kd">implements</span> <span class="n">SortStrategy</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">sort</span><span class="o">(</span><span class="n">array</span> <span class="n">$dataset</span><span class="o">):</span> <span class="n">array</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="s">"Sorting using quick sort"</span><span class="o">;</span>
+
+<span class="c1">// Do sorting</span>
+<span class="k">return</span> <span class="n">$dataset</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>然后我们有一个我们的客户来实现任何策略</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Sorter</span>
+<span class="o">{</span>
+<span class="kd">protected</span> <span class="n">$sorter</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">SortStrategy</span> <span class="n">$sorter</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">$this</span><span class="o">-&gt;</span><span class="n">sorter</span> <span class="o">=</span> <span class="n">$sorter</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">sort</span><span class="o">(</span><span class="n">array</span> <span class="n">$dataset</span><span class="o">):</span> <span class="n">array</span>
+<span class="o">{</span>
+<span class="k">return</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">sorter</span><span class="o">-&gt;</span><span class="n">sort</span><span class="o">(</span><span class="n">$dataset</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>它能这么使用</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$dataset</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">8</span><span class="o">];</span>
+
+<span class="n">$sorter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Sorter</span><span class="o">(</span><span class="k">new</span> <span class="n">BubbleSortStrategy</span><span class="o">());</span>
+<span class="n">$sorter</span><span class="o">-&gt;</span><span class="n">sort</span><span class="o">(</span><span class="n">$dataset</span><span class="o">);</span> <span class="c1">// Output : Sorting using bubble sort</span>
+
+<span class="n">$sorter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Sorter</span><span class="o">(</span><span class="k">new</span> <span class="n">QuickSortStrategy</span><span class="o">());</span>
+<span class="n">$sorter</span><span class="o">-&gt;</span><span class="n">sort</span><span class="o">(</span><span class="n">$dataset</span><span class="o">);</span> <span class="c1">// Output : Sorting using quick sort</span></code></pre></figure> <h3 id="state">State</h3> <p>应用例子</p> <blockquote> <p>想象你在使用某些绘图程序，你选择画刷来绘制。现在画刷根据选择的颜色来改变它的行为 i.e.。如果你已经选择了红色，它就会是红色，如果是蓝色，它就会是蓝色。</p> </blockquote> <p>简单的说</p> <blockquote> <p>它让你在状态改变的时候改变类行为。</p> </blockquote> <p>维基百科说</p> <blockquote> <p>状态模式是行为软件设计模式，它使用一种面向对象的方式实现状态机。使用状态模式，通过实现不同的状态作为状态模式接口的派生类来实现，通过调用在状态父类的方法实现状态转换。状态模式可以被解释为策略模式，它通过调用定义在模式中的接口来切换当前的状态。</p> </blockquote> <p>程序例子</p> <blockquote> <p>让我们举一个文本编辑器的例子，它让你改变已经编辑文本的状态 i.e. 如果你选择粗体，它就会是粗体，如果选择细体，他就是细体 etc.</p> </blockquote> <p>首先我们有我们的状态接口以及某些状态实现</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">WritingState</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">write</span><span class="o">(</span><span class="n">string</span> <span class="n">$words</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">UpperCase</span> <span class="kd">implements</span> <span class="n">WritingState</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">write</span><span class="o">(</span><span class="n">string</span> <span class="n">$words</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="nf">strtoupper</span><span class="o">(</span><span class="n">$words</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">LowerCase</span> <span class="kd">implements</span> <span class="n">WritingState</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">write</span><span class="o">(</span><span class="n">string</span> <span class="n">$words</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="nf">strtolower</span><span class="o">(</span><span class="n">$words</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Default</span> <span class="kd">implements</span> <span class="n">WritingState</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">write</span><span class="o">(</span><span class="n">string</span> <span class="n">$words</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="n">$words</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>然后我们有自己的编辑器</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">TextEditor</span>
+<span class="o">{</span>
+<span class="kd">protected</span> <span class="n">$state</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">__construct</span><span class="o">(</span><span class="n">WritingState</span> <span class="n">$state</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">$this</span><span class="o">-&gt;</span><span class="n">state</span> <span class="o">=</span> <span class="n">$state</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">setState</span><span class="o">(</span><span class="n">WritingState</span> <span class="n">$state</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">$this</span><span class="o">-&gt;</span><span class="n">state</span> <span class="o">=</span> <span class="n">$state</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">type</span><span class="o">(</span><span class="n">string</span> <span class="n">$words</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="n">$this</span><span class="o">-&gt;</span><span class="n">state</span><span class="o">-&gt;</span><span class="n">write</span><span class="o">(</span><span class="n">$words</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>然后我们这样使用</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$editor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TextEditor</span><span class="o">(</span><span class="k">new</span> <span class="n">Default</span><span class="o">());</span>
+
+<span class="n">$editor</span><span class="o">-&gt;</span><span class="n">type</span><span class="o">(</span><span class="err">'</span><span class="n">First</span> <span class="n">line</span><span class="err">'</span><span class="o">);</span>
+
+<span class="n">$editor</span><span class="o">-&gt;</span><span class="n">setState</span><span class="o">(</span><span class="k">new</span> <span class="n">UpperCase</span><span class="o">());</span>
+
+<span class="n">$editor</span><span class="o">-&gt;</span><span class="n">type</span><span class="o">(</span><span class="err">'</span><span class="n">Second</span> <span class="n">line</span><span class="err">'</span><span class="o">);</span>
+<span class="n">$editor</span><span class="o">-&gt;</span><span class="n">type</span><span class="o">(</span><span class="err">'</span><span class="n">Third</span> <span class="n">line</span><span class="err">'</span><span class="o">);</span>
+
+<span class="n">$editor</span><span class="o">-&gt;</span><span class="n">setState</span><span class="o">(</span><span class="k">new</span> <span class="n">LowerCase</span><span class="o">());</span>
+
+<span class="n">$editor</span><span class="o">-&gt;</span><span class="n">type</span><span class="o">(</span><span class="err">'</span><span class="n">Fourth</span> <span class="n">line</span><span class="err">'</span><span class="o">);</span>
+<span class="n">$editor</span><span class="o">-&gt;</span><span class="n">type</span><span class="o">(</span><span class="err">'</span><span class="n">Fifth</span> <span class="n">line</span><span class="err">'</span><span class="o">);</span>
+
+<span class="c1">// Output:</span>
+<span class="c1">// First line</span>
+<span class="c1">// SECOND LINE</span>
+<span class="c1">// THIRD LINE</span>
+<span class="c1">// fourth line</span>
+<span class="c1">// fifth line</span></code></pre></figure> <h3 id="template-method">Template Method</h3> <p>应用例子</p> <p>假如我们要建房子。建房子的步骤可能 </p> <blockquote> </blockquote> <ul> <li>打地基</li> <li>建墙壁</li> <li>添加屋顶</li> <li>添加地板</li> </ul> <p>这些步骤的顺序不会改变。你不能在建墙壁之前建立屋顶。但是这些步骤能够被修改，例如墙壁能够是木做的，或者聚酯或者石头。</p> <p>简单的说</p> <blockquote> <p>模板方法定义一个能够执行确定算法的骨架。但是将实现延迟放到子类来实现。</p> </blockquote> <p>维基百科说</p> <blockquote> <p>在软件工程中，模板方法是行为设计模式用来定义在操作中算法的程序骨架，延迟这些步骤到子类实现。它让你重定义算法步骤而不需要修改到算法结构。</p> </blockquote> <p>程序例子</p> <blockquote> <p>加入我们有一个建造工具能够帮我们测试，建造以及产生建造报告(i.e. 代码覆盖报告 etc)，然后发布我们的应用到测试服务器。</p> </blockquote> <p>首先我们有一个基类定义建造算法的骨架。</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Builder</span>
+<span class="o">{</span>
+
+<span class="c1">// Template method</span>
+<span class="kd">final</span> <span class="kd">public</span> <span class="n">function</span> <span class="nf">build</span><span class="o">()</span>
+<span class="o">{</span>
+<span class="n">$this</span><span class="o">-&gt;</span><span class="n">test</span><span class="o">();</span>
+<span class="n">$this</span><span class="o">-&gt;</span><span class="n">lint</span><span class="o">();</span>
+<span class="n">$this</span><span class="o">-&gt;</span><span class="n">assemble</span><span class="o">();</span>
+<span class="n">$this</span><span class="o">-&gt;</span><span class="n">deploy</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">abstract</span> <span class="kd">public</span> <span class="n">function</span> <span class="nf">test</span><span class="o">();</span>
+<span class="kd">abstract</span> <span class="kd">public</span> <span class="n">function</span> <span class="nf">lint</span><span class="o">();</span>
+<span class="kd">abstract</span> <span class="kd">public</span> <span class="n">function</span> <span class="nf">assemble</span><span class="o">();</span>
+<span class="kd">abstract</span> <span class="kd">public</span> <span class="n">function</span> <span class="nf">deploy</span><span class="o">();</span>
+<span class="o">}</span></code></pre></figure> <p>然后我们的实现</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">AndroidBuilder</span> <span class="kd">extends</span> <span class="n">Builder</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">test</span><span class="o">()</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Running</span> <span class="n">android</span> <span class="n">tests</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">lint</span><span class="o">()</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Linting</span> <span class="n">the</span> <span class="n">android</span> <span class="n">code</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">assemble</span><span class="o">()</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Assembling</span> <span class="n">the</span> <span class="n">android</span> <span class="n">build</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">deploy</span><span class="o">()</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Deploying</span> <span class="n">android</span> <span class="n">build</span> <span class="n">to</span> <span class="n">server</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">IosBuilder</span> <span class="kd">extends</span> <span class="n">Builder</span>
+<span class="o">{</span>
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">test</span><span class="o">()</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Running</span> <span class="n">ios</span> <span class="n">tests</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">lint</span><span class="o">()</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Linting</span> <span class="n">the</span> <span class="n">ios</span> <span class="n">code</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">assemble</span><span class="o">()</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Assembling</span> <span class="n">the</span> <span class="n">ios</span> <span class="n">build</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">function</span> <span class="nf">deploy</span><span class="o">()</span>
+<span class="o">{</span>
+<span class="n">echo</span> <span class="err">'</span><span class="n">Deploying</span> <span class="n">ios</span> <span class="n">build</span> <span class="n">to</span> <span class="n">server</span><span class="err">'</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">}</span></code></pre></figure> <p>然后我们这么使用</p> <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">$androidBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AndroidBuilder</span><span class="o">();</span>
+<span class="n">$androidBuilder</span><span class="o">-&gt;</span><span class="n">build</span><span class="o">();</span>
+
+<span class="c1">// Output:</span>
+<span class="c1">// Running android tests</span>
+<span class="c1">// Linting the android code</span>
+<span class="c1">// Assembling the android build</span>
+<span class="c1">// Deploying android build to server</span>
+
+<span class="n">$iosBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IosBuilder</span><span class="o">();</span>
+<span class="n">$iosBuilder</span><span class="o">-&gt;</span><span class="n">build</span><span class="o">();</span>
+
+<span class="c1">// Output:</span>
+<span class="c1">// Running ios tests</span>
+<span class="c1">// Linting the ios code</span>
+<span class="c1">// Assembling the ios build</span>
+<span class="c1">// Deploying ios build to server</span></code></pre></figure> <h3 id="end-">End 行为</h3> <table> <thead> <tr> <th>日期</th> <th>作者</th> <th>说明</th> </tr> </thead> <tbody> <tr> <td>2017-07-09</td> <td>YC</td> <td>初步翻译完成</td> </tr> </tbody> </table> <div class="entry-meta"> <br> <hr> <span class="entry-tags"><a href="http://localhost:4000/tags/#designpatterns" title="Pages tagged designpatterns" class="tag"><span class="term">designpatterns</span></a></span> <span class="social-share"> <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/Translate-iOS-Design-Patterns3/" title="Share on Facebook" class="tag"> <span class="term"><i class="fa fa-facebook-square"></i> Like</span> </a> <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/Translate-iOS-Design-Patterns3/" title="Share on Twitter" class="tag"> <span class="term"><i class="fa fa-twitter-square"></i> Tweet</span> </a> <a href="https://plus.google.com/share?url=http://localhost:4000/Translate-iOS-Design-Patterns3/" title="Share on Google+" class="tag"> <span class="term"><i class="fa fa-google-plus-square"></i> +1</span> </a> </span> <div style="clear:both"></div> </div> </div> </div> <section id="disqus_thread" class="animated fadeInUp"></section><!-- /#disqus_thread --> </header> <!-- JS --> <script src="http://localhost:4000/assets/js/jquery-1.12.0.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.dlmenu.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.goup.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.magnific-popup.min.js"></script> <script src="http://localhost:4000/assets/js/jquery.fitvid.min.js"></script> <script src="http://localhost:4000/assets/js/scripts.js"></script> <script type="text/javascript"> var disqus_shortname = 'yanciomgblog'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); (function () { var s = document.createElement('script'); s.async = true; s.type = 'text/javascript'; s.src = '//' + disqus_shortname + '.disqus.com/count.js'; (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s); }()); </script> <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
 </noscript> <!-- MathJax --> <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> </body> </html>
