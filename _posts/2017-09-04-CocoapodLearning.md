@@ -167,7 +167,7 @@ pod repo push TDWSpecs TDWLoanToolCaculator.podspec
 *小伙伴们试试看*
 
 ```Shell
-第一步: pod repo add TDWSpecs http://git.tuandai888.com/XuLiJun/TDWSpecs.git
+第一步: pod repo add TDWSpecs http://<address>/TDWSpecs.git
 第二步: 在Podfile里面添加
 source 'https://github.com/CocoaPods/Specs.git'
 pod 'TDWLoanToolCaculator'
