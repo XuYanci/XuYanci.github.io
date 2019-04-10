@@ -1,0 +1,148 @@
+<h1 id="fastlane---">Fastlane - 让部署和发布更简单</h1>
+
+<h1 id="section">前言</h1>
+
+<p>fastlane 是一个能够方便iOS和Android开发者来自动化进行一些乏味工作的工具,</p>
+
+<p>例如: 产生截图，处理配置证书，发布应用等。</p>
+
+<h1 id="section-1">安装</h1>
+
+<p><strong>命令行安装</strong>:<code class="highlighter-rouge">   sudo gem install fastlane</code></p>
+
+<p><img src="/assets/img/Fastlane-1.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>安装完后 fastlane -v 查看一下版本号，如果能查看到则表示没问题。</p>
+
+<p><strong>源文件安装</strong>： <a href="https://download.fastlane.tools/">https://download.fastlane.tools/</a></p>
+
+<h1 id="section-2">初始化</h1>
+
+<p>切换到你的工程目录下，输入</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>fastlane init
+</code></pre>
+</div>
+
+<p><img src="/assets/img/Fastlane-2.png" alt="alt_text" title="image_tooltip" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>根据提示输入你的AppleID
+</code></pre>
+</div>
+
+<p><img src="/assets/img/Fastlane-3.png" alt="alt_text" title="image_tooltip" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>它会以你的账号登录，并检测你的工程配置。(Apple ID , App Name, App Identifier, Workspace)
+</code></pre>
+</div>
+
+<p><img src="/assets/img/Fastlane-4.png" alt="alt_text" title="image_tooltip" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>确定之后，会在当前目录创建fastlane文件夹
+</code></pre>
+</div>
+
+<p><img src="/assets/img/Fastlane-5.png" alt="alt_text" title="image_tooltip" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>我们打印一下fastlane文件夹里面的内容，有 Appfile, Deliverfile, Fastfile还有一些切图存放文件夹和媒体数据等。 
+</code></pre>
+</div>
+
+<h3 id="gemfile">使用Gemfile</h3>
+
+<p>官方文档说 “建议你使用Gemfile来管理fastlane的依赖”。</p>
+
+<ol>
+  <li>安装 bundler</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo gem install bundler 
+</code></pre>
+</div>
+
+<ol>
+  <li>创建一个 ./Gemfile 文件，里面内容</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>source "https://rubygems.org"
+gem "fastlane"
+</code></pre>
+</div>
+
+<ol>
+  <li>跑一下 <code class="highlighter-rouge">bundler update，添加./Gemfile和./Gemfile.lock到版本控制中</code></li>
+</ol>
+
+<p>这样基本的初始化工作也就完成了。</p>
+
+<h1 id="section-3">开始使用</h1>
+
+<h4 id="ipa-adhoc"><strong>1. 编译和导出ipa adhoc包</strong></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>desc "编译和导出ipa adhoc包"
+lane :export_adhoc_ipa do
+increment_build_number
+gym(
+workspace: "CIExampleProject.xcworkspace",
+configuration: "Release",
+scheme: "CIExampleProject",
+clean: true,
+silent: true,
+output_directory: "path/to/dir",
+output_name: "my_app.ipa",
+export_method: "ad-hoc",
+codesigning_identity: "xxxxxx",
+)
+end
+</code></pre>
+</div>
+
+<h3 id="adhocfirim"><strong>2.编译和上传adhoc到fir.im</strong></h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>desc "编译和上传adhoc到fir.im"
+lane :upload_adhoc_ipa_firim do
+increment_build_number
+gym(
+workspace: "CIExampleProject.xcworkspace",
+configuration: "Release",
+scheme: "CIExampleProject",
+clean: true,
+silent: true,
+output_directory: "path/to/dir",
+output_name: "my_app.ipa",
+export_method: "ad-hoc",
+codesigning_identity: "xxxxxx",
+)
+#上传到fir
+firim(firim_api_token: "xxxxxx")
+end
+</code></pre>
+</div>
+
+<h3 id="testflight"><strong>3.编译和上传到testflight</strong></h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>desc "编译和上传到testflight"
+lane :upload_appstore_ipa_testflight do
+increment_build_number
+gym(
+workspace: "CIExampleProject.xcworkspace",
+configuration: "Release",
+scheme: "CIExampleProject",
+clean: true,
+silent: true,
+output_directory: "path/to/dir",
+output_name: "my_app.ipa",
+export_method: "app-store",
+codesigning_identity: "xxxxxx",
+export_options: {
+"provisioningProfiles": {
+"com.tdw.appid" =&gt; "xxxxxx"
+}
+}
+)
+#上传到fir
+testflight
+end
+</code></pre>
+</div>
+

@@ -1,0 +1,22 @@
+<h1 id="kiosk">Kiosk网络模块源码阅读</h1>
+
+<p>(1) 网络框架使用Moya搭建，遵循POP编程思想。参考Moya官方Example! </p>
+
+<p>(2) 团贷网使用的是以MultiTarget作为API类型, Eidolon则使用一个通用约束限定API类型.</p>
+
+<p><img src="/assets/img/Kiosk-0.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>(3) 团贷网通过继承MoyaProvider增加了tdw_request方法，进行请求.</p>
+
+<p>Eidolon则聚合MoyaProvider作为请求方以及一个请求方法request，通过类型约束约定不同的API (ArtsyAPI,ArtsyAuthenticatedAPI),再通过静态方法创建类型实例。 (遵循多用聚合，少用继承的原则)</p>
+
+<p><img src="/assets/img/Kiosk-1.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>Refer: </p>
+
+<p><a href="https://github.com/Artsy/eidolon">https://github.com/Artsy/eidolon (Network)</a></p>
+
+<p><a href="https://github.com/Artsy/eidolon">https://developer.apple.com/videos/play/wwdc2015/408/</a></p>
+
+<p><a href="https://github.com/Artsy/eidolon">https://github.com/kamranahmedse/design-patterns-for-humans</a></p>
+

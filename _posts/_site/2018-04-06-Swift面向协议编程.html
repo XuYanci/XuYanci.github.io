@@ -1,0 +1,311 @@
+<h1 id="swift">Swift面向协议编程</h1>
+
+<h1 id="section">前言</h1>
+
+<p>在未学习Swift语言之前，我们都是用面向对象的思想来进行编程，在学习Swift语言后，作为一门以面向协议为核心思想的语言，我们应当以面向协议为核心思想来进行编程。</p>
+
+<h1 id="interfacemixingtraits">Interface、Mixing、Traits</h1>
+
+<p><img src="/assets/img/-0.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p><strong>接口</strong>是有着方法签名但没有没有实际代码的 (Objective-C 和 Swift1.2)。</p>
+
+<p><strong>Traits</strong>是有方法并且也有方法实现，也就是说它能够给接口提供代码实现，这也是现在Swift中的protocol extension （协议扩展）。</p>
+
+<p><strong>Mixin</strong>和Traits很类似但是它并没有状态。 (在Swift中我们并不能在协议中添加存储性属性)</p>
+
+<p><em>Note:你可以在协议中添加一个属性声明，然后由遵守它的类或者结构体再提供该声明属性的存储空间。这就看起来很像Traits,其实它们并没有多少区别。</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>protocol P {
+var property:String? {set get}
+}
+
+class C:P {
+var property:String?
+}
+</code></pre>
+</div>
+
+<h1 id="section-1">菱形问题</h1>
+
+<p><img src="/assets/img/-1.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>在上图中，我们有两个类B和C继承于同一个类A，我们有一个类D又同时继承于B和C，你可以看到上面的类中很像一个钻石形状，这也是为什么我们叫它做菱形问题（也叫做钻石问题）。</p>
+
+<p>钻石问题是：当我们实例化D时，试图去调用在A中定义的方法会是模糊的，因为不确定是调用B的方法还是C的。</p>
+
+<p><strong>Swift中没有多继承的概念</strong></p>
+
+<p>因为在Swift中，并没有多继承的概念，也就意味着Swift不需要遇到菱形的概念。</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class A {
+func methodA() {
+print("method A")
+}
+}
+
+class B {
+func methodB() {
+print("method B.A")
+}
+}
+
+class C  {
+func methodC() {
+print("method C.A")
+}
+}
+
+class D: B,C {
+
+
+}
+</code></pre>
+</div>
+
+<p>错误： Multiple inheritance from classes ‘B’ and ‘C’</p>
+
+<p><strong>Swift中有协议的概念</strong></p>
+
+<p>在Swift中有接口的概念，它允许模拟多继承。尽管接口给我们某些类似于多继承的概念，但是接口的实现都是单一的（并不是多个）继承。这意味着类似于菱形问题-编译器是会混淆不知道哪个方法使用-也导致在Swift中不存在菱形问题。</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>protocol A {
+func methodA()
+}
+
+protocol B:A {
+
+
+}
+
+protocol C:A {
+
+
+}
+class D: B,C {
+
+
+}
+
+错误: Type 'D' does not conform to protocol 'A'
+</code></pre>
+</div>
+
+<h1 id="heterogeneous-vs-homogeneous">异构与均质 (Heterogeneous vs homogeneous)</h1>
+
+<p>假设我们要实行一个这样的集合拓展:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1.sumToArray([1,2,3])
+"a".sumToArray(["1","2","3"])
+</code></pre>
+</div>
+
+<p>输出结果是 [1,1,2,3] 以及 [“a”,”1”,”2”,”3”] 。</p>
+
+<p>我们定义一<code class="highlighter-rouge">个Summable</code>协议包<code class="highlighter-rouge">含SumToArray:</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>protocol Summable {
+func sumToArray(array: []) -&gt; Summable
+}
+
+数组类型为空，接着我们添加Int以及String来响应Summable协议。
+extension Int: Summable {}
+extension String: Summable {}
+</code></pre>
+</div>
+
+<p><strong>Heterogeneous Container</strong></p>
+
+<p>我们使用<code class="highlighter-rouge">Heterogeneous Container，声明SumToArray的数组类型为[Summable]。</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>通过使用[Summable]我们选择使用heterogeneous Containers。每一个Item在数组都遵守Summable协议。由于Int和String都遵守Summable。数组可以包含Ints,Strings或者都包含。
+所以我们这样调用sumToArray都是有效的
+
+1.sumToArray([1, 2, 3, "2"])
+"a".sumToArray(["1", "2", "3", 2 , 5])
+</code></pre>
+</div>
+
+<p>这意味着我们在执行Item的操作时候需检查Item的类型。</p>
+
+<p>对于Int,意味着我们在添加到我们的Sum时候，需要检查类型是否是Int:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension Int: Summable {
+func sumToArray(array: [Summable]) -&gt; Summable {
+return array.reduce(self) { first, second in
+if let second = (second as? Int) {
+return first + second
+}
+
+
+return first
+}
+}
+}
+</code></pre>
+</div>
+
+<p>同样的，对于String，我们也需要检查类型是否String:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension String: Summable {
+func sumToArray(array: [Summable]) -&gt; Summable {
+return array.reduce(self) { first, second in
+if let second = (second as? String) {
+return first + second
+}
+return first
+}
+}
+}
+
+[Summable]数组就是一个Heterogeneous Container容器的例子，一个容器能够包含不同的类型。唯一的约束就是数组的每一个元素都遵循Summable协议。
+</code></pre>
+</div>
+
+<p><strong>Homogeneous Container</strong></p>
+
+<p><code class="highlighter-rouge">Homogeneous Container</code>是一个只包含同一类型<code class="highlighter-rouge">的Container</code>。在Swift中，当你在协议中使用Self标注，我们就选择了<code class="highlighter-rouge">homogeneous container</code>。</p>
+
+<p>我们更新一下Summable来使用Self类型标注。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>protocol Summable {
+func sumToArray(array: [Self]) -&gt; Self
+}
+
+Self类型是一个占位符，主要用于遵守Summable协议的静态类型。这意味着Self可能是Int,当在Int扩展或者String扩展中实现SumToArray。
+</code></pre>
+</div>
+
+<p>以下是我们在Int以及String扩展中怎样实现SumToArray。 </p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension Int: Summable {
+func sumToArray(array: [Int]) -&gt; Int {
+return array.reduce(self, combine: +)
+}
+}
+extension String: Summable {
+func sumToArray(array: [String]) -&gt; String {
+return array.reduce("") { $0 + $1 } + self
+}
+}
+
+观察到了[Self]已经覆写为[Int]和[String]。当使用Self的时候我们不再需要做类型检查，相对于我们之前的heteorgenous container之前例子。
+
+通过使用Self我们不在需要动态类型检查，取代它的是更加安全的编译时类型声明。
+
+由于我们选择了homogeneous container,我们无法在Int类型以及String类型都存在的情况下调用sumToArray。
+</code></pre>
+</div>
+
+<p><img src="/assets/img/-2.png" alt="alt_text" title="image_tooltip" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SumToArray只能同类型情况下(Int,String)调用。
+
+1.sumToArray([1,2,3])
+"a".sumToArray(["1","2","3"])
+</code></pre>
+</div>
+
+<h1 id="section-2">静态派发、动态派发</h1>
+
+<p>有一篇文章解释的非常好，这里就不写了。</p>
+
+<p>基础篇: <a href="http://lijun.xyz/2017/02/12/Protocol-Extension/">http://lijun.xyz/2017/02/12/Protocol-Extension/</a></p>
+
+<p>进阶篇英文原版本 <a href="https://www.raizlabs.com/dev/">https://www.raizlabs.com/dev/</a> , </p>
+
+<p>进阶篇中文版本 <a href="https://kemchenj.github.io/2016-12-25-1/">https://kemchenj.github.io/2016-12-25-1/</a></p>
+
+<p><img src="/assets/img/-3.png" alt="alt_text" title="image_tooltip" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>之前一位同事遇到的一个问题如上，我觉得可以分析一下：
+在TDWFinancialCalendarInteratorInput协议中声明了 fetchCalendarData 以及 fetchFinancialListData 两个方法，在TDWFinancialCalendarInterator的扩展(Extension)实现了这两个方法，然而当继承了该父类，则无法override(覆写)，这里可能是因为扩展(Extension)是属于Direct Dispatch (可重写)，但不可以Overrid(可覆写)，所以导致这个问题出现。
+解决该问题则需要将这两个方法放到class中实现 (Dynamic Dispatch)，才能继承该父类进行覆写。
+</code></pre>
+</div>
+
+<h1 id="example">Example</h1>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/// 在协议定义声明了的方法是动态派发的，而只是在协议扩展中添加，并没有在定义中声明的方法是静态派发
+/// 动态派发的作用就是，在执行时，会先去寻找具体类型中对这个方法的现实，如果会调用这个类型的实现，如果没有，
+/// 在调用协议扩展中的实现。而静态派发，就是调用者声明的类型是什么，就去类型中找这个方法的实现，如果类型
+/// 声明为协议，即使这个类型中有这个方法的实现，也只会调用协议扩展中的实现。
+protocol Pizzeria {
+func makePizza(_ingredients:[String])
+func makeMargherita()
+}
+
+extension Pizzeria {
+func makeMargherita() {
+return makePizza(_ingredients: ["tomato","mozzarella"])
+}
+}
+
+struct Lombardis:Pizzeria {
+func makePizza(_ingredients:[String]) {
+print(_ingredients);
+}
+func makeMargherita() {
+return makePizza(_ingredients: ["tomato","basil","mozzarella"])
+}
+}
+
+let lombardis1:Pizzeria = Lombardis();
+let lombardis2:Lombardis = Lombardis();
+lombardis1.makeMargherita();
+lombardis2.makeMargherita();
+
+protocol Animal {
+func eat()
+}
+
+extension Animal {
+func eat() {
+print("Animal eat")
+}
+
+
+func run() {
+print("Animal run")
+}
+}
+
+struct Person: Animal {
+
+
+func eat() {
+print("Person eat")
+}
+
+
+func run() {
+print("Person run")
+}
+}
+let animal: Animal = Person()
+animal.eat()
+animal.run()
+</code></pre>
+</div>
+
+<p>tips: 有点类似于C++静态联编和动态联编.</p>
+
+<h1 id="section-3">参考</h1>
+
+<p><a href="https://onevcat.com/2016/11/pop-cocoa-1/">https://onevcat.com/2016/11/pop-cocoa-1/</a></p>
+
+<p><a href="https://onevcat.com/2016/11/pop-cocoa-2/">https://onevcat.com/2016/11/pop-cocoa-2/</a></p>
+
+<p><a href="https://bestswifter.com/pop/">https://bestswifter.com/pop/</a></p>
+
+<p><a href="http://machinethink.net/blog/mixins-and-traits-in-swift-2.0/">http://machinethink.net/blog/mixins-and-traits-in-swift-2.0/</a> </p>
+
+<p><a href="https://medium.com/ios-os-x-development/heterogeneous-vs-homogeneous-generics-630971626b7d">https://medium.com/ios-os-x-development/heterogeneous-vs-homogeneous-generics-630971626b7d</a></p>
+
+<p><a href="https://www.raizlabs.com/dev/2016/12/swift-method-dispatch/">https://www.raizlabs.com/dev/2016/12/swift-method-dispatch/</a> </p>
+
+<p><a href="http://lijun.xyz/2017/02/12/Protocol-Extension/">http://lijun.xyz/2017/02/12/Protocol-Extension/</a></p>

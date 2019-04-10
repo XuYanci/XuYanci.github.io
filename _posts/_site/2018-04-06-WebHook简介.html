@@ -1,0 +1,52 @@
+<h1 id="webhook">WebHook</h1>
+
+<h1 id="section">前言</h1>
+
+<p>APM3.0的任务主要是要做预警监控方案的设计，预警系统有一个比较重要的功能就是收集到预警信息需要通知到相关人员，现在大部分开发人员使用的沟通方式是 微信/QQ 、钉钉、邮件等方式，大部分app已经有做了webHook这个功能，你只要按照它的协议格式发送到指定url，消息就会转发到App上面。</p>
+
+<h1 id="webhook-1">什么是WebHook</h1>
+
+<p>我们看一下维基百科的解释: </p>
+
+<p><img src="/assets/img/WebHook0.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>这个理解起来还是比较简单的，例如我们使用钉钉来进行工作上的沟通和交流。 有时候我们希望能够在钉钉上也能看到一些开发流程输出结果来通知到给大家 （比如：我们现在的团贷网App编译打包结果）。 钉钉就为此提供一个webHook，允许我们第三方(Jenkins)调用它（符合它的请求格式）来达到通知的效果。</p>
+
+<h1 id="webhook-2">接入钉钉WebHook</h1>
+
+<p>首先，我们找一个群组(APM)，复制获取钉钉的WebHook，点击群机器人；</p>
+
+<p><img src="/assets/img/WebHook1.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>然后复制该群的webhook链接;</p>
+
+<p><img src="/assets/img/WebHook2.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>然后我们往这个链接发送消息协议；</p>
+
+<p><img src="/assets/img/WebHook3.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>我们就可以看到群里面产生一条这样的消息；</p>
+
+<p><img src="/assets/img/WebHook4.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>还有其他很多的协议格式 （link类型，markdown类型，actioncard类型等）具体我们到官方文档看就可以了,同时钉钉为了方便使用webHook，也提供了一套Java的SDK。</p>
+
+<h1 id="examples-">Examples :</h1>
+
+<p><img src="/assets/img/WebHook5.png" alt="alt_text" title="image_tooltip" /></p>
+
+<h1 id="bugly">服务器接入Bugly</h1>
+
+<p>通过阅读Bugly WebHook接入指南我们可以发现到，类似于BearyChat这些沟通工具是有接入Bugly的。这个主要是BearyChat提供了Bugly WebHook接口,通过解析Buly发送过来的数据，解析生成消息，分发到BearyChat会话中。接下来我们也来实现一个预警系统的自定义WebHook(Bugly)转发到钉钉 (接入钉钉WebHook)。</p>
+
+<p><img src="/assets/img/WebHook6.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>如图： Bugly 接入我们的Server自定义WebHook,然后Server接入DingDing的自定义WebHook，Server作为一个中间角色进行消息的接收以及转发即可。</p>
+
+<h1 id="section-1">参考</h1>
+
+<ol>
+  <li><a href="https://open-doc.dingtalk.com/docs/doc.htm?spm=a219a.7629140.0.0.57a04a97vfM3lw&amp;treeId=257&amp;articleId=105735&amp;docType=1#s0">https://open-doc.dingtalk.com/docs/doc.htm?spm=a219a.7629140.0.0.57a04a97vfM3lw&amp;treeId=257&amp;articleId=105735&amp;docType=1#s0</a> (钉钉WebHook接入指南)</li>
+  <li><a href="https://bugly.qq.com/docs/user-guide/webhook-bugly/?v=1539224414777#_3">https://bugly.qq.com/docs/user-guide/webhook-bugly/?v=1539224414777#_3</a>  (bugly WebHook接入指南)</li>
+</ol>

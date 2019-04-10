@@ -1,0 +1,171 @@
+<h1 id="systemlearningnsproxy">SystemLearning~NSProxy</h1>
+
+<h1 id="have-an-bug">Have an Bug!</h1>
+
+<p>NSTimer初始化的时候有一个方法叫做scheduledTimerWithTimeInterval，这个方法使用中需要传一个target进去，一般我们是传self进去，但是这个方法会导致一个问题产生，就是NSTime内部机制是会强引用该self，使用不当会导致循环引用，无法释放。 </p>
+
+<p>我们看一下官方文档说明:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>+ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti 
+target:(id)aTarget 
+selector:(SEL)aSelector 
+userInfo:(id)userInfo 
+repeats:(BOOL)yesOrNo;
+
+target
+The object to which to send the message specified by aSelector when the timer fires. The timer maintains a strong reference to target until it (the timer) is invalidated.
+</code></pre>
+</div>
+
+<p>从官方文档说明中，我们可以看出timer会强引用target直到它被invalidated。</p>
+
+<h1 id="how-to-resolve-it-">How to resolve It ?</h1>
+
+<p>我们可以在界面消失ViewDidDisappear的时候invaliated定时器，打破循环引用，这样就能够正常释放内存，但是这种做法不是唯一的做法，也感觉有点怪怪的。</p>
+
+<p>还有一种做法就是，我们怎么让self变成weakSelf的方式。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+
+typeof(self) weakSelf = self
+[NSTimer scheduledTimerWithTimeInterval:1 target:weakSelf selector:@selector(tick) userInfo:nil repeats:true];
+</code></pre>
+</div>
+
+<p>我们知道传到target中的self，会被NSTimer内部强引用retain+1，类似于这样: </p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">class</span> <span class="n">NSTimer</span><span class="o">:</span> <span class="n">NSObject</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonmatic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSObject</span> <span class="o">*</span><span class="n">target</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>所以并没有什么用，那如果是这样子处理呢，因为timer会持有self (retain+1)，那我就给他一个代理类(实现了tick方法,做一个判断调用）如图: </p>
+
+<p><img src="/assets/img/SystemLearning-NSProxy0.png" alt="alt_text" title="image_tooltip" /></p>
+
+<h2 id="xyproxy">XYProxy类文件</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">@implementation</span> <span class="nc">XYProxy</span> <span class="p">{</span>
+<span class="c1">//    __weak id _target;
+</span><span class="n">__weak</span> <span class="n">ViewController1</span> <span class="o">*</span><span class="n">_vc1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithTarget</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">target</span> <span class="p">{</span>
+<span class="n">_target</span> <span class="o">=</span> <span class="n">target</span><span class="p">;</span>
+<span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">proxyWithTarget</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">target</span> <span class="p">{</span>
+<span class="k">return</span> <span class="p">[[</span><span class="n">XYProxy</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithTarget</span><span class="p">:</span><span class="n">target</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithTarget1</span><span class="o">:</span><span class="p">(</span><span class="n">ViewController1</span> <span class="o">*</span><span class="p">)</span><span class="n">target</span> <span class="p">{</span>
+<span class="n">_vc1</span> <span class="o">=</span> <span class="n">target</span><span class="p">;</span>
+<span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">tick</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">_vc1</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">[</span><span class="n">_vc1</span> <span class="nf">tick</span><span class="p">];</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@"oh my tick!"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="viewcontroller1">ViewController1类文件:</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">@implementation</span> <span class="nc">ViewController1</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span> <span class="p">{</span>
+<span class="p">[</span><span class="n">super</span> <span class="nf">viewDidLoad</span><span class="p">];</span>
+<span class="c1">// Do any additional setup after loading the view.
+</span><span class="n">XYProxy</span> <span class="o">*</span><span class="n">proxy</span> <span class="o">=</span> <span class="p">[[</span><span class="n">XYProxy</span> <span class="nf">alloc</span><span class="p">]</span><span class="nf">initWithTarget1</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
+<span class="p">[</span><span class="n">NSTimer</span> <span class="nf">scheduledTimerWithTimeInterval</span><span class="p">:</span><span class="mi">1</span> <span class="nf">target</span><span class="p">:</span><span class="n">proxy</span> <span class="n">selector</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">tick</span><span class="p">)</span> <span class="n">userInfo</span><span class="o">:</span><span class="nb">nil</span> <span class="n">repeats</span><span class="o">:</span><span class="nb">true</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">didReceiveMemoryWarning</span> <span class="p">{</span>
+<span class="p">[</span><span class="n">super</span> <span class="nf">didReceiveMemoryWarning</span><span class="p">];</span>
+<span class="c1">// Dispose of any resources that can be recreated.
+</span><span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">tick</span> <span class="p">{</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@"tick"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@"dealloc"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>通过源代码我们可以看到，NSTimer会先调用代理类的XYProxy.tick方法，然后判断target是否为空（weak属性,是否释放，如果释放则为nil)，从而调用实际的target方法。  </p>
+
+<p>运行一下看看: </p>
+
+<p><img src="/assets/img/SystemLearning-NSProxy1.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>当ViewController1 pop推出去的时候，能够正常释放，然后代理类其实是未释放的 (autorelease pool里面?) ，但是这个不会引起太大的影响。</p>
+
+<p>但是这样做有一个问题，就是我的RealTarget和ProxyTarget都得实现通用一个方法tick.</p>
+
+<p>我们怎么来解决这个问题呢，我们知道Objc是属于runtime的机制，我们可以利NSProxy(也叫代理)的这个类来达到我们的目的。</p>
+
+<h1 id="nsproxy-">NSProxy !</h1>
+
+<p>我们看一下官方文档的介绍:</p>
+
+<p><img src="/assets/img/SystemLearning-NSProxy2.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>大概说的是， 消息传递到NSProxy，通常会被传递到一个Real Object 。 </p>
+
+<p>NSProxy是一个抽象类，它基本上提供了定义在NSObject协议中所需的方法。(我们知道ObjC中的对象都是继承NSObject的) </p>
+
+<p>实现它的话，你需要覆写 forwardInvocation: 以及 methodSignatureForSelector: 这两个方法。</p>
+
+<h1 id="example">Example:</h1>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">@implementation</span> <span class="nc">XYProxy</span> <span class="p">{</span>
+<span class="n">__weak</span> <span class="n">id</span> <span class="n">_target</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithTarget</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">target</span> <span class="p">{</span>
+<span class="n">_target</span> <span class="o">=</span> <span class="n">target</span><span class="p">;</span>
+<span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">proxyWithTarget</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">target</span> <span class="p">{</span>
+<span class="k">return</span> <span class="p">[[</span><span class="n">XYProxy</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithTarget</span><span class="p">:</span><span class="n">target</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">forwardingTargetForSelector</span><span class="o">:</span><span class="p">(</span><span class="n">SEL</span><span class="p">)</span><span class="n">selector</span> <span class="p">{</span>
+<span class="k">return</span> <span class="n">_target</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">forwardInvocation</span><span class="o">:</span><span class="p">(</span><span class="n">NSInvocation</span> <span class="o">*</span><span class="p">)</span><span class="n">invocation</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="o">*</span><span class="n">null</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">[</span><span class="n">invocation</span> <span class="nf">setReturnValue</span><span class="p">:</span><span class="o">&amp;</span><span class="n">null</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">NSMethodSignature</span> <span class="o">*</span><span class="p">)</span><span class="n">methodSignatureForSelector</span><span class="o">:</span><span class="p">(</span><span class="n">SEL</span><span class="p">)</span><span class="n">selector</span> <span class="p">{</span>
+<span class="k">return</span> <span class="p">[</span><span class="n">NSObject</span> <span class="nf">instanceMethodSignatureForSelector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">init</span><span class="p">)];</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/img/SystemLearning-NSProxy3.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>这个实现思路和前一个Example实现思路差不多，传入一个target，然后__weak 引用指向target, 最重要的是利用了NSProxy转发的特性  <code class="highlighter-rouge">forwardingTargetForSelector 指向真实target 来执行调用方法。当target为null时候，则执行另外其他两个方法（相对于不执行任何操作）。</code></p>
+
+<h1 id="section">参考</h1>
+
+<p><a href="https://developer.apple.com/documentation/foundation/nstimer/1412416-scheduledtimerwithtimeinterval">https://developer.apple.com/documentation/foundation/nstimer/1412416-scheduledtimerwithtimeinterval</a></p>
+
+<p><a href="http://ggghub.com/2016/05/11/%E5%88%A9%E7%94%A8NSProxy%E8%A7%A3%E5%86%B3NSTimer%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E9%97%AE%E9%A2%98/">http://ggghub.com/2016/05/11/%E5%88%A9%E7%94%A8NSProxy%E8%A7%A3%E5%86%B3NSTimer%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E9%97%AE%E9%A2%98/</a></p>
+
+<p><a href="https://developer.apple.com/documentation/foundation/nsproxy">https://developer.apple.com/documentation/foundation/nsproxy</a></p>
+

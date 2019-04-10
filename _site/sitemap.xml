@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://localhost:4000/SystemLearning-NSProxy/</loc>
+    <lastmod>2018-10-11T00:00:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:4000/h5%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2018-09-30T00:00:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:4000/UBER-RIBS/</loc>
+    <lastmod>2018-04-25T00:00:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:4000/Swift%E9%9D%A2%E5%90%91%E5%8D%8F%E8%AE%AE%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2017-12-29T00:00:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:4000/iPhone%E5%B1%8F%E5%B9%95%E6%96%B9%E5%90%91%E9%80%82%E9%85%8D/</loc>
+    <lastmod>2017-12-02T00:00:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:4000/Jenkins%E6%8C%81%E7%BB%AD%E5%8C%96%E9%9B%86%E6%88%90/</loc>
+    <lastmod>2017-11-24T00:00:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:4000/Fastlane%E8%AE%A9%E9%83%A8%E7%BD%B2%E5%92%8C%E5%8F%91%E5%B8%83%E6%9B%B4%E7%AE%80%E5%8D%95/</loc>
+    <lastmod>2017-11-24T00:00:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:4000/CocoapodLearning/</loc>
+    <lastmod>2017-09-04T00:00:00+08:00</lastmod>
+  </url>
+  <url>
     <loc>http://localhost:4000/Translate-iOS-Design-Patterns3/</loc>
     <lastmod>2017-04-04T00:00:00+08:00</lastmod>
   </url>
@@ -15,6 +47,18 @@
   <url>
     <loc>http://localhost:4000/Translate-LifeStyle-These11RulesWillChangeYourLifeForever/</loc>
     <lastmod>2017-01-23T00:00:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:4000/iPhoneX%E9%80%82%E9%85%8D/</loc>
+    <lastmod>2017-01-22T00:00:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:4000/WebHook%E7%AE%80%E4%BB%8B/</loc>
+    <lastmod>2017-01-22T00:00:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:4000/Kiosk%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9D%97%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</loc>
+    <lastmod>2017-01-22T00:00:00+08:00</lastmod>
   </url>
   <url>
     <loc>http://localhost:4000/iOS-OpenSource-Learning-ReactiveCocoa/</loc>
@@ -58,27 +102,27 @@
   </url>
   <url>
     <loc>http://localhost:4000/404</loc>
-    <lastmod>2018-04-26T20:51:44+08:00</lastmod>
+    <lastmod>2019-04-10T17:04:44+08:00</lastmod>
   </url>
   <url>
     <loc>http://localhost:4000/tags/</loc>
-    <lastmod>2018-04-26T20:51:44+08:00</lastmod>
+    <lastmod>2019-04-10T17:04:44+08:00</lastmod>
   </url>
   <url>
     <loc>http://localhost:4000/</loc>
-    <lastmod>2018-04-26T20:51:44+08:00</lastmod>
+    <lastmod>2019-04-10T17:04:44+08:00</lastmod>
   </url>
   <url>
     <loc>http://localhost:4000/posts/</loc>
-    <lastmod>2018-04-26T20:51:44+08:00</lastmod>
+    <lastmod>2019-04-10T17:04:44+08:00</lastmod>
   </url>
   <url>
     <loc>http://localhost:4000/projects/</loc>
-    <lastmod>2018-04-26T20:51:44+08:00</lastmod>
+    <lastmod>2019-04-10T17:04:44+08:00</lastmod>
   </url>
   <url>
     <loc>http://localhost:4000/about/</loc>
-    <lastmod>2018-04-26T20:51:44+08:00</lastmod>
+    <lastmod>2019-04-10T17:04:44+08:00</lastmod>
   </url>
   <url>
     <loc>http://localhost:4000/baidu_verify_qoUELLY8Oy.html</loc>

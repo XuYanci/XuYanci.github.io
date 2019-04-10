@@ -1,0 +1,147 @@
+<h1 id="iphonex">iPhoneX适配</h1>
+
+<h1 id="section">前言</h1>
+
+<p>在非iPhoneX页面显示良好，在iPhoneX页面显示有问题，加上上架APP苹果爸爸需审核是否适配iPhoneX才能上架，所以研究一下iPhoneX适配以及在团贷App适配过程中的要点。</p>
+
+<h1 id="section-1">视图适配属性:</h1>
+
+<p>UIView</p>
+
+<ul>
+  <li>safeAreaInsets</li>
+  <li>additionalSafeAreaInsets</li>
+</ul>
+
+<p>UIScrollView</p>
+
+<ul>
+  <li>contentInsetAdjustmentBehavior</li>
+  <li>adjustedContentInset</li>
+</ul>
+
+<p>UITableView</p>
+
+<ul>
+  <li>insetsContentViewsToSafeArea</li>
+</ul>
+
+<p>UICollectionView</p>
+
+<ul>
+  <li>UICollectionViewFlowLayoutSectionInsetReference</li>
+</ul>
+
+<h1 id="iphonex-1">iphoneX上拉刷新适配分析:</h1>
+
+<p>底部上拉刷新,iPhoneX显示一半上拉刷新，走读一下其他App适配方式。</p>
+
+<p>第一种是滚动时候底部不透明，滚动区域离底部是有安全距离。</p>
+
+<p>第二种是滚动时候底部透明， 上拉刷新距离底部是有安全距离。</p>
+
+<p>第三种是滚动时候底部透明，上拉刷新不显示一半,上拉时候才显示出来。</p>
+
+<p>第四种是完全显示出来上拉刷新。</p>
+
+<h1 id="iphonex-webview">iPhoneX WebView适配分析:</h1>
+
+<p><img src="/assets/img/iPhoneX-0.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>网页界面如果是以UIWebView相对于UIView的边距布局，初始加载时会出现一个底部黑边问题。</p>
+
+<p>这个问题的解决方式如下：</p>
+
+<p>（1）UIWebView的scrollView不做自动调整间距 </p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/// iPhoneX 适配
+
+
+if (@available(iOS 11.0, *)) {
+
+
+webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+
+
+} else {
+
+
+// Fallback on earlier versions
+
+
+}
+</code></pre>
+</div>
+
+<p>(2) 替换成WKWebView</p>
+
+<h1 id="section-2">团贷网场景分析:</h1>
+
+<h4 id="section-3">登录界面:</h4>
+
+<p><img src="/assets/img/iPhoneX-1.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p><img src="/assets/img/iPhoneX-2.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>登录界面是以【登录】顶部约束设置进行布局，并非在SafeArea的范围进行约束，这样在iPhoneX显示会直接显示超出SafeArea范围，如右图所示。</p>
+
+<p>这样我们只需要适配在iPhoneX机型下，顶部增加SafeArea偏移量即可，我们看一下关键代码:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>CGFloat paddingTop = [UIApplication sharedApplication].keyWindow.safeAreaInsets.top; 
+NSString *format = [NSString stringWithFormat:@"V:|-%f-[titleLabel]",paddingTop + 30];
+[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
+</code></pre>
+</div>
+
+<h2 id="section-4">充值界面:</h2>
+
+<p><img src="/assets/img/iPhoneX-3.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>充值界面中的【有疑问】按钮是以底部约束设置进行布局，并非在SafeArea进行布局，这样在iPhoneX显示会直接超出SafeArea范围，如图所示。</p>
+
+<p>这样我们只需要适配在iPhoneX机型下，底部增加SafeArea偏移量即可，我们看一下关键代码:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+
+questionBtn.snp.updateConstraints({ (make) in
+make.centerX.equalTo(view)
+make.height.equalTo(32)
+make.width.equalTo(80)
+make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+})
+</code></pre>
+</div>
+
+<h2 id="section-5">账单界面</h2>
+
+<p><img src="/assets/img/iPhoneX-4.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>账单的布局是以tableView相对于UIView边距布局，因为不是在SafeArea中布局，所以在iPhoneX显示会超出SafeArea范围。</p>
+
+<p>同样的，我们只需要调整tableView的底部约束，底部增加SafeArea偏移量即可，我们看一下关键代码:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>tableView.snp.makeConstraints { (make) in
+make.top.equalTo(noticeView.snp.bottom)
+make.left.right.equalToSuperview()
+/// iPhoneX
+if (UIScreen.main.bounds.size.height == 812.0) {
+if #available(iOS 11.0, *) {
+make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+}
+else {
+make.bottom.equalToSuperview()
+}
+}
+else {
+make.bottom.equalToSuperview()
+}
+}
+</code></pre>
+</div>
+
+<h1 id="section-6">参考</h1>
+
+<p><a href="https://developer.apple.com/cn/ios/update-apps-for-iphone-x/">https://developer.apple.com/cn/ios/update-apps-for-iphone-x/</a></p>
+
+<p><a href="https://www.jianshu.com/c/340ba757ced6">https://www.jianshu.com/c/340ba757ced6</a></p>
+

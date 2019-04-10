@@ -1,0 +1,242 @@
+<h1 id="h5">H5学习总结</h1>
+
+<h1 id="section">前言</h1>
+
+<p>在进行WebView优化项目的情况下，学习了JS、CSS、Html等基本语法。</p>
+
+<p>为了熟悉和应用(html/js/css)，阅读了鱼泡泡首页h5源代码，知道了写一个基本的h5界面需要些什么知识。</p>
+
+<h1 id="section-1">盒子模型</h1>
+
+<p><img src="/assets/img/h5-0.png" alt="alt_text" title="image_tooltip" /></p>
+
+<h2 id="section-2">定义</h2>
+
+<p>Margin:  外边距</p>
+
+<p>Border:   边框</p>
+
+<p>Padding: 内边距</p>
+
+<p>Content:  内容</p>
+
+<h2 id="example">Example:</h2>
+
+<ol>
+  <li>我们定义两个DIV,分别是 i am body1, i am body2;</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;body&gt;
+&lt;header&gt;
+i am header
+&lt;/header&gt;
+&lt;div class="box1"&gt;
+i am body1
+&lt;/div&gt;     
+&lt;div class="box2"&gt;
+i am body2
+&lt;/div&gt;    
+&lt;footer&gt;
+i am footer
+&lt;/footer&gt;
+&lt;/body&gt;
+</code></pre>
+</div>
+
+<p>运行显示:</p>
+
+<p><img src="/assets/img/h5-1.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>这里body1,body2 还没有添加任何样式，显示都是纯文本。</p>
+
+<ol>
+  <li>然后我们添加两个样式 .box1, .box2:</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;style type="text/css"&gt;
+.box1 {
+padding-top: 0px;
+padding-left: 0px;
+padding-right: 0px;
+padding-bottom: 0px;
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+border: 1px solid blue;
+width: 100px;
+height: 100px;
+}
+.box2 {
+padding-top: 10px;
+padding-left: 10px;
+padding-right: 10px;
+padding-bottom: 10px;
+margin-top: 10px;
+margin-left: 10px;
+margin-right: 10px;
+margin-bottom: 10px;
+border: 10px solid red;
+width: 100px;
+height: 100px;
+}
+&lt;/style&gt;
+</code></pre>
+</div>
+
+<p><strong>TIPS</strong>: CSS引入样式有三种方式 （内部样式，外部样式，内联样式），以上的是内部样式。</p>
+
+<p>运行显示:</p>
+
+<p><img src="/assets/img/h5-2.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>从上面我们可以看到 body2 与 body1 间距为10px, body2的内间距都为10px。</p>
+
+<p>这样也就是盒子模型主要作用能够定义元素间的基本排版（通过padding,margin设置）。</p>
+
+<h1 id="section-3">块级元素和内联元素</h1>
+
+<p>块元素尝试获取整个宽度，并在布局中开始新行。一些HTML元素是块元素或块级元素。</p>
+
+<p>内联元素与其他内联元素保持在同一行中，并且不会开始新行。</p>
+
+<p>Example: </p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;body&gt;
+&lt;h1&gt; i am h1 &lt;/h1&gt;
+&lt;p&gt; i am p &lt;/p&gt;
+&lt;div&gt; i am div&lt;/div&gt;
+&lt;a&gt; i am tag a, &lt;/a&gt;
+&lt;a&gt; i am tag b, &lt;/a&gt;
+&lt;/body&gt;
+</code></pre>
+</div>
+
+<p>运行一下：</p>
+
+<p><img src="/assets/img/h5-3.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>“h1”,”p”,”div”标签都是块元素，所以他们都会默认占用一行。</p>
+
+<p>“a” 是内联元素，所以他们不会换行显示。</p>
+
+<p>那如果我们想要改变原来块元素，或者内联元素的显示方式，我们应该如何处理呢？ </p>
+
+<p>这其实css样式有一个属性: </p>
+
+<p>display ，它能够设置元素显示方式 [inline,block,inline-block]。</p>
+
+<p>TIPS: </p>
+
+<p>Ques: inline,block,inline-block 的区别? </p>
+
+<p>Ans:</p>
+
+<p>inline 你无法设置他的宽度和高度，但会在布局中开始新一行显示</p>
+
+<p>block 你可以设置他的宽度和高度，但不会在布局中开始新一行显示</p>
+
+<p>inline-block  既可以设置宽度高度，但不会在布局中开始新一行显示</p>
+
+<h1 id="section-4">定位方式</h1>
+
+<p>我们有时候会看到网页上的元素在滚动的时候，固定位置不变，有的会随着滚动而滚动等。这些就是和元素的定位方式有关系。</p>
+
+<p>定位方法的类型：</p>
+
+<p>static (静态)、relative (相对)、absolute (绝对)、fixed(固定)</p>
+
+<p><img src="/assets/img/h5-4.png" alt="alt_text" title="image_tooltip" /></p>
+
+<p>Examples: </p>
+
+<p>参考该文章，因为比较详细的例子。就不做demo了。</p>
+
+<p><a href="https://blog.csdn.net/chen_zw/article/details/8741365">https://blog.csdn.net/chen_zw/article/details/8741365</a></p>
+
+<h1 id="section-5">选择器</h1>
+
+<p>当我们需要为一个元素应用css样式时候，我们需要指定所应用的css样式。这时候我们常见有三种方式： 类选择器、id选择器、属性选择器、</p>
+
+<p>Example: </p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>.box1 {
+padding-top: 0px;
+padding-left: 0px;
+padding-right: 0px;
+padding-bottom: 0px;
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+border: 1px solid blue;
+width: 100px;
+height: 100px;
+}
+#box2 {
+padding-top: 10px;
+padding-left: 10px;
+padding-right: 10px;
+padding-bottom: 10px;
+margin-top: 10px;
+margin-left: 10px;
+margin-right: 10px;
+margin-bottom: 10px;
+border: 10px solid red;
+width: 100px;
+height: 100px;
+}
+
+&lt;body&gt;
+&lt;header&gt;
+&lt;!-- i am header --&gt;
+&lt;/header&gt;
+&lt;div class="box1"&gt;
+i am body1
+&lt;/div&gt;     
+&lt;div id="box2"&gt;
+i am body2
+&lt;/div&gt;    
+&lt;footer&gt;
+&lt;!-- i am footer --&gt;
+&lt;/footer&gt;
+&lt;/body&gt;
+</code></pre>
+</div>
+
+<p>从代码中可以看到，class = “box1” 指定的是类选择器box1， id = “box2” 指定的是id选择器 box2, 它们在css样式中分别用 # 和 .两个符号表示。 </p>
+
+<p><strong>TIPS</strong>: 选择器有许多用法，具体可以参考  <a href="https://code.tutsplus.com/zh-hans/tutorials/the-30-css-selectors-you-must-memorize--net-16048">css选择器</a></p>
+
+<h1 id="section-6">总结</h1>
+
+<p>掌握以上的几个小技能基本上可以撸一个简单的h5静态页面，多动手多实践。</p>
+
+<h1 id="section-7">参考</h1>
+
+<ol>
+  <li><a href="https://blog.csdn.net/chen_zw/article/details/8741365">CSS中position属性详解</a></li>
+  <li><a href="https://www.cnblogs.com/KeithWang/p/3139517.html">block，inline和inline-block概念和区别</a></li>
+  <li><a href="http://www.cnblogs.com/linjiqin/p/3556497.html">CSS padding margin border属性详解</a></li>
+  <li><a href="https://code.tutsplus.com/zh-hans/tutorials/the-30-css-selectors-you-must-memorize--net-16048">css选择器</a></li>
+</ol>
+
+<h1 id="section-8">文档记录</h1>
+
+<p>该表格记录相关修改 （H5学习总结）</p>
+
+<table>
+<tr>
+<td>Date
+</td>
+<td>Note
+</td>
+</tr>
+<tr>
+<td>2018.09.30
+</td>
+<td>初次建立H5学习总结
+</td>
+</tr>
+</table>
+
