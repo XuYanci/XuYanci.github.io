@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://yanci.me/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://yanci.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yanci.me/" rel="alternate" type="text/html" /><updated>2019-04-13T22:48:57+08:00</updated><id>https://yanci.me//</id><title type="html">XuYanci</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>XuYanci</name></author><entry><title type="html">iOS-Learning-NSProxy</title><link href="https://yanci.me/SystemLearning-NSProxy/" rel="alternate" type="text/html" title="iOS-Learning-NSProxy" /><published>2018-10-11T00:00:00+08:00</published><updated>2018-10-11T00:00:00+08:00</updated><id>https://yanci.me/SystemLearning-NSProxy</id><content type="html" xml:base="https://yanci.me/SystemLearning-NSProxy/">&lt;h1 id=&quot;systemlearningnsproxy&quot;&gt;SystemLearning~NSProxy&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://yanci.me/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://yanci.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yanci.me/" rel="alternate" type="text/html" /><updated>2019-04-13T22:54:57+08:00</updated><id>https://yanci.me//</id><title type="html">XuYanci</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>XuYanci</name></author><entry><title type="html">iOS-Learning-NSProxy</title><link href="https://yanci.me/SystemLearning-NSProxy/" rel="alternate" type="text/html" title="iOS-Learning-NSProxy" /><published>2018-10-11T00:00:00+08:00</published><updated>2018-10-11T00:00:00+08:00</updated><id>https://yanci.me/SystemLearning-NSProxy</id><content type="html" xml:base="https://yanci.me/SystemLearning-NSProxy/">&lt;h1 id=&quot;systemlearningnsproxy&quot;&gt;SystemLearning~NSProxy&lt;/h1&gt;
 
 &lt;h1 id=&quot;have-an-bug&quot;&gt;Have an Bug!&lt;/h1&gt;
 
@@ -1340,7 +1340,7 @@ Stop Jenkins: sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist
 
 &lt;p&gt;&lt;strong&gt;命令行安装&lt;/strong&gt;:&lt;code class=&quot;highlighter-rouge&quot;&gt;   sudo gem install fastlane&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/Fastlane-1.png&quot; alt=&quot;alt_text&quot; title=&quot;image_tooltip&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/fastlane-1.png&quot; alt=&quot;alt_text&quot; title=&quot;image_tooltip&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;安装完后 fastlane -v 查看一下版本号，如果能查看到则表示没问题。&lt;/p&gt;
 
@@ -1354,25 +1354,25 @@ Stop Jenkins: sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/Fastlane-2.png&quot; alt=&quot;alt_text&quot; title=&quot;image_tooltip&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/fastlane-2.png&quot; alt=&quot;alt_text&quot; title=&quot;image_tooltip&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;根据提示输入你的AppleID
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/Fastlane-3.png&quot; alt=&quot;alt_text&quot; title=&quot;image_tooltip&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/fastlane-3.png&quot; alt=&quot;alt_text&quot; title=&quot;image_tooltip&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;它会以你的账号登录，并检测你的工程配置。(Apple ID , App Name, App Identifier, Workspace)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/Fastlane-4.png&quot; alt=&quot;alt_text&quot; title=&quot;image_tooltip&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/fastlane-4.png&quot; alt=&quot;alt_text&quot; title=&quot;image_tooltip&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;确定之后，会在当前目录创建fastlane文件夹
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/Fastlane-5.png&quot; alt=&quot;alt_text&quot; title=&quot;image_tooltip&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/fastlane-5.png&quot; alt=&quot;alt_text&quot; title=&quot;image_tooltip&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;我们打印一下fastlane文件夹里面的内容，有 Appfile, Deliverfile, Fastfile还有一些切图存放文件夹和媒体数据等。 
 &lt;/code&gt;&lt;/pre&gt;
