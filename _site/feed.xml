@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://yanci.me/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://yanci.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yanci.me/" rel="alternate" type="text/html" /><updated>2019-04-17T20:26:57+08:00</updated><id>https://yanci.me//</id><title type="html">XuYanci</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>XuYanci</name></author><entry><title type="html">iOS-Learning-NSProxy</title><link href="https://yanci.me/SystemLearning-NSProxy/" rel="alternate" type="text/html" title="iOS-Learning-NSProxy" /><published>2018-10-11T00:00:00+08:00</published><updated>2018-10-11T00:00:00+08:00</updated><id>https://yanci.me/SystemLearning-NSProxy</id><content type="html" xml:base="https://yanci.me/SystemLearning-NSProxy/">&lt;h1 id=&quot;systemlearningnsproxy&quot;&gt;SystemLearning~NSProxy&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://yanci.me/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://yanci.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yanci.me/" rel="alternate" type="text/html" /><updated>2019-04-25T08:28:55+08:00</updated><id>https://yanci.me//</id><title type="html">XuYanci</title><subtitle>Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform.</subtitle><author><name>XuYanci</name></author><entry><title type="html">iOS-Learning-NSProxy</title><link href="https://yanci.me/SystemLearning-NSProxy/" rel="alternate" type="text/html" title="iOS-Learning-NSProxy" /><published>2018-10-11T00:00:00+08:00</published><updated>2018-10-11T00:00:00+08:00</updated><id>https://yanci.me/SystemLearning-NSProxy</id><content type="html" xml:base="https://yanci.me/SystemLearning-NSProxy/">&lt;h1 id=&quot;systemlearningnsproxy&quot;&gt;SystemLearning~NSProxy&lt;/h1&gt;
 
 &lt;h1 id=&quot;have-an-bug&quot;&gt;Have an Bug!&lt;/h1&gt;
 
@@ -1296,10 +1296,6 @@ xcodebuild -workspace TuanDaiV4.xcworkspace -scheme TuanDaiV4 -sdk iphonesimulat
 &lt;p&gt;保存后重新构建任务，我们看看&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/Jenkins-40.png&quot; alt=&quot;alt_text&quot; title=&quot;image_tooltip&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/Jenkins-41.png&quot; alt=&quot;alt_text&quot; title=&quot;image_tooltip&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/Jenkins-42.png&quot; alt=&quot;alt_text&quot; title=&quot;image_tooltip&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这样覆盖率报告基本完成！&lt;/p&gt;
 
