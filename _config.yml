@@ -1,5 +1,5 @@
 # Site
-title:              XuYanci 
+title:               许还真  
 bio:                "You may say I'm a dreamer,But I'm not the only one, hope someday you'll join us,And the world will be as one ."
 description:        "Yanci is an ios developer from shenzhen, now is working for RaodShowLive. which is an roadshow live service platform."
 reading_time:       true
@@ -10,7 +10,7 @@ tiled_bg:           false   # Set this true if you want to tile your background 
 locale:             en_US
 url:                https://yanci.me
 author:             
-    name:           XuYanci 
+    name:           许还真 
     
 # Jekyll
 permalink:          /:title/
@@ -40,9 +40,9 @@ disqus_shortname:   yanciomgblog
   #ad-slot:
 #bing-verify:
 #email:
-twitter:           XuYanci 
+twitter:           许还真 
 #facebook:           username
-github:             XuYanci
+github:              许还真 
 #stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
 #linkedin:          username
 #xing:              username
